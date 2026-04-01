@@ -1,0 +1,97 @@
+.form {
+  max-width: 300px;
+  margin: 0 auto;
+  display: grid;
+  gap: 15px;
+}
+
+.form__input {
+  width: 100%;
+  padding: 10px;
+  height: 40px;
+}
+
+textarea.form__input {
+  height: 100px;
+}
+
+.form__button {
+  background-color: var(--accent);
+  color: var(--text-white);
+  height: 40px;
+  text-transform: uppercase;
+}
+
+.form__button {
+  display: inline-block;
+  height: 48px;
+  padding: 12px 28px;
+  border-radius: 5px;
+  background-color: var(--accent);
+  color: var(--text-white);
+  letter-spacing: 0.15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form__button:hover {
+  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+.form__button:active {
+  position: relative;
+  top: 1px;
+}
+
+.form__input,
+textarea {
+  background: none;
+  border: none;
+  border-bottom: solid 2px #474544;
+  color: #474544;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0em 0 1.875em 0;
+  padding: 0 0 0.875em 0;
+  text-transform: uppercase;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.form__input:focus,
+textarea:focus {
+  outline: none;
+  padding: 0 0 0.875em 0;
+}
+textarea {
+  resize: none;
+}
+.policy-checked {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+.policy-checked a {
+  color: var(--accent);
+}
+
+/* Добавляем стиль для заголовка */
+.form-title {
+  font-size: 24px;
+  text-align: center;
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 0,
+    "title": "Gaming Consoles",
+    "img": "gaming.webp",
+    "imgBig": "gaming-big.webp",
+    "gitHub": "https://github.com/GitMaxm/game-gulp",
+    "gitHubLink": "https://gitmaxm.github.io/game-gulp/",
+    "topic": "Игровые консоли",
+    "description": "Сайт, посвящённый игровым консолям. Одностраничный сайт с мобильной адаптацией, выполненный в учебных целях по готовому макету."
+  },
+  {
+    "id": 1,
+    "title": "Freedom studios academy",
+    "img": "studios-academy.webp",
+    "imgBig": "studios-academy-big.webp",
+    "gitHub": "https://github.com/GitMaxm/studio-gulp",
+    "gitHubLink": "https://gitmaxm.github.io/studio-gulp/",
+    "topic": "Академия студии Freedom",
+    "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией, выполненный в учебных целях по готовому макету."
+  },
+  {
+    "id": 2,
+    "title": "Реплики картин",
+    "img": "paints.webp",
+    "imgBig": "paints-big.webp",
+    "gitHub": "https://github.com/GitMaxm/Paints",
+    "gitHubLink": "https://gitmaxm.github.io/Paints/",
+    "topic": "Реплики картин от Ink. House",
+    "description": "Одностраничный сайт, посвящённый репликам картин от Ink. House, с мобильной адаптацией, выполненный в учебных целях по готовому макету."
+  },
+  {
+    "id": 3,
+    "title": "MLT мебель",
+    "img": "mebel.webp",
+    "imgBig": "mebel-big.webp",
+    "gitHub": "https://github.com/GitMaxm/mlt-mebel-scss",
+    "gitHubLink": "https://gitmaxm.github.io/mlt-mebel-scss",
+    "topic": "MLT мебель",
+    "description": "Одностраничный сайт, посвящённый изготовлению мебели на заказ. Сайт был выполнен по заказу клиента."
+  },
+  {
+    "id": 4,
+    "title": "Клуб четырех коней",
+    "img": "four-horse-club.webp",
+    "imgBig": "four-horse-club-big.webp",
+    "gitHub": "https://github.com/GitMaxm/four-horse-club-scss",
+    "gitHubLink": "https://gitmaxm.github.io/four-horse-club-scss/",
+    "topic": "Клуб четырёх коней",
+    "description": "Техническое задание для устройства на должность верстальщика (Yandex). Одностраничный сайт турнира по шахматам с мобильной адаптацией. На сайте присутствует несколько слайдеров."
+  },
+  {
+    "id": 5,
+    "title": "СРА сеть SHAKES PRO",
+    "img": "shakes-pro.webp",
+    "imgBig": "shakes-pro-big.webp",
+    "gitHub": "https://github.com/GitMaxm/shakes-pro-scss",
+    "gitHubLink": "https://gitmaxm.github.io/shakes-pro-scss/",
+    "topic": "СРА сеть SHAKES PRO",
+    "description": "Техническое задание для устройства на должность верстальщика (DatsTeam). Одностраничный сайт с мобильной адаптацией, посвящённый СРА сети SHAKES PRO."
+  },
+  {
+    "id": 6,
+    "title": "ООО \"Авангард\"",
+    "img": "litplastmas.webp",
+    "imgBig": "litplastmas-big.webp",
+    "gitHub": "https://github.com/GitMaxm/litplastmas-scss.git",
+    "gitHubLink": "https://gitmaxm.github.io/avangard-scss/",
+    "topic": "ООО \"Авангард\"",
+    "description": "Сайт-визитка для компании ООО \"Авангард\", занимающейся производством изделий из пластмассы. Одностраничный сайт с мобильной адаптацией, выполненный по заказу клиента."
+  },
+  {
+    "id": 7,
+    "title": "Цифровое агенство \"BINO\"",
+    "img": "bino.webp",
+    "imgBig": "bino-big.webp",
+    "gitHub": "https://github.com/GitMaxm/bino-scss",
+    "gitHubLink": "https://gitmaxm.github.io/bino-scss/",
+    "topic": "Цифровое агентство \"BINO\"",
+    "description": "Сайт-визитка для цифрового агентства \"BINO\". Одностраничный сайт с мобильной адаптацией, выполненный по макету в учебных целях."
+  }
+]
