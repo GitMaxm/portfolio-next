@@ -125,9 +125,6 @@ legend {
   --box-shadow-grid-hover: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.accent {
-  color: var(--accent);
-}
 .dark {
   --page-bg: #1c1c1c;
   --text-color: var(--text-white);
@@ -137,6 +134,10 @@ legend {
   --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
   --box-shadow-grid: 0 1px 3px rgb(252 252 252 / 0.4);
   --box-shadow-grid-hover: 0 4px 6px rgb(252 252 252 / 0.4);
+}
+
+.accent {
+  color: var(--accent);
 }
 
 html {
@@ -605,3 +606,10 @@ body {
 }
 
 /* Добавляем стиль для иконок социальных сетей */
+.portfolio-description {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}

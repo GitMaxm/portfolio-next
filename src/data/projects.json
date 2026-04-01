@@ -1,6 +1,7 @@
 [
   {
     "id": 0,
+    "category": "HTML",
     "title": "Gaming Consoles",
     "img": "gaming.webp",
     "imgBig": "gaming-big.webp",
@@ -11,6 +12,7 @@
   },
   {
     "id": 1,
+    "category": "HTML",
     "title": "Freedom studios academy",
     "img": "studios-academy.webp",
     "imgBig": "studios-academy-big.webp",
@@ -21,6 +23,7 @@
   },
   {
     "id": 2,
+    "category": "HTML",
     "title": "Реплики картин",
     "img": "paints.webp",
     "imgBig": "paints-big.webp",
@@ -31,16 +34,18 @@
   },
   {
     "id": 3,
+    "category": "HTML",
     "title": "MLT мебель",
     "img": "mebel.webp",
     "imgBig": "mebel-big.webp",
     "gitHub": "https://github.com/GitMaxm/mlt-mebel-scss",
     "gitHubLink": "https://gitmaxm.github.io/mlt-mebel-scss",
-    "topic": "MLT мебель",
+    "topic": "Мебель от Лёли",
     "description": "Одностраничный сайт, посвящённый изготовлению мебели на заказ. Сайт был выполнен по заказу клиента."
   },
   {
     "id": 4,
+    "category": "HTML",
     "title": "Клуб четырех коней",
     "img": "four-horse-club.webp",
     "imgBig": "four-horse-club-big.webp",
@@ -51,6 +56,7 @@
   },
   {
     "id": 5,
+    "category": "HTML",
     "title": "СРА сеть SHAKES PRO",
     "img": "shakes-pro.webp",
     "imgBig": "shakes-pro-big.webp",
@@ -61,6 +67,7 @@
   },
   {
     "id": 6,
+    "category": "HTML",
     "title": "ООО \"Авангард\"",
     "img": "litplastmas.webp",
     "imgBig": "litplastmas-big.webp",
@@ -71,6 +78,7 @@
   },
   {
     "id": 7,
+    "category": "HTML",
     "title": "Цифровое агенство \"BINO\"",
     "img": "bino.webp",
     "imgBig": "bino-big.webp",

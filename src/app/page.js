@@ -1,9 +1,8 @@
-import Header from '@/components/Header';
-import About from '@/components/About';
-import Advantages from '@/components/Advantages';
-import Services from '@/components/Services';
-import ModalForm from '@/components/ModalForm';
-import Stage from '@/components/Stage';
+import Header from '@/components/home/Header';
+import About from '@/components/home/About';
+import Skills from '@/components/home/Skills';
+import PortfolioPreview from '@/components/home/PortfolioPreview';
+// import ModalForm from '@/components/ModalForm';
 
 
 const Home = () => {
@@ -15,11 +14,9 @@ const Home = () => {
         <div className="container">
 
           <About />
-          <Advantages />
-          <Services />
-          <Stage />
-
-          <ModalForm />
+          <Skills />
+          <PortfolioPreview />
+          {/* <ModalForm /> */}
 
         </div>
       </main >
