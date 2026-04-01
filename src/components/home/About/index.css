@@ -1,0 +1,66 @@
+.about {
+  margin-bottom: var(--margin-bottom);
+}
+
+.about-box {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 20px;
+
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.about-img {
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.about-text p {
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+.about-text p + p {
+  margin-top: 1em;
+}
+
+.about-text .accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.about-text .tech {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* Адаптив */
+@media (max-width: 1100px) {
+  .about-box {
+    flex-direction: column;
+  }
+
+  .about-img {
+    width: 40%;
+  }
+}
+
+@media (max-width: 620px) {
+  .about-text p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 475px) {
+  .about-img {
+    width: 50%;
+  }
+}

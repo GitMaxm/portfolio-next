@@ -1,0 +1,31 @@
+/* Portfolio Preview */
+.portfolio-preview {
+  margin-bottom: var(--margin-bottom);
+}
+
+.project-preview__title {
+  font-size: 1.2rem;
+  margin: 0;
+  text-align: center;
+}
+
+.portfolio-preview__more {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.btn--more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn--more svg {
+  width: 1rem;
+  height: 1rem;
+}

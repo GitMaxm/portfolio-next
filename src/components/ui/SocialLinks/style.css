@@ -1,0 +1,75 @@
+/* Блок списка иконок */
+.social {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Каждый элемент */
+.social__item {
+  width: 50px;
+  height: 50px;
+}
+
+/* Кнопка-иконка */
+.social-link {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  border-radius: 50%;
+
+  font-size: 40px; /* размер react-icon */
+  color: var(--text-white); /* белая иконка */
+
+  transition: opacity 0.2s ease;
+}
+
+/* Ховер-анимация */
+.social__item:hover {
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+.social-link:hover {
+  opacity: 0.8;
+}
+
+/* Анимация heartbeat (оставил твою) */
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center;
+  }
+  10% {
+    transform: scale(0.91);
+  }
+  17% {
+    transform: scale(0.98);
+  }
+  33% {
+    transform: scale(0.87);
+  }
+  45% {
+    transform: scale(1);
+  }
+}
+
+/* Адаптив */
+@media (max-width: 620px) {
+  .social {
+    column-gap: 15px;
+  }
+  .social__item {
+    width: 40px;
+    height: 40px;
+  }
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+  }
+}
