@@ -1,23 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // хук для получения текущего пути
-import BtnDarkMode from './BtnDarkMode';
+import { usePathname } from 'next/navigation'; 
+import BtnDarkMode from '../../ui/BtnDarkMode';
+import navItems from '@/constants/navigation'
 
 const NavBar = () => {
     const pathname = usePathname();
-
     const isActive = (href) => pathname === href;
     const activeLink = "nav-list__link nav-list__link--active";
     const normalLink = "nav-list__link";
-
-    // Массив маршрутов для навигации
-    const navItems = [
-        { href: '/', label: 'Главная' },
-        { href: '/price', label: 'Услуги' },
-        { href: '/projects', label: 'Проекты' },
-        { href: '/contacts', label: 'Контакты' }
-    ];
 
     return (
         <nav className="nav">
@@ -25,7 +17,7 @@ const NavBar = () => {
                 <div className="nav-row">
 
                     <Link href="/" className="logo">
-                        <strong>Web</strong> Max
+                        <strong>Portfolio</strong> 
                     </Link>
 
                     <BtnDarkMode />
@@ -36,6 +28,8 @@ const NavBar = () => {
                                 <Link
                                     href={item.href}
                                     className={isActive(item.href) ? activeLink : normalLink}
+                                    title={item.title}
+                                    aria-current={isActive(item.href) ? 'page' : undefined}
                                 >
                                     {item.label}
                                 </Link>
