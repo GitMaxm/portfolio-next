@@ -1,4 +1,4 @@
-import { COMPANY_CONTACTS } from "@/data/contacts";
+import COMPANY_CONTACTS from "@/constants/contacts";
 
 const Contacts = () => {
   return (
@@ -7,7 +7,7 @@ const Contacts = () => {
         <h1 className="title-1">Контакты</h1>
 
         <ul className="content-list">
-          
+
           <li className="content-list__item">
             <h2 className="title-2">Локация</h2>
             <p>Москва, Россия</p>

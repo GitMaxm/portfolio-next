@@ -1,8 +1,7 @@
 import './style.css';
-import skills from '@/data/skills';
+import skills from '@/constants/skills';
 
 const SkillsFlex = () => {
-
 
     const getLevelClass = (level) => {
         switch (level) {
