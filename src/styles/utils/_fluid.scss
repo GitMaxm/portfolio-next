@@ -1,0 +1,17 @@
+@use "sass:math";
+
+/*
+ * Fluid typography
+ * @use '@/utils/fluid' as *;
+ *
+ * fluid($min, $max, $from: 1100px, $to: 1400px)
+ *
+ * font-size: #{fluid(30px, 44px)};           // дефолтный диапазон
+ * font-size: #{fluid(30px, 44px, 768px, 1400px)}; // произвольный
+ */
+
+@function fluid($min, $max, $from: 425px, $to: 1920px) {
+  $slope: math.div($max - $min, $to - $from);
+  $intercept: $min - $slope * $from;
+  @return clamp(#{$min}, calc(#{$intercept} + #{$slope * 100}vw), #{$max});
+}

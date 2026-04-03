@@ -1,7 +1,8 @@
-export default function AdminPage() {
+export default function AdminProjectsPage() {
     return (
         <div>
             <h1>Проекты</h1>
+
             <p>Состав проектов:
 
                 Картинка (главная)
@@ -13,11 +14,6 @@ export default function AdminPage() {
                 Ссылка на гитхаб
                 Ссылка на превью (если имеется)</p>
 
-            <div style={{ marginTop: '20px' }}>
-                <button >
-                    Добавить контент
-                </button>
-            </div>
         </div>
     );
 }
