@@ -1,0 +1,22 @@
+.sidebar {
+  width: 240px;
+  background: var(--black);
+  color: var(--text-white);
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLink {
+  color: var(--text-white);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}

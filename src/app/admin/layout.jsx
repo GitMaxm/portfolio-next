@@ -1,41 +1,20 @@
-import "@/styles/globals.css";
-import Link from 'next/link';
-import styles from '@/styles/admin/AdminLayout.module.css';
+import styles from '@/styles/admin/AdminLayout.module.scss';
+import Sidebar from "@components/admin/Sidebar";
 import NavBar from "@components/layout/NavBar";
 
 export default function AdminLayout({children}) {
   return (
     <>
-      <NavBar></NavBar>
-      <div className={styles.layout}>
-        <aside className={styles.sidebar}>
-          <h2 className={styles.sidebarTitle}>Навигация по админке</h2>
+      <NavBar/>
 
-          <nav>
-            <ul className={styles.nav}>
-              <li>
-                <Link
-                  href="/admin"
-                  className={styles.navLink}
-                >
-                  Главная
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/admin/projects"
-                  className={styles.navLink}
-                >
-                  Проекты
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </aside>
+      <div className={styles.layout}>
+
+        <Sidebar/>
 
         <main className={styles.mainContent}>
           {children}
         </main>
+
       </div>
     </>
   );
