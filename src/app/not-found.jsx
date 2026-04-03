@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from '../styles/not-found.module.css';
 
 export const metadata = {
-  title: '404 — Страница не найдена | Цех Климата',
+  title: '404 — Страница не найдена',
 };
 
 export default function NotFound() {

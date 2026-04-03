@@ -1,6 +1,6 @@
 import projectsData from '@/data/projects.json';
 import Image from 'next/image';
-import BtnGitHub from '@/components/ui/BtnGitHub';
+import BtnGitHub from '@components/ui/BtnGitHub';
 import Link from 'next/link';
 
 export async function generateStaticParams() {

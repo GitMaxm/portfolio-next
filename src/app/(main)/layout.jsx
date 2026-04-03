@@ -1,17 +1,7 @@
-import { Roboto } from 'next/font/google';
-
-import "@/styles/globals.css";
 import "@/styles/projects.css";
 
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
-
-const roboto = Roboto({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-roboto',
-  display: 'swap',
-});
 
 export const metadata = {
   title: "Максим Иваненко | Веб-разработчик | Портфолио и Проекты",
@@ -43,14 +33,12 @@ export const viewport = {
   userScalable: false,
 };
 
-export default function RootLayout({ children }) {
+export default function MainLayout({children}) {
   return (
-    <html lang="ru" className={roboto.variable}>
-      <body>
-        <NavBar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <>
+      <NavBar/>
+      {children}
+      <Footer/>
+    </>
   );
 }
