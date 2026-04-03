@@ -1,7 +1,7 @@
-import Header from '@/components/home/Header';
-import About from '@/components/home/About';
-import Skills from '@/components/home/Skills';
-import PortfolioPreview from '@/components/home/PortfolioPreview';
+import Header from '@components/home/Header';
+import About from '@components/home/About';
+import Skills from '@components/home/Skills';
+import PortfolioPreview from '@components/home/PortfolioPreview';
 // import ModalForm from '@/components/ModalForm';
 
 

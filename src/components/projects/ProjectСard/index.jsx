@@ -5,7 +5,7 @@ const ProjectСard = ({ project }) => {
     return (
         <li className="project" >
             <Link
-                href={`/project/${project.id}`}
+                href={`/src/app/(main)/project/${project.id}`}
                 aria-label={`Перейти к проекту: ${project.title}`}
             >
                 <div className="project-img-container">
