@@ -29,6 +29,7 @@
   align-items: center;
   row-gap: 27px;
 }
+
 @media (max-width: 620px) {
   .footer__wrapper {
     row-gap: 20px;

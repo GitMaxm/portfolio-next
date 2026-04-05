@@ -9,17 +9,17 @@ const Home = () => {
   return (
 
     <>
-      <Header />
+      <Header/>
       <main className="section">
         <div className="container">
 
-          <About />
-          <Skills />
-          <PortfolioPreview />
+          <About/>
+          <Skills/>
+          <PortfolioPreview/>
           {/* <ModalForm /> */}
 
         </div>
-      </main >
+      </main>
     </>
   );
 }

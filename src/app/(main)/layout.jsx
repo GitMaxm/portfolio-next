@@ -33,7 +33,7 @@ export const viewport = {
   userScalable: false,
 };
 
-export default function MainLayout({children}) {
+export default function MainLayout({ children }) {
   return (
     <>
       <NavBar/>

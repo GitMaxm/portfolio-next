@@ -16,6 +16,7 @@
   background-color: #272727;
   z-index: 2;
 }
+
 @media (max-width: 650px) {
   .dark-mode-btn {
     -webkit-box-ordinal-group: 1;

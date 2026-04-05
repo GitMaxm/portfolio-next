@@ -1,18 +1,15 @@
-import styles from './Table.module.scss'
-import projects from '@/data/projectsTestTable.json'
+import styles from './Table.module.scss';
+import projects from '@/data/projectsTestTable.json';
+import { THEAD_PROJECTS } from "@/constants/theadProjects";
 
 const Table = () => {
   return (
     <table className={styles.table}>
       <thead>
       <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Стек</th>
-        <th>Инструменты</th>
-        <th>Описание</th>
-        <th>Картинка</th>
-        <th>Ссылки</th>
+        {THEAD_PROJECTS.map((item) => (
+          <th key={item.id}>{item.title}</th>
+        ))}
       </tr>
       </thead>
 

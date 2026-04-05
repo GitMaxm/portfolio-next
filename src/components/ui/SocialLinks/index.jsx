@@ -1,10 +1,10 @@
 import "./style.css";
-import socialLinks from "@/constants/socialLink";
+import { SOCIAL_LINKS } from "@/constants/socialLink";
 
 const SocialLinks = () => {
   return (
     <ul className="social">
-      {socialLinks.map(({ title, url, icon }) => (
+      {SOCIAL_LINKS.map(({ title, url, icon }) => (
         <li className="social__item" key={title}>
           <a
             href={url}
