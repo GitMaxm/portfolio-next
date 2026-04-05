@@ -21,10 +21,10 @@ const ModalForm = () => {
         <div
           className={modalActive ? "modal__content active" : "modal__content"}
           onClick={(e) => e.stopPropagation()}>
-          <Form />
+          <Form/>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

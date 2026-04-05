@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "title": "Gaming Consoles",
+    "stack": "HTML",
+    "tools": "Figma, VSCode, gulp, html, css",
+    "description": "Сайт, посвящённый игровым консолям.",
+    "image": {
+      "main": "gaming.webp",
+      "preview": "gaming-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/game-gulp",
+      "preview": "https://gitmaxm.github.io/game-gulp/"
+    }
+  },
+  {
+    "id": 1,
+    "title": "Freedom studios academy",
+    "stack": "",
+    "tools": "",
+    "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
+    "image": {
+      "main": "studios-academy.webp",
+      "preview": "studios-academy-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/studio-gulp",
+      "preview": "https://gitmaxm.github.io/studio-gulp/"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Реплики картин",
+    "stack": "",
+    "tools": "",
+    "description": "Одностраничный сайт, посвящённый репликам картин от Ink. House.",
+    "image": {
+      "main": "paints.webp",
+      "preview": "paints-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/Paints",
+      "preview": "https://gitmaxm.github.io/Paints/"
+    }
+  },
+  {
+    "id": 3,
+    "title": "MLT мебель",
+    "stack": "",
+    "tools": "",
+    "description": "Одностраничный сайт, посвящённый изготовлению мебели на заказ.",
+    "image": {
+      "main": "mebel.webp",
+      "preview": "mebel-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/mlt-mebel-scss",
+      "preview": "https://gitmaxm.github.io/mlt-mebel-scss"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Клуб четырех коней",
+    "stack": "",
+    "tools": "",
+    "description": "Одностраничный сайт турнира по шахматам с мобильной адаптацией.",
+    "image": {
+      "main": "four-horse-club.webp",
+      "preview": "four-horse-club-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/four-horse-club-scss",
+      "preview": "https://gitmaxm.github.io/four-horse-club-scss/"
+    }
+  },
+  {
+    "id": 5,
+    "title": "СРА сеть SHAKES PRO",
+    "stack": "",
+    "tools": "",
+    "description": "Одностраничный сайт с мобильной адаптацией, посвящённый СРА сети SHAKES PRO.",
+    "image": {
+      "main": "shakes-pro.webp",
+      "preview": "shakes-pro-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/shakes-pro-scss",
+      "preview": "https://gitmaxm.github.io/shakes-pro-scss/"
+    }
+  },
+  {
+    "id": 6,
+    "title": "ООО \"Авангард\"",
+    "stack": "",
+    "tools": "",
+    "description": "Сайт-визитка для компании ООО \"Авангард\".",
+    "image": {
+      "main": "litplastmas.webp",
+      "preview": "litplastmas-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/litplastmas-scss.git",
+      "preview": "https://gitmaxm.github.io/avangard-scss/"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Цифровое агенство \"BINO\"",
+    "stack": "",
+    "tools": "",
+    "description": "Сайт-визитка для цифрового агентства \"BINO\".",
+    "image": {
+      "main": "bino.webp",
+      "preview": "bino-big.webp"
+    },
+    "links": {
+      "gitHub": "https://github.com/GitMaxm/bino-scss",
+      "preview": "https://gitmaxm.github.io/bino-scss/"
+    }
+  }
+]

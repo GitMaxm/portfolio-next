@@ -1,0 +1,15 @@
+@use "@/styles/utils/fluid" as *;
+
+.layout {
+  display: flex;
+  min-height: calc(100vh - 68px);
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+}
+
+.h1 {
+  font-size: #{fluid(28px, 35px)};
+}

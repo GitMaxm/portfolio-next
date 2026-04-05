@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
- 
+
   border-radius: 50%;
 
   font-size: 40px; /* размер react-icon */
@@ -63,10 +63,12 @@
   .social {
     column-gap: 15px;
   }
+
   .social__item {
     width: 40px;
     height: 40px;
   }
+
   .social-link {
     width: 40px;
     height: 40px;

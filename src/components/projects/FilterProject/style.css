@@ -40,6 +40,7 @@
 .project-filter button:hover {
   transform: translateY(-2px);
 }
+
 @media (hover: none) {
   .project-filter button:hover {
     transform: none;

@@ -1,6 +1,7 @@
 .project-img-container.glow-effect:hover::after {
   opacity: 1;
 }
+
 .project-details {
   margin: 0 auto;
   max-width: 865px;
@@ -32,6 +33,7 @@
   font-size: 24px;
   line-height: 1.3;
 }
+
 .project-details__desc span {
   font-weight: 700;
   /* text-decoration: underline; */
@@ -112,6 +114,7 @@
   line-height: 130%; /* 31.2px */
   letter-spacing: -0.5px;
 }
+
 @media (max-width: 620px) {
   .project h3 {
     font-size: 22px;
