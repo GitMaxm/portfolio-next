@@ -4,6 +4,7 @@ export const THEAD_PROJECTS = [
   { id: 'stack', title: "Стек" },
   { id: 'tools', title: "Инструменты" },
   { id: 'description', title: "Описание" },
-  { id: 'image', title: "Картинка" },
+  { id: 'images', title: "Картинки" },
   { id: 'links', title: "Ссылки" },
+  { id: 'actions', title: "Действия" },
 ];

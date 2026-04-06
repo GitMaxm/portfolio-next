@@ -1,4 +1,4 @@
-import styles from '@/styles/admin/AdminLayout.module.scss';
+import styles from '@/styles/admin/adminLayout.module.scss';
 import Sidebar from "@components/admin/Sidebar";
 import NavBar from "@components/layout/NavBar";
 

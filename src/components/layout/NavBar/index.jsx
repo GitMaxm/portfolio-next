@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import BtnDarkMode from '../../ui/BtnDarkMode';
+import BtnDarkMode from '@/components/ui/BtnDarkMode';
 import { NAVIGATION_LINKS } from '@/constants/navigation'
 
 const NavBar = () => {

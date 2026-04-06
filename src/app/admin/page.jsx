@@ -1,4 +1,4 @@
-import styles from '@/styles/admin/AdminLayout.module.scss';
+import styles from '@/styles/admin/adminLayout.module.scss';
 
 export default function AdminPage() {
   return (

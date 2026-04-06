@@ -1,12 +1,10 @@
-import Table from "@components/admin/Table";
+import { getProjects } from "@/app/services/projectsService";
+import ProjectContainer from "@components/admin/ProjectContainer";
 
-export default function AdminProjectsPage() {
+export default async function AdminProjectsPage() {
+  const projects = await getProjects();
+
   return (
-    <div>
-      <h1>Проекты</h1>
-
-      <Table/>
-
-    </div>
+    <ProjectContainer projects={projects}/>
   );
 }
