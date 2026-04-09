@@ -1,5 +1,6 @@
 'use client';
 
+import './style.scss'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import BtnDarkMode from '@/components/ui/BtnDarkMode';

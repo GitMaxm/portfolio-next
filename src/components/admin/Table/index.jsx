@@ -1,4 +1,4 @@
-import styles from './table.module.scss';
+import styles from './index.module.scss';
 import { THEAD_PROJECTS } from "@/constants/theadProjects";
 
 const Table = ({ projects, handleDelete, handleEdit }) => {

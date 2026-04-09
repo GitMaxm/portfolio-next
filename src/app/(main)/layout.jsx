@@ -1,3 +1,4 @@
+import "@/styles/layout/main.scss";
 import "@/styles/projects.css";
 
 import NavBar from "@/components/layout/NavBar";

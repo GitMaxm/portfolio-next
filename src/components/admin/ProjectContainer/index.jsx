@@ -1,9 +1,12 @@
 'use client'
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Table from "@components/admin/Table"
 
 export default function ProjectContainer({ projects }) {
+  const router = useRouter()
+
   const [localProjects, setLocalProjects] = useState(projects)
 
   const handleDelete = (id) => {
@@ -11,7 +14,7 @@ export default function ProjectContainer({ projects }) {
   }
 
   const handleEdit = (id) => {
-    console.log('edit', id)
+    router.push(`/admin/project/${id}`)
   }
 
   return (

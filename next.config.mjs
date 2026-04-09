@@ -2,7 +2,7 @@ import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
+    // output: 'export', режим статической генерации
     trailingSlash: true,
     images: {
         unoptimized: true,
