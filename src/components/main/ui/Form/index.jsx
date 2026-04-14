@@ -3,7 +3,7 @@
 import './style.css'
 
 import { useState } from "react";
-import SocialLinks from '@/components/ui/SocialLinks';
+import SocialLinks from '@components/main/ui/SocialLinks';
 
 const Form = () => {
   const [formData, setFormData] = useState({

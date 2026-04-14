@@ -1,7 +1,7 @@
 import "@/styles/layout/admin.scss";
 
-import Sidebar from "@components/admin/Sidebar";
-import NavBar from "@components/layout/NavBar";
+import Sidebar from "@components/admin/layout/Sidebar";
+import NavBar from "@components/main/layout/NavBar";
 
 export default function AdminLayout({ children }) {
   return (

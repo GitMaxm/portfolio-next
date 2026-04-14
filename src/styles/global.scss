@@ -1,6 +1,5 @@
-@use './utils/reset';
-@use './utils/variables';
-//@import "../utils/fluid";
+@use './utils/reset' as *;
+@use './utils/variables' as *;
 
 .visually-hidden {
   position: absolute;

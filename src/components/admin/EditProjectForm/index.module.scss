@@ -1,10 +1,276 @@
+@use '@/styles/utils/fluid' as *;
+@use "@/styles/utils/variablesAdmin" as *;
+
+// ─── Форма ────────────────────────────────────────────────────
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1.25rem;
+  max-width: 640px;
+  padding: 1.5rem 0;
 
-  input {
-    padding: 10px 15px;
-    border: 1px solid;
+  // ─── Инпуты ───────────────────────────────────────────────────
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: $color-text;
+    background: $color-bg;
+    border: $border;
+    border-radius: $radius-md;
+    outline: none;
+    transition: border-color 0.15s;
+    font-family: inherit;
+
+    &::placeholder {
+      color: $color-hint;
+    }
+
+    &:hover {
+      border: $border-hover;
+    }
+
+    &:focus {
+      border: 0.5px solid $color-accent;
+      box-shadow: 0 0 0 3px rgba($color-accent, 0.12);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+    max-height: 200px;
+    line-height: 1.6;
+  }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b67' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+}
+
+// ─── Заголовок формы ─────────────────────────────────────────
+.formTitle {
+  font-size: fluid(18px, 22px);
+  font-weight: 500;
+  color: $color-text;
+  margin-bottom: 0.25rem;
+}
+
+// ─── Поле ─────────────────────────────────────────────────────
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $color-hint;
+  margin-bottom: 6px;
+}
+
+// ─── ID ───────────────────────────────────────────────────────
+.idDisplay {
+  display: inline-block;
+  font-size: 13px;
+  font-family: monospace;
+  background: $color-bg-secondary;
+  border: $border;
+  border-radius: $radius-md;
+  padding: 8px 12px;
+  color: $color-muted;
+}
+
+// ─── Tools chips ──────────────────────────────────────────────
+.toolsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: $radius-pill;
+  border: $border;
+  background: $color-bg;
+  font-size: 13px;
+  color: $color-muted;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  user-select: none;
+
+  &:hover {
+    border: $border-hover;
+    color: $color-text;
+  }
+
+  &.active {
+    background: $color-accent-bg;
+    border: 0.5px solid $color-accent;
+    color: $color-accent-text;
+  }
+}
+
+.chipCheck {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 0.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+
+  .active & {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: #fff;
+  }
+}
+
+// ─── Загрузка изображений ─────────────────────────────────────
+.uploadArea {
+  border: $border-dashed;
+  border-radius: $radius-lg;
+  padding: 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  margin-bottom: 10px;
+
+  &:hover {
+    border-color: #888;
+    background: $color-bg-secondary;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+}
+
+.uploadTitle {
+  font-size: 14px;
+  color: $color-muted;
+}
+
+.uploadHint {
+  font-size: 12px;
+  color: $color-hint;
+  margin-top: 4px;
+}
+
+// ─── Превью ───────────────────────────────────────────────────
+.previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.previewItem {
+  position: relative;
+}
+
+.previewImg {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: $radius-md;
+  border: $border;
+  display: block;
+}
+
+.previewLabel {
+  font-size: 10px;
+  color: $color-hint;
+  text-align: center;
+  margin-top: 3px;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.removeBtn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $color-danger;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+// ─── Ссылки ───────────────────────────────────────────────────
+.linksRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Кнопки ───────────────────────────────────────────────────
+.actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 1.5rem;
+  border-top: $border;
+  margin-top: 0.5rem;
+}
+
+.btnSave {
+  background: $color-text;
+  color: $color-bg;
+  border: none;
+  border-radius: $radius-md;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+
+  &:hover {
+    opacity: 0.82;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btnCancel {
+  background: transparent;
+  color: $color-muted;
+  border: $border;
+  border-radius: $radius-md;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+
+  &:hover {
+    background: $color-bg-secondary;
   }
 }

@@ -1,7 +1,9 @@
+import TitleAdminPage from "@components/admin/ui/TitleAdminPage";
+
 export default function AdminPage() {
   return (
     <div>
-      <h1 className="title-1">Административная панель</h1>
+      <TitleAdminPage>Административная панель</TitleAdminPage>
     </div>
   );
 }

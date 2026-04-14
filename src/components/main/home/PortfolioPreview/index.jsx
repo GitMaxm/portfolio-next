@@ -1,7 +1,7 @@
 import './style.css';
 import Link from 'next/link';
 import projectsData from '@/data/projects.json';
-import ProjectCard from '@/components/projects/ProjectCard';
+import ProjectCard from '@components/main/projects/ProjectCard';
 
 const PortfolioPreview = () => {
 

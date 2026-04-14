@@ -3,7 +3,7 @@
     "id": 0,
     "title": "Gaming Consoles",
     "stack": "HTML",
-    "tools": "Figma, VSCode, gulp, html, css",
+    "tools": ["HTML", "CSS", "Gulp", "Figma", "Swiper"],
     "description": "Сайт, посвящённый игровым консолям.",
     "image": {
       "main": "gaming.webp",

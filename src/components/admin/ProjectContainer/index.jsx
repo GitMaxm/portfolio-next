@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import Table from "@components/admin/Table"
+import Table from "@components/admin/ui/Table"
 
 export default function ProjectContainer({ projects }) {
   const router = useRouter()
@@ -18,14 +18,10 @@ export default function ProjectContainer({ projects }) {
   }
 
   return (
-    <div>
-      <h1>Проекты</h1>
-
-      <Table
-        projects={localProjects}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
-      />
-    </div>
+    <Table
+      projects={localProjects}
+      handleDelete={handleDelete}
+      handleEdit={handleEdit}
+    />
   )
 }

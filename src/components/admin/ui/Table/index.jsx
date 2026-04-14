@@ -1,13 +1,20 @@
 import styles from './index.module.scss';
-import { THEAD_PROJECTS } from "@/constants/theadProjects";
+import { THEAD_TABLE } from "@/constants/projectPropertiesName";
 
 const Table = ({ projects, handleDelete, handleEdit }) => {
+
+  const renderTools = (tools) => {
+    if (Array.isArray(tools) && tools.length > 0) {
+      return tools.join(', ');
+    }
+    return '—';
+  };
 
   return (
     <table className={styles.table}>
       <thead>
       <tr>
-        {THEAD_PROJECTS.map((item) => (
+        {THEAD_TABLE.map((item) => (
           <th className={styles[item.id]} key={item.id}>{item.title}</th>
         ))}
       </tr>
@@ -19,7 +26,7 @@ const Table = ({ projects, handleDelete, handleEdit }) => {
           <td className={styles.id}>{id}</td>
           <td>{title}</td>
           <td>{stack}</td>
-          <td>{tools}</td>
+          <td>{renderTools(tools)}</td>
           <td>{description}</td>
           <td>
             <ul>

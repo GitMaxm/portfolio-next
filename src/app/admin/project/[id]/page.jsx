@@ -1,5 +1,6 @@
 import { getProjects } from "@/app/services/projectsService";
 import EditProjectForm from "@components/admin/EditProjectForm";
+import TitleAdminPage from "@components/admin/ui/TitleAdminPage";
 
 export default async function AdminProjectEdit({ params }) {
   const { id } = await params
@@ -8,7 +9,7 @@ export default async function AdminProjectEdit({ params }) {
 
   return (
     <div>
-      <h1>Редактировать: {project.title}</h1>
+      <TitleAdminPage>Редактировать: {project.title}</TitleAdminPage>
       <EditProjectForm project={project} />
     </div>
   );

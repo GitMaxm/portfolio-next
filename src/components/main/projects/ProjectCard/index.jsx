@@ -5,7 +5,7 @@ const ProjectCard = ({ project }) => {
   return (
     <li className="project">
       <Link
-        href={`/src/app/(main)/project/${project.id}`}
+        href={`/project/${project.id}`}
         aria-label={`Перейти к проекту: ${project.title}`}
       >
         <div className="project-img-container">
