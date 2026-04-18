@@ -1,8 +1,8 @@
-import projectsData from '@/data/projects.json';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import BtnGitHub from '@components/main/ui/BtnGitHub';
+
+import projectsData from '@/data/projects.json';
 
 export async function generateStaticParams() {
   return projectsData.map((project) => ({
@@ -18,7 +18,9 @@ export default function ProjectPage({ params }) {
   const { id } = params;
   const project = getProject(id);
 
-  if (!project) return <div>Проект не найден</div>;
+  if (!project) {
+    return <div>Проект не найден</div>;
+  }
 
   return (
     <main className="section">

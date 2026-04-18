@@ -1,16 +1,16 @@
-import { getProjects } from "@/app/services/projectsService";
 import EditProjectForm from "@components/admin/EditProjectForm";
 import TitleAdminPage from "@components/admin/ui/TitleAdminPage";
 
+import { getProjectById } from "@/app/services/projectsService";
+
 export default async function AdminProjectEdit({ params }) {
   const { id } = await params
-  const projects = await getProjects();
-  const project = projects.find((item) => item.id === Number(id));
+  const project = await getProjectById(id);
 
   return (
     <div>
       <TitleAdminPage>Редактировать: {project.title}</TitleAdminPage>
-      <EditProjectForm project={project} />
+      <EditProjectForm project={project}/>
     </div>
   );
 }

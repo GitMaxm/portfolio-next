@@ -1,9 +1,11 @@
 'use client'
 
-import styles from './index.module.scss'
 import { useState } from 'react'
 import { FormField } from "@components/admin/ui/adminForm/FormField"
+
 import { STACK_OPTIONS, TOOLS_LIST } from "@/constants/projectFormAdmin"
+
+import styles from './index.module.scss'
 
 export default function EditProjectForm({ project, mode = 'edit' }) {
   const isCreate = mode === 'create'

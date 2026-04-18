@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useLocalStorage } from '@/utils/useLocalStorage';
-import detectDarkMode from '@/utils/detectDarkMode';
-
 import './style.css';
+
+import { useEffect, useRef } from 'react';
+
+import detectDarkMode from '@/utils/detectDarkMode';
+import { useLocalStorage } from '@/utils/useLocalStorage';
 
 const BtnDarkMode = () => {
   const btnRef = useRef(null);

@@ -1,8 +1,8 @@
-import { COMPANY_CONTACTS } from "./contacts";
-
-// icons
-import { SiTelegram } from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
+
+import { SiTelegram } from "react-icons/si";
+
+import { COMPANY_CONTACTS } from "./contacts";
 
 export const SOCIAL_LINKS = [
   {

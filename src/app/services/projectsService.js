@@ -1,18 +1,41 @@
-import projects from '@/data/projectsTestTable.json'
-
-let localProjects = [...projects] // локальная копия для имитации
+const JSON_SERVER_URL = 'http://localhost:3001'
 
 export const getProjects = async () => {
-  return localProjects
+  const res = await fetch(`${JSON_SERVER_URL}/projects`)
+  if (!res.ok) {
+    throw new Error(`HTTP error ${res.status}: ${JSON_SERVER_URL}`);
+  }
+  return res.json()
+}
+
+export const getProjectById = async (id) => {
+  const res = await fetch(`${JSON_SERVER_URL}/projects/${id}`)
+  if (!res.ok) {
+    throw new Error(`HTTP error ${res.status}`);
+  }
+  return res.json()
+}
+
+export const addProject = async (project) => {
+  const res = await fetch(`${JSON_SERVER_URL}/projects`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(project)
+  })
+  return res.json()
+}
+
+export const updateProject = async (id, project) => {
+  const res = await fetch(`${JSON_SERVER_URL}/projects/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(project)
+  })
+  return res.json()
 }
 
 export const deleteProject = async (id) => {
-  console.log('delete', id)
-  localProjects = localProjects.filter(p => p.id !== id)
-  console.log(localProjects)
-}
-
-export const updateProject = async (id, data) => {
-  localProjects = localProjects.map(p => p.id === id ? { ...p, ...data } : p)
-  return localProjects.find(p => p.id === id)
+  await fetch(`${JSON_SERVER_URL}/projects/${id}`, {
+    method: 'DELETE'
+  })
 }

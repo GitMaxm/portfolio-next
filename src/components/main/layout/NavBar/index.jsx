@@ -4,8 +4,8 @@ import './style.scss'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
 import BtnDarkMode from '@components/main/ui/BtnDarkMode'
+
 import { NAVIGATION_LINKS } from '@/constants/navigation'
 
 const NavBar = () => {

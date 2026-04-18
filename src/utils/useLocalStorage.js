@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useLocalStorage = (key, defaultValue) => {
   const [value, setValue] = useState(() => {
-    if (typeof window === 'undefined') return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+    if (typeof window === 'undefined') {
+      return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+    }
     try {
       const saved = localStorage.getItem(key);
-      if (saved !== null) return JSON.parse(saved);
+      if (saved !== null) {
+        return JSON.parse(saved);
+      }
       return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
     } catch (err) {
       console.error('Ошибка чтения localStorage:', err);

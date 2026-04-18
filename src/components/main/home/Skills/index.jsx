@@ -1,4 +1,5 @@
 import './style.css';
+
 import { SKILLS } from '@/constants/skills';
 
 const SkillsFlex = () => {

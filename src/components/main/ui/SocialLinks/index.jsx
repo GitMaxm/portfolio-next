@@ -1,4 +1,5 @@
 import "./style.css";
+
 import { SOCIAL_LINKS } from "@/constants/socialLink";
 
 const SocialLinks = () => {

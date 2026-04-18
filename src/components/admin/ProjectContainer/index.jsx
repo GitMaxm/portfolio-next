@@ -1,16 +1,25 @@
 'use client'
 
-import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { useState } from 'react'
 import Table from "@components/admin/ui/Table"
 
-export default function ProjectContainer({ projects }) {
+import { deleteProject } from "@/app/services/projectsService";
+
+export default function ProjectContainer({ initialProjects }) {
+  const [projects, setProjects] = useState(initialProjects);
   const router = useRouter()
 
-  const [localProjects, setLocalProjects] = useState(projects)
-
-  const handleDelete = (id) => {
-    setLocalProjects(prev => prev.filter(p => p.id !== id))
+  const handleDelete = async (id) => {
+    try {
+      await deleteProject(id);
+      setProjects((prevProjects) =>
+        prevProjects.filter((project) => project.id !== id)
+      );
+      console.log("deleted project id", id);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleEdit = (id) => {
@@ -19,7 +28,7 @@ export default function ProjectContainer({ projects }) {
 
   return (
     <Table
-      projects={localProjects}
+      projects={projects}
       handleDelete={handleDelete}
       handleEdit={handleEdit}
     />

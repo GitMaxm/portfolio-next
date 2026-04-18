@@ -1,4 +1,5 @@
 import './style.css'
+
 import SocialLinks from '@components/main/ui/SocialLinks';
 
 const Footer = () => {
