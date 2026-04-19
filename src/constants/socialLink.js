@@ -1,5 +1,4 @@
 import { HiOutlineMail } from "react-icons/hi";
-
 import { SiTelegram } from "react-icons/si";
 
 import { COMPANY_CONTACTS } from "./contacts";

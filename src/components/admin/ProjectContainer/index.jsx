@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useState } from 'react'
 import Table from "@components/admin/ui/Table"
 
-import { deleteProject } from "@/app/services/projectsService";
+import { projectsServiceApi } from "@/app/services/projectsService";
 
 export default function ProjectContainer({ initialProjects }) {
   const [projects, setProjects] = useState(initialProjects);
@@ -12,7 +12,7 @@ export default function ProjectContainer({ initialProjects }) {
 
   const handleDelete = async (id) => {
     try {
-      await deleteProject(id);
+      await projectsServiceApi.deleteProject(id);
       setProjects((prevProjects) =>
         prevProjects.filter((project) => project.id !== id)
       );
@@ -23,14 +23,21 @@ export default function ProjectContainer({ initialProjects }) {
   }
 
   const handleEdit = (id) => {
-    router.push(`/admin/project/${id}`)
+    router.push(`/admin/projects/edit/${id}`)
+  }
+
+  const handleAdd = () => {
+    router.push(`/admin/projects/new`)
   }
 
   return (
-    <Table
-      projects={projects}
-      handleDelete={handleDelete}
-      handleEdit={handleEdit}
-    />
+    <>
+      <Table
+        projects={projects}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
+      <button onClick={()=> handleAdd()}>Добавить проект</button>
+    </>
   )
 }

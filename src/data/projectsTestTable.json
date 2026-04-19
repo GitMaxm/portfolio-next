@@ -1,34 +1,44 @@
 {
   "projects": [
     {
-      "id": 0,
       "title": "Gaming Consoles",
       "stack": "HTML",
-      "tools": ["HTML", "CSS", "Gulp", "Figma", "Swiper"],
+      "tools": [
+        "HTML",
+        "CSS",
+        "Figma",
+        "Swiper",
+        "Gulp",
+        "React"
+      ],
       "description": "Сайт, посвящённый игровым консолям.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/game-gulp",
+        "preview": "https://gitmaxm.github.io/game-gulp/"
+      },
       "image": {
         "main": "gaming.webp",
         "preview": "gaming-big.webp"
       },
-      "links": {
-        "gitHub": "https://github.com/GitMaxm/game-gulp",
-        "preview": "https://gitmaxm.github.io/game-gulp/"
-      }
+      "id": "0"
     },
     {
-      "id": 1,
+      "id": "1",
       "title": "Freedom studios academy",
       "stack": "HTML",
-      "tools": "",
+      "tools": [
+        "SCSS"
+      ],
       "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
-      "image": {
-        "main": "studios-academy.webp",
-        "preview": "studios-academy-big.webp"
-      },
       "links": {
         "gitHub": "https://github.com/GitMaxm/studio-gulp",
         "preview": "https://gitmaxm.github.io/studio-gulp/"
+      },
+      "image": {
+        "main": "studios-academy.webp",
+        "preview": "studios-academy-big.webp"
       }
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

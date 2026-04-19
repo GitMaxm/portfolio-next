@@ -1,13 +1,16 @@
 'use client'
 
+import { useRouter } from "next/navigation";
 import { useState } from 'react'
 import { FormField } from "@components/admin/ui/adminForm/FormField"
 
+import { projectsServiceApi } from "@/app/services/projectsService";
 import { STACK_OPTIONS, TOOLS_LIST } from "@/constants/projectFormAdmin"
 
 import styles from './index.module.scss'
 
 export default function EditProjectForm({ project, mode = 'edit' }) {
+  const router = useRouter()
   const isCreate = mode === 'create'
 
   const [selectedTools, setSelectedTools] = useState(
@@ -23,8 +26,34 @@ export default function EditProjectForm({ project, mode = 'edit' }) {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log(handleSubmit)
+    e.preventDefault();
+    const data = new FormData(e.target);
+
+    const projectData = {
+      title: data.get('title'),
+      stack: data.get('stack'),
+      tools: [...selectedTools],
+      description: data.get('description'),
+      links: {
+        gitHub: data.get('github'),
+        preview: data.get('previewLink'),
+      },
+      image: project?.image ?? {},
+    };
+
+    if (isCreate) {
+      const projects = await projectsServiceApi.getProjects();
+      const nextId = projects.length > 0 ? Math.max(...projects.map(p => p.id)) + 1 : 0;
+      await projectsServiceApi.addProject({ ...projectData, id: nextId });
+    } else {
+      await projectsServiceApi.updateProject({ ...projectData, id: project.id });
+    }
+
+    router.push('/admin/projects/');
+  }
+
+  const handleCancel = () => {
+    router.push('/admin/projects/');
   }
 
   return (
@@ -118,7 +147,11 @@ export default function EditProjectForm({ project, mode = 'edit' }) {
         <button type="submit" className={styles.btnSave}>
           {isCreate ? 'Создать' : 'Сохранить'}
         </button>
-        <button type="button" className={styles.btnCancel}>
+        <button
+          type="button"
+          className={styles.btnCancel}
+          onClick={handleCancel}
+        >
           Отмена
         </button>
       </div>
