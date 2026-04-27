@@ -6,6 +6,8 @@ import Table from "@components/admin/ui/Table"
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 
+import styles from "./index.module.scss"
+
 export default function ProjectContainer({ initialProjects }) {
   const [projects, setProjects] = useState(initialProjects);
   const router = useRouter()
@@ -32,12 +34,18 @@ export default function ProjectContainer({ initialProjects }) {
 
   return (
     <>
+      <button
+        className={styles.button}
+        onClick={() => handleAdd()}
+      >
+        Добавить проект
+      </button>
+
       <Table
         projects={projects}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
       />
-      <button onClick={()=> handleAdd()}>Добавить проект</button>
     </>
   )
 }
