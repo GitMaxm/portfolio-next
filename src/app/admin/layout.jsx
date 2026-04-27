@@ -1,17 +1,18 @@
-import styles from '@/styles/admin/AdminLayout.module.scss';
-import Sidebar from "@components/admin/Sidebar";
-import NavBar from "@components/layout/NavBar";
+import "@/styles/layout/admin.scss";
+
+import Sidebar from "@components/admin/layout/Sidebar";
+import NavBar from "@components/main/layout/NavBar";
 
 export default function AdminLayout({ children }) {
   return (
     <>
       <NavBar/>
 
-      <div className={styles.layout}>
+      <div className="layout">
 
         <Sidebar/>
 
-        <main className={styles.mainContent}>
+        <main className="mainContent">
           {children}
         </main>
 

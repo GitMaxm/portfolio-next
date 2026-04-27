@@ -1,12 +1,12 @@
 import {
-  SiHtml5,
   SiCss3,
-  SiSass,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
   SiGit,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiSass,
+  SiTailwindcss,
   SiTypescript
 } from 'react-icons/si';
 // Иконка Swiper (используем общую иконку JavaScript или можно найти специализированную)

@@ -1,9 +1,9 @@
-import styles from '@/styles/admin/AdminLayout.module.scss';
+import TitleAdminPage from "@components/admin/ui/TitleAdminPage";
 
 export default function AdminPage() {
   return (
     <div>
-      <h1 className={styles.h1}>Административная панель</h1>
+      <TitleAdminPage>Административная панель</TitleAdminPage>
     </div>
   );
 }

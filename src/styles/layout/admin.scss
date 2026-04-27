@@ -1,0 +1,12 @@
+//@import '../utils/fluid';
+
+.layout {
+  display: flex;
+  min-height: calc(100vh - 68px);
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  overflow-x: scroll;
+}

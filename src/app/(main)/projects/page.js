@@ -1,5 +1,6 @@
+import FilterProjectClient from '@components/main/projects/FilterProjectClient';
+
 import projectsData from '@/data/projects.json';
-import FilterProjectClient from '@components/projects/FilterProjectClient';
 
 const ProjectsPage = () => {
   return (
