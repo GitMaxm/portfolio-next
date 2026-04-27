@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
       >
         <div className="project-img-container">
           <Image
-            src={`/img/projects/${project.img}`}
+            src={`/img/projects/${project.image.preview}`}
             alt={`Обложка проекта: ${project.title}`}
             width={370}
             height={297} priority={true}
