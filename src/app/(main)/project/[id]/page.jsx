@@ -2,21 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BtnGitHub from '@components/main/ui/BtnGitHub';
 
-import projectsData from '@/data/projects.json';
+import { projectsServiceApi } from "@/app/services/projectsService";
 
-export async function generateStaticParams() {
-  return projectsData.map((project) => ({
-    id: project.id.toString(),
-  }));
-}
-
-const getProject = (id) => {
-  return projectsData.find((project) => project.id.toString() === id);
-};
-
-export default function ProjectPage({ params }) {
-  const { id } = params;
-  const project = getProject(id);
+export default async function ProjectPage({ params }) {
+  const { id } = await params;
+  const project = await projectsServiceApi.getProjectById(id);
 
   if (!project) {
     return <div>Проект не найден</div>;
@@ -29,7 +19,7 @@ export default function ProjectPage({ params }) {
           <h1 className="title-1">{project.title}</h1>
 
           <Image
-            src={`/img/projects/${project.imgBig}`}
+            src={`/img/projects/${project.image.main}`}
             alt={project.title}
             width={800}
             height={600}
@@ -37,7 +27,16 @@ export default function ProjectPage({ params }) {
           />
 
           <div className="project-details__desc">
-            <p><span>Тема</span>: {project.topic}</p>
+            <p><span>Стек</span>: {project.stack}</p>
+          </div>
+
+          <div className="project-details__desc">
+            <span>Инструменты</span>:
+            <ul>
+              {project.tools.map(tool => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="project-details__desc">
@@ -45,9 +44,13 @@ export default function ProjectPage({ params }) {
           </div>
 
           <div className="project-details__links">
-            {project.gitHub && <BtnGitHub gitHubLink={project.gitHub}/>}
-            {project.gitHubLink && (
-              <Link href={project.gitHubLink} target="_blank" className="btn-outline">
+            {project.links.gitHub && <BtnGitHub gitHubLink={project.links.gitHub}/>}
+            {project.links.preview && (
+              <Link
+                className="btn-outline"
+                href={project.links.preview}
+                target="_blank"
+              >
                 Ссылка на сайт
               </Link>
             )}

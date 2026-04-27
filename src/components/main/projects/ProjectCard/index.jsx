@@ -13,7 +13,8 @@ const ProjectCard = ({ project }) => {
             src={`/img/projects/${project.image.preview}`}
             alt={`Обложка проекта: ${project.title}`}
             width={370}
-            height={297} priority={true}
+            height={297}
+            priority={true}
           />
         </div>
         <h3>{project.title}</h3>

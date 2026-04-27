@@ -3,11 +3,11 @@ import './style.css';
 import Link from 'next/link';
 import ProjectCard from '@components/main/projects/ProjectCard';
 
-import projectsData from '@/data/projects.json';
+import { projectsServiceApi } from "@/app/services/projectsService";
 
-const PortfolioPreview = () => {
+const PortfolioPreview = async () => {
 
-  const featuredProjects = projectsData.slice(0, 3);
+  const featuredProjects = (await projectsServiceApi.getProjects()).slice(0, 3);
 
   return (
     <div className="portfolio-preview">
