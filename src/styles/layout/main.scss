@@ -139,18 +139,6 @@
   }
 }
 
-.btn {
-  display: inline-block;
-  height: 48px;
-  padding: 12px 28px;
-  border-radius: 5px;
-  background-color: var(--accent);
-  color: var(--text-white);
-  letter-spacing: 0.15px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
 .btn:hover {
   -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
   animation: heartbeat 1.5s ease-in-out infinite both;

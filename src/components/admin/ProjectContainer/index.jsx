@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Table from "@components/admin/ui/Table"
 
 import { projectsServiceApi } from "@/app/services/projectsService";
+import { swalConfirm, swalError, swalSuccess } from '@/lib/swal'
 
 import styles from "./index.module.scss"
 
@@ -13,16 +14,21 @@ export default function ProjectContainer({ initialProjects }) {
   const router = useRouter()
 
   const handleDelete = async (id) => {
+    const result = await swalConfirm('Удалить проект?', 'Это действие нельзя отменить');
+
+    if (!result.isConfirmed) {
+      return;
+    }
+
     try {
       await projectsServiceApi.deleteProject(id);
-      setProjects((prevProjects) =>
-        prevProjects.filter((project) => project.id !== id)
-      );
-      console.log("deleted project id", id);
+      setProjects(prev => prev.filter(p => p.id !== id));
+      await swalSuccess('Удалено!', 'Проект был удалён');
     } catch (error) {
-      console.log(error)
+      console.error(error);
+      await swalError('Ошибка', 'Ошибка',);
     }
-  }
+  };
 
   const handleEdit = (id) => {
     router.push(`/admin/projects/edit/${id}`)

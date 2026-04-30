@@ -6,6 +6,7 @@ import { FormField } from "@components/admin/ui/adminForm/FormField"
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 import { STACK_OPTIONS, TOOLS_LIST } from "@/constants/projectFormAdmin"
+import { swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/lib/swal'
 
 import styles from './index.module.scss'
 
@@ -27,33 +28,53 @@ export default function EditProjectForm({ project, mode = 'edit' }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
 
-    const projectData = {
-      title: data.get('title'),
-      stack: data.get('stack'),
-      tools: [...selectedTools],
-      description: data.get('description'),
-      links: {
-        gitHub: data.get('github'),
-        preview: data.get('previewLink'),
-      },
-      image: project?.image ?? {},
-    };
+    const result = await swalSaveConfirm("Сохранить?");
 
-    if (isCreate) {
-      const projects = await projectsServiceApi.getProjects();
-      const nextId = projects.length > 0 ? Math.max(...projects.map(p => p.id)) + 1 : 0;
-      await projectsServiceApi.addProject({ ...projectData, id: nextId });
-    } else {
-      await projectsServiceApi.updateProject({ ...projectData, id: project.id });
+    // Отмена
+    if (result.isDismissed) {
+      return;
     }
 
-    router.push('/admin/projects/');
+    // Сохранено
+    if (result.isConfirmed) {
+      try {
+        const data = new FormData(e.target);
+        const projectData = {
+          title: data.get('title'),
+          stack: data.get('stack'),
+          tools: [...selectedTools],
+          description: data.get('description'),
+          links: {
+            gitHub: data.get('github'),
+            preview: data.get('previewLink'),
+          },
+          image: project?.image ?? {},
+        };
+
+        if (isCreate) {
+          const projects = await projectsServiceApi.getProjects();
+          const nextId = projects.length > 0 ? Math.max(...projects.map(p => p.id)) + 1 : 0;
+          await projectsServiceApi.addProject({ ...projectData, id: nextId });
+          await swalSuccess('Создано!', 'Проект успешно создан');
+        } else {
+          await projectsServiceApi.updateProject({ ...projectData, id: project.id });
+          await swalSuccess('Сохранено!', 'Изменения сохранены');
+        }
+
+        router.push('/admin/projects/');
+      } catch (error) {
+        console.log(error);
+        await swalError('Ошибка', 'Не удалось сохранить проект');
+      }
+    }
   }
 
-  const handleCancel = () => {
-    router.push('/admin/projects/');
+  const handleCancel = async () => {
+    const result = await swalConfirm("Отменить редактирование?", "Отменить редактирование?", "Да");
+    if (result.isConfirmed) {
+      router.push('/admin/projects/');
+    }
   }
 
   return (

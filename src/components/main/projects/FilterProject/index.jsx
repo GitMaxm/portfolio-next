@@ -1,16 +1,12 @@
 import './style.css';
 
-const FilterProject = ({ activeFilter, setActiveFilter }) => {
+import { FILTERS } from "@/constants/filters";
 
-  const filters = [
-    { title: 'Все', category: 'all' },
-    { title: 'HTML', category: 'HTML' },
-    { title: 'React', category: 'React' }
-  ];
+const FilterProject = ({ activeFilter, setActiveFilter }) => {
 
   return (
     <div className='project-filter'>
-      {filters.map(item => (
+      {FILTERS.map(item => (
         <button
           className={activeFilter === item.category ? 'active' : ''}
           key={item.category}
