@@ -1,5 +1,5 @@
-import { ProjectContainer } from "@components/admin/ProjectContainer";
-import { TitleAdminPage } from "@/shared/admin/ui";
+import { ProjectList } from "@/features/admin/project-manager/ProjectList";
+import { TitleAdminPage } from "@/shared/ui/admin";
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 
@@ -10,7 +10,7 @@ export default async function AdminProjectsPage() {
 
     <>
       <TitleAdminPage>Проекты</TitleAdminPage>
-      <ProjectContainer initialProjects={projects}/>
+      <ProjectList initialProjects={projects}/>
     </>
 
   );

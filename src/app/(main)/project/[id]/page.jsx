@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { BtnGitHub } from '@/shared/main/ui';
+import { BtnGitHub } from '@/shared/ui/main';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 

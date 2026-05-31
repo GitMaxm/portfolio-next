@@ -4,7 +4,7 @@ import './style.scss'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BtnDarkMode } from '@/shared/main/ui'
+import { BtnDarkMode } from '@/shared/ui/main'
 
 import { NAVIGATION_LINKS } from '@/shared/constants'
 

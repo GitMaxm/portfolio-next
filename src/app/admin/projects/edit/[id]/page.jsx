@@ -1,5 +1,5 @@
-import EditProjectForm from "@components/admin/EditProjectForm";
-import { TitleAdminPage } from "@/shared/admin/ui";
+import { EditProjectForm } from "@/features/admin/project-manager/EditProjectForm";
+import { TitleAdminPage } from "@/shared/ui/admin";
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 

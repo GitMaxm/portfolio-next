@@ -1,4 +1,4 @@
-import { TitleAdminPage } from "@/shared/admin/ui";
+import { TitleAdminPage } from "@/shared/ui/admin";
 
 export default function AdminPage() {
   return (

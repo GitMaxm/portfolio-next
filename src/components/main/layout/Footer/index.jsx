@@ -1,6 +1,6 @@
 import './style.css'
 
-import { SocialLinks } from '@/shared/main/ui';
+import { SocialLinks } from '@/shared/ui/main';
 
 const Footer = () => {
   return (
