@@ -1,4 +1,4 @@
-import { apiClient } from "@/utils/helpers/apiClient";
+import { apiClient } from "@/shared/api";
 
 const JSON_SERVER_URL = 'http://localhost:3001/projects/'
 

@@ -1,0 +1,14 @@
+@use "@/app/styles/variablesAdmin" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-muted;
+  letter-spacing: 0.01em;
+}

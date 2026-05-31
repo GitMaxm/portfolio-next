@@ -2,11 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from 'react'
-import { FormField } from "@components/admin/ui/adminForm/FormField"
+import { FormField } from "@/shared/admin/ui"
 
 import { projectsServiceApi } from "@/app/services/projectsService";
-import { STACK_OPTIONS, TOOLS_LIST } from "@/constants/projectFormAdmin"
-import { swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/lib/swal'
+import { STACK_OPTIONS, TOOLS_LIST } from "@/shared/constants"
+import { swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
 
 import styles from './index.module.scss'
 

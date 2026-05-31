@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import styles from '@/styles/not-found.module.css';
+import styles from './styles/not-found.module.css';
 
 export const metadata = {
   title: '404 — Страница не найдена',

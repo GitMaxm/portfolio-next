@@ -1,5 +1,5 @@
-import "@/styles/layout/main.scss";
-import "@/styles/projects.css";
+import "./styles/main.scss";
+import "./styles/projects.css";
 
 import Footer from "@components/main/layout/Footer";
 import NavBar from "@components/main/layout/NavBar";

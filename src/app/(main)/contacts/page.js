@@ -1,4 +1,4 @@
-import { COMPANY_CONTACTS } from "@/constants/contacts";
+import { COMPANY_CONTACTS } from "@/shared/constants";
 
 const Contacts = () => {
   return (

@@ -1,5 +1,5 @@
-import ProjectContainer from "@components/admin/ProjectContainer";
-import TitleAdminPage from "@components/admin/ui/TitleAdminPage";
+import { ProjectContainer } from "@components/admin/ProjectContainer";
+import { TitleAdminPage } from "@/shared/admin/ui";
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 

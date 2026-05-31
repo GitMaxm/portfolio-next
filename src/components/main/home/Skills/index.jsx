@@ -1,6 +1,6 @@
 import './style.css';
 
-import { SKILLS } from '@/constants/skills';
+import { SKILLS } from '@/shared/constants';
 
 const SkillsFlex = () => {
 

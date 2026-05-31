@@ -1,6 +1,6 @@
 import './style.css';
 
-import { FILTERS } from "@/constants/filters";
+import { FILTERS } from "@/shared/constants";
 
 const FilterProject = ({ activeFilter, setActiveFilter }) => {
 

@@ -40,28 +40,18 @@
       }
     },
     {
-      "title": "",
+      "title": "Gaming Consoles",
       "stack": "HTML",
-      "tools": [],
-      "description": "",
+      "tools": [
+        "HTML"
+      ],
+      "description": "выыв",
       "links": {
         "gitHub": "",
         "preview": ""
       },
       "image": {},
       "id": 2
-    },
-    {
-      "title": "",
-      "stack": "HTML",
-      "tools": [],
-      "description": "",
-      "links": {
-        "gitHub": "",
-        "preview": ""
-      },
-      "image": {},
-      "id": 3
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

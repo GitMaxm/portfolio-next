@@ -1,5 +1,5 @@
-@use '@/styles/utils/fluid' as *;
-@use "@/styles/utils/variablesAdmin" as *;
+@use '@/shared/styles/fluid' as *;
+@use "@/app/styles/variablesAdmin" as *;
 
 // ─── Форма ────────────────────────────────────────────────────
 .form {

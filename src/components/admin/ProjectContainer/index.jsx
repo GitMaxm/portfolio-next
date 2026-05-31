@@ -2,14 +2,14 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from 'react'
-import Table from "@components/admin/ui/Table"
+import { Table } from "@/widgets/admin/Table"
 
 import { projectsServiceApi } from "@/app/services/projectsService";
-import { swalConfirm, swalError, swalSuccess } from '@/lib/swal'
+import { swalConfirm, swalError, swalSuccess } from '@/shared/lib'
 
 import styles from "./index.module.scss"
 
-export default function ProjectContainer({ initialProjects }) {
+export const ProjectContainer = ({ initialProjects }) => {
   const [projects, setProjects] = useState(initialProjects);
   const router = useRouter()
 
