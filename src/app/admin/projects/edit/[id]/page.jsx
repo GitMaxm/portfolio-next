@@ -1,4 +1,4 @@
-import { EditProjectForm } from "@/features/admin/project-manager/EditProjectForm";
+import { ProjectForm } from "@/features/admin/project-manager";
 import { TitleAdminPage } from "@/shared/ui/admin";
 
 import { projectsServiceApi } from "@/app/services/projectsService";
@@ -10,7 +10,7 @@ export default async function AdminProjectEdit({ params }) {
   return (
     <div>
       <TitleAdminPage>Редактировать: {project.title}</TitleAdminPage>
-      <EditProjectForm project={project}/>
+      <ProjectForm project={project}/>
     </div>
   );
 }

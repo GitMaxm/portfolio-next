@@ -1,4 +1,4 @@
-import { ProjectList } from "@/features/admin/project-manager/ProjectList";
+import { ProjectList } from "@/features/admin/project-manager";
 import { TitleAdminPage } from "@/shared/ui/admin";
 
 import { projectsServiceApi } from "@/app/services/projectsService";

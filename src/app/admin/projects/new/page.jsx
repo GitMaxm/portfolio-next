@@ -1,4 +1,4 @@
-import EditProjectForm from "@/features/admin/project-manager/EditProjectForm";
+import { ProjectForm } from "@/features/admin/project-manager";
 import { TitleAdminPage } from "@/shared/ui/admin";
 
 export default async function AdminProjectAdd() {
@@ -6,7 +6,7 @@ export default async function AdminProjectAdd() {
   return (
     <div>
       <TitleAdminPage>Создать новый проект</TitleAdminPage>
-      <EditProjectForm mode="create"/>
+      <ProjectForm mode="create"/>
     </div>
   );
 }
