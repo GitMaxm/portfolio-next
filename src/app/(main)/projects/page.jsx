@@ -1,4 +1,4 @@
-import FilterProjectClient from '@/features/main/FilterProjectClient';
+import { FilteredProjectList } from '@/features/main/project-filter';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 
@@ -15,7 +15,7 @@ const ProjectsPage = async ({ searchParams }) => {
           Здесь собраны мои работы. Есть и вёрстка, и приложения на React.
           Каждая работа включает ссылки на демо-версию и исходный код на GitHub.
         </p>
-        <FilterProjectClient
+        <FilteredProjectList
           projects={projects}
           activeFilter={activeFilter}
         />
