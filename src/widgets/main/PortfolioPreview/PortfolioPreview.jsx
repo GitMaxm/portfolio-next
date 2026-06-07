@@ -5,9 +5,9 @@ import ProjectCard from '@components/main/projects/ProjectCard';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 
-const PortfolioPreview = async () => {
-
-  const featuredProjects = (await projectsServiceApi.getProjects()).slice(0, 3);
+export const PortfolioPreview = async () => {
+  const projects = await projectsServiceApi.getProjects();
+  const featuredProjects = projects.slice(0, 3);
 
   return (
     <div className="portfolio-preview">
@@ -38,5 +38,3 @@ const PortfolioPreview = async () => {
     </div>
   );
 };
-
-export default PortfolioPreview;

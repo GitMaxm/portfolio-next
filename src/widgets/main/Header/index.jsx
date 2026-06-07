@@ -1,6 +1,4 @@
-// import ModalForm from "../ModalForm";
-
-const Header = () => {
+export const Header = () => {
 
   return (
     <header className="header">
@@ -14,13 +12,9 @@ const Header = () => {
           <p>Превращаю макеты в быстрые и интерактивные сайты на React</p>
         </div>
 
-        {/* <ModalForm /> */}
-
       </div>
 
 
     </header>
   );
 }
-
-export default Header;

@@ -1,6 +1,6 @@
 import './index.css';
 
-const About = () => {
+export const About = () => {
   return (
     <div className="about">
       <h2 className="title-1">Обо мне</h2>
@@ -57,5 +57,3 @@ const About = () => {
     </div>
   );
 };
-
-export default About;

@@ -1,7 +1,7 @@
-import About from '@components/main/home/About';
-import Header from '@components/main/home/Header';
-import PortfolioPreview from '@components/main/home/PortfolioPreview';
-import Skills from '@components/main/home/Skills';
+import { About } from '@/widgets/main/About';
+import { Header } from '@/widgets/main/Header';
+import { PortfolioPreview } from '@/widgets/main/PortfolioPreview';
+import { Skills } from '@/widgets/main/Skills';
 
 
 const Home = () => {
