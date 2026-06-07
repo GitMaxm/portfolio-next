@@ -19,7 +19,7 @@ export const NavBar = () => {
       <div className="container">
         <div className="nav-row">
 
-          <Link href="/public" className="logo">
+          <Link href="/" className="logo">
             <strong>Portfolio</strong>
           </Link>
 
