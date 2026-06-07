@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProjectCard = ({ project }) => {
+export const ProjectCard = ({ project }) => {
   return (
     <li className="project">
       <Link
@@ -22,5 +22,3 @@ const ProjectCard = ({ project }) => {
     </li>
   );
 }
-
-export default ProjectCard;

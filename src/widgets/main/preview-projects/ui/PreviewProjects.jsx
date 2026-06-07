@@ -1,11 +1,11 @@
 import './style.css';
 
 import Link from 'next/link';
-import ProjectCard from '@components/main/projects/ProjectCard';
+import { ProjectCard } from '@/entities/main/project';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 
-export const PortfolioPreview = async () => {
+export const PreviewProjects = async () => {
   const projects = await projectsServiceApi.getProjects();
   const featuredProjects = projects.slice(0, 3);
 

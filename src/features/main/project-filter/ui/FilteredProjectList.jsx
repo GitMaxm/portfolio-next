@@ -2,10 +2,10 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 
-import FilterProject from '../FilterProject';
-import ProjectCard from '../ProjectCard';
+import { FilterControls } from "./FilterControls";
+import { ProjectCard } from '@/entities/main/project';
 
-const FilterProjectClient = ({ projects, activeFilter }) => {
+export const FilteredProjectList = ({ projects, activeFilter }) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -28,7 +28,7 @@ const FilterProjectClient = ({ projects, activeFilter }) => {
 
   return (
     <>
-      <FilterProject
+      <FilterControls
         activeFilter={activeFilter}
         setActiveFilter={handleFilter}
       />
@@ -46,5 +46,3 @@ const FilterProjectClient = ({ projects, activeFilter }) => {
     </>
   );
 };
-
-export default FilterProjectClient;

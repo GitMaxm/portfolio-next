@@ -8,7 +8,7 @@ import { BtnDarkMode } from '@/shared/ui/main'
 
 import { NAVIGATION_LINKS } from '@/shared/constants'
 
-const NavBar = () => {
+export const NavBar = () => {
   const pathname = usePathname();
   const isActive = (href) => pathname === href;
   const activeLink = "nav-list__link nav-list__link--active";
@@ -19,7 +19,7 @@ const NavBar = () => {
       <div className="container">
         <div className="nav-row">
 
-          <Link href="/" className="logo">
+          <Link href="/public" className="logo">
             <strong>Portfolio</strong>
           </Link>
 
@@ -45,5 +45,3 @@ const NavBar = () => {
     </nav>
   );
 };
-
-export default NavBar;

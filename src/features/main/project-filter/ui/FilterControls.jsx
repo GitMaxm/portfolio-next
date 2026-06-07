@@ -2,7 +2,7 @@ import './style.css';
 
 import { FILTERS } from "@/shared/constants";
 
-const FilterProject = ({ activeFilter, setActiveFilter }) => {
+export const FilterControls = ({ activeFilter, setActiveFilter }) => {
 
   return (
     <div className='project-filter'>
@@ -18,5 +18,3 @@ const FilterProject = ({ activeFilter, setActiveFilter }) => {
     </div>
   );
 };
-
-export default FilterProject;

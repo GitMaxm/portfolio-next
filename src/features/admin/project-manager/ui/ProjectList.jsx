@@ -1,7 +1,7 @@
 'use client'
 
 import { useProjects } from "../model/useProjects"
-import { Table } from "@/widgets/admin/Table"
+import { Table } from "@/widgets/admin/table"
 
 import styles from "./ProjectList.module.scss"
 

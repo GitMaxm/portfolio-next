@@ -1,8 +1,8 @@
 import "./styles/main.scss";
 import "./styles/projects.css";
 
-import Footer from "@components/main/layout/Footer";
-import NavBar from "@components/main/layout/NavBar";
+import { Footer } from "@/widgets/main/footer";
+import { NavBar } from "@/widgets/main/navbar";
 
 export const metadata = {
   title: "Максим Иваненко | Веб-разработчик | Портфолио и Проекты",

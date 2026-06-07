@@ -2,7 +2,7 @@ import './style.css'
 
 import { SocialLinks } from '@/shared/ui/main';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
@@ -13,5 +13,3 @@ const Footer = () => {
     </footer>
   );
 }
-
-export default Footer;

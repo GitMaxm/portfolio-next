@@ -1,4 +1,4 @@
-import FilterProjectClient from '@components/main/projects/FilterProjectClient';
+import FilterProjectClient from '@/features/main/FilterProjectClient';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 

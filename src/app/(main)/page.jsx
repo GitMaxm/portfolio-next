@@ -1,7 +1,7 @@
-import { About } from '@/widgets/main/About';
-import { Header } from '@/widgets/main/Header';
-import { PortfolioPreview } from '@/widgets/main/PortfolioPreview';
-import { Skills } from '@/widgets/main/Skills';
+import { About } from '@/widgets/main/about';
+import { Header } from '@/widgets/main/header';
+import { PreviewProjects } from '@/widgets/main/preview-projects';
+import { Skills } from '@/widgets/main/skills';
 
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
 
           <About/>
           <Skills/>
-          <PortfolioPreview/>
+          <PreviewProjects/>
 
         </div>
       </main>
