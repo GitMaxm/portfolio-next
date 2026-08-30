@@ -21,14 +21,12 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
 
   return (
     <form className={styles.form} onSubmit={handleFormSubmit}>
-      {/* ID — только при редактировании */}
       {!isCreate && (
         <FormField label="ID">
           <span className={styles.idDisplay}>{skill?.id}</span>
         </FormField>
       )}
 
-      {/* Название */}
       <FormField htmlFor="s-name" label="Название">
         <input
           id="s-name"
@@ -40,7 +38,6 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
         />
       </FormField>
 
-      {/* Уровень */}
       <FormField htmlFor="s-level" label="Уровень">
         <select
           id="s-level"
@@ -53,7 +50,6 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
         </select>
       </FormField>
 
-      {/* Описание */}
       <FormField htmlFor="s-desc" label="Описание">
         <textarea
           id="s-desc"
@@ -64,7 +60,6 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
         />
       </FormField>
 
-      {/* Иконка */}
       <FormField htmlFor="s-icon" label="Иконка">
         <p className={styles.hint}>
           Нажмите на иконку на <a
@@ -108,7 +103,6 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
         </div>
       </FormField>
 
-      {/* Кнопки */}
       <div className={styles.actions}>
         <button type="submit" className={styles.btnSave}>
           {isCreate ? 'Создать' : 'Сохранить'}

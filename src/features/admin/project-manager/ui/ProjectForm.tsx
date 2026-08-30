@@ -18,14 +18,12 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
 
   return (
     <form className={styles.form} onSubmit={handleFormSubmit}>
-      {/* ID — только при редактировании */}
       {!isCreate && (
         <FormField label="ID">
           <span className={styles.idDisplay}>{project?.id}</span>
         </FormField>
       )}
 
-      {/* Название */}
       <FormField htmlFor="f-title" label="Название">
         <input
           id="f-title"
@@ -36,7 +34,6 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         />
       </FormField>
 
-      {/* Стек */}
       <FormField htmlFor="f-stack" label="Стек">
         <select
           id="f-stack"
@@ -49,7 +46,6 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         </select>
       </FormField>
 
-      {/* Инструменты */}
       <FormField label="Инструменты">
         <div className={styles.toolsGrid}>
           {TOOLS_LIST.map((tool) => (
@@ -68,7 +64,6 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         </div>
       </FormField>
 
-      {/* Описание */}
       <FormField htmlFor="f-desc" label="Описание">
         <textarea
           id="f-desc"
@@ -78,7 +73,6 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         />
       </FormField>
 
-      {/* Ссылки */}
       <FormField label="Ссылки">
         <div className={styles.linksRow}>
           <div>
@@ -102,7 +96,6 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         </div>
       </FormField>
 
-      {/* Кнопки */}
       <div className={styles.actions}>
         <button type="submit" className={styles.btnSave}>
           {isCreate ? 'Создать' : 'Сохранить'}
