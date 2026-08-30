@@ -7,6 +7,7 @@ export const Sidebar = () => {
   const links = [
     { title: "Главная", href: "" },
     { title: "Проекты", href: "projects" },
+    { title: "Навыки", href: "skills" },
   ]
 
   return (

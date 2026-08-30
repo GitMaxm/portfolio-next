@@ -5,12 +5,10 @@ export { NAVIGATION_LINKS } from './navigation'
 export { COMPANY_CONTACTS } from './contacts'
 export { SOCIAL_LINKS } from './socialLink'
 
-// Навыки
-export { SKILLS } from './skills'
-
 // Фильтры
 export { FILTERS } from './filters'
 
-// Таблица проектов в админке
+// Таблицы в админке
 export { PROJECT_PROPERTIES_NAME, THEAD_TABLE } from './projectPropertiesName'
 export { THEAD_PROJECTS } from './theadProjects'
+export { THEAD_SKILLS } from './theadSkills'

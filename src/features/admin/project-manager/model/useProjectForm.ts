@@ -2,16 +2,9 @@ import { useRouter } from 'next/navigation'
 import { type FormEvent, useState } from 'react'
 
 import { type IProject, projectsApi, type TProjectDraft } from '@/entities/main/project'
-import { swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
+import { getFormString, swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
 
 import type { TProjectFormMode } from './types'
-
-/** FormData.get отдаёт string | File | null — в форме все поля текстовые. */
-const getString = (data: FormData, name: string): string => {
-  const value = data.get(name)
-
-  return typeof value === 'string' ? value : ''
-}
 
 export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edit') => {
   const [selectedTools, setSelectedTools] = useState<Set<string>>(new Set(project?.tools ?? []))
@@ -33,6 +26,10 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Ссылку на форму забираем синхронно: React обнуляет currentTarget,
+    // как только обработчик уходит в await.
+    const form = e.currentTarget;
+
     const result = await swalSaveConfirm("Сохранить?");
 
     if (result.isDismissed) {
@@ -41,28 +38,22 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
 
     if (result.isConfirmed) {
       try {
-        const data = new FormData(e.currentTarget);
+        const data = new FormData(form);
 
         const projectData: TProjectDraft = {
-          title: getString(data, 'title'),
-          stack: getString(data, 'stack'),
-          description: getString(data, 'description'),
+          title: getFormString(data, 'title'),
+          stack: getFormString(data, 'stack'),
+          description: getFormString(data, 'description'),
           tools: [...selectedTools],
           image: project?.image ?? {},
           links: {
-            gitHub: getString(data, 'github'),
-            preview: getString(data, 'previewLink'),
+            gitHub: getFormString(data, 'github'),
+            preview: getFormString(data, 'previewLink'),
           },
         };
 
         if (isCreate) {
-          const projects = await projectsApi.getProjects();
-
-          const nextId = projects.length > 0
-            ? Math.max(...projects.map(p => Number(p.id))) + 1
-            : 0;
-
-          await projectsApi.addProject({ ...projectData, id: nextId });
+          await projectsApi.addProject(projectData);
           await swalSuccess('Создано!', 'Проект успешно создан');
         } else if (project) {
           await projectsApi.updateProject({ ...projectData, id: project.id });

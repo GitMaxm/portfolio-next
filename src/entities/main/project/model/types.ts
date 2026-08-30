@@ -4,9 +4,7 @@ export type TProjectId = string | number;
 export type TProjectStack = 'HTML' | 'React/Vite' | 'Next.js';
 
 export interface IProjectImage {
-  /** Большая картинка на странице проекта */
   main?: string;
-  /** Превью на карточке в списке */
   preview?: string;
 }
 
@@ -25,5 +23,4 @@ export interface IProject {
   links: IProjectLinks;
 }
 
-/** Проект без id — то, что уходит на сервер при создании. */
 export type TProjectDraft = Omit<IProject, 'id'>;

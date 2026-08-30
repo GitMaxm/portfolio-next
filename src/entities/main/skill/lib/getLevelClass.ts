@@ -1,4 +1,4 @@
-import type { TSkillLevel } from '@/shared/model';
+import type { TSkillLevel } from '../model/types';
 
 export const getLevelClass = (level: TSkillLevel): string => {
   switch (level) {

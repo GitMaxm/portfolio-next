@@ -1,6 +1,6 @@
 import { apiClient } from "@/shared/api";
 
-import type { IProject, TProjectId } from "../model/types";
+import type { IProject, TProjectDraft, TProjectId } from "../model/types";
 
 const JSON_SERVER_URL = 'http://localhost:3001/projects/'
 
@@ -13,7 +13,7 @@ export const projectsApi = {
     return apiClient.get<IProject>(JSON_SERVER_URL + id);
   },
 
-  addProject(project: IProject) {
+  addProject(project: TProjectDraft) {
     return apiClient.post<IProject>(JSON_SERVER_URL, project);
   },
 

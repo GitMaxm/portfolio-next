@@ -1,2 +1,2 @@
-export { getLevelClass } from './getLevelClass'
+export { getFormString } from './formData'
 export * from './swal'

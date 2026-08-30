@@ -1,9 +1,9 @@
 import './style.css';
 
-import { SKILLS } from '@/shared/config';
-import { getLevelClass } from "@/shared/lib";
+import { SkillCard, skillsApi } from '@/entities/main/skill';
 
-export const Skills = () => {
+export const Skills = async () => {
+  const skills = await skillsApi.getSkills();
 
   return (
     <div className="skills">
@@ -13,18 +13,8 @@ export const Skills = () => {
         интерфейсов на React и Next.js.
       </p>
       <ul className="skills-list">
-        {SKILLS.map((skill, index) => (
-          <li key={index} className="skill-card">
-            <div className="skill-header">
-              <div className="skill-icon">{skill.icon}</div>
-              <h3 className="skill-name">{skill.name}</h3>
-              <span
-                className={`skill-level ${getLevelClass(skill.level)}`}>
-                {skill.level}
-              </span>
-            </div>
-            <p className="skill-description">{skill.description}</p>
-          </li>
+        {skills.map(skill => (
+          <SkillCard key={skill.id} skill={skill}/>
         ))}
       </ul>
     </div>

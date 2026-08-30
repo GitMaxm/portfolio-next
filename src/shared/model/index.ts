@@ -1,6 +1,5 @@
 export type { ICompanyContacts } from './contacts'
 export type { IProjectFilter } from './filter'
 export type { INavigationLink } from './navigation'
-export type { ISkill, TSkillLevel } from './skill'
 export type { ISocialLink } from './social'
 export type { ITableColumn } from './table'
