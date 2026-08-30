@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
 import { projectsServiceApi } from "@/app/services/projectsService"
 import { swalConfirm, swalError, swalSuccess } from '@/shared/lib'
 
@@ -9,7 +10,9 @@ export const useProjects = (initialProjects) => {
 
   const handleDelete = async (id) => {
     const result = await swalConfirm('Удалить проект?', 'Это действие нельзя отменить');
-    if (!result.isConfirmed) return;
+    if (!result.isConfirmed) {
+      return;
+    }
 
     try {
       await projectsServiceApi.deleteProject(id);

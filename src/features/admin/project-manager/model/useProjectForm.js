@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
 import { projectsServiceApi } from "@/app/services/projectsService"
 import { swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
 
@@ -20,7 +21,9 @@ export const useProjectForm = (project, mode = 'edit') => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await swalSaveConfirm("Сохранить?");
-    if (result.isDismissed) return;
+    if (result.isDismissed) {
+      return;
+    }
 
     if (result.isConfirmed) {
       try {

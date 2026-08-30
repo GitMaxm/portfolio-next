@@ -1,8 +1,8 @@
 'use client'
 
-import { useProjects } from "../model/useProjects"
 import { Table } from "@/widgets/admin/table"
 
+import { useProjects } from "../model/useProjects"
 import styles from "./ProjectList.module.scss"
 
 export const ProjectList = ({ initialProjects }) => {

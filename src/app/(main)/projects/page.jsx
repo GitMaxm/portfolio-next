@@ -1,6 +1,5 @@
-import { FilteredProjectList } from '@/features/main/project-filter';
-
 import { projectsServiceApi } from "@/app/services/projectsService";
+import { FilteredProjectList } from '@/features/main/project-filter';
 
 const ProjectsPage = async ({ searchParams }) => {
   const { stack } = await searchParams;

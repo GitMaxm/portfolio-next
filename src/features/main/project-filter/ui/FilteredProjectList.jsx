@@ -1,8 +1,9 @@
 'use client';
 
-import { FilterControls } from "./FilterControls";
 import { ProjectCard } from '@/entities/main/project';
+
 import { useProjectFilter } from "../hooks/useProjectFilter";
+import { FilterControls } from "./FilterControls";
 
 export const FilteredProjectList = ({ projects, activeFilter }) => {
   const { filteredProjects, handleFilter } = useProjectFilter(projects, activeFilter);

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BtnGitHub } from '@/shared/ui/main';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
+import { BtnGitHub } from '@/shared/ui/main';
 
 export default async function ProjectPage({ params }) {
   const { id } = await params;

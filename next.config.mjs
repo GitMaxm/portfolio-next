@@ -1,5 +1,3 @@
-import path from 'path';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'export', режим статической генерации
@@ -7,14 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(process.cwd(), 'src'),
-      '@components': path.resolve(process.cwd(), 'src/components'),
-    };
-    return config;
-  },
+  // Алиасы путей (@/*) берутся из jsconfig.json — Turbopack читает их сам
 };
 
 export default nextConfig;

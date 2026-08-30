@@ -6,26 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "json-server": "json-server --watch src/data/projectsTestTable.json --port 3001"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "json-server": "json-server src/data/projectsTestTable.json --port 3001"
   },
   "dependencies": {
-    "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "sweetalert2": "^11.26.24"
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-icons": "5.7.0",
+    "sweetalert2": "11.26.25"
   },
   "devDependencies": {
-    "@types/node": "22.14.0",
-    "@types/react": "19.1.0",
-    "eslint": "^9.39.4",
-    "eslint-config-next": "^16.3.3",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-simple-import-sort": "^13.0.0",
-    "json-server": "^0.17.4",
-    "sass": "^1.99.0",
-    "typescript": "5.8.3"
+    "@types/node": "24.10.6",
+    "@types/react": "19.2.18",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.3",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-simple-import-sort": "14.0.0",
+    "json-server": "1.0.0-beta.15",
+    "sass": "1.103.1",
+    "typescript": "5.9.3"
   }
 }

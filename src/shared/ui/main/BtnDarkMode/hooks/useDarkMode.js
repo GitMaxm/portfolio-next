@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
+
 import { useLocalStorage } from '@/shared/lib/hooks';
+
 import { detectDarkMode } from "../helpers";
 
 export const useDarkMode = () => {

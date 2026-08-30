@@ -1,7 +1,8 @@
 'use client'
 
-import { FormField } from "@/shared/ui/admin"
 import { STACK_OPTIONS, TOOLS_LIST } from "@/shared/constants"
+import { FormField } from "@/shared/ui/admin"
+
 import { useProjectForm } from "../model/useProjectForm"
 import styles from './ProjectForm.module.scss'
 

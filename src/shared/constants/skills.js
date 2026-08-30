@@ -1,16 +1,16 @@
 import {
-  SiCss3,
+  SiCss,
   SiGit,
   SiHtml5,
   SiJavascript,
+  // Иконка Swiper (используем общую иконку JavaScript или можно найти специализированную)
+  SiJavascript as SiSwiper,
   SiNextdotjs,
   SiReact,
   SiSass,
   SiTailwindcss,
   SiTypescript
 } from 'react-icons/si';
-// Иконка Swiper (используем общую иконку JavaScript или можно найти специализированную)
-import { SiJavascript as SiSwiper } from 'react-icons/si';
 
 export const SKILLS = [
   {
@@ -21,7 +21,7 @@ export const SKILLS = [
   },
   {
     name: "CSS3",
-    icon: <SiCss3 size={40} color="#1572B6"/>,
+    icon: <SiCss size={40} color="#1572B6"/>,
     description: "Адаптивный дизайн, Flexbox, Grid, анимации",
     level: "уверенный"
   },

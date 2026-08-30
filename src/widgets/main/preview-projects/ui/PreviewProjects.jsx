@@ -1,9 +1,9 @@
 import './style.css';
 
 import Link from 'next/link';
-import { ProjectCard } from '@/entities/main/project';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
+import { ProjectCard } from '@/entities/main/project';
 
 export const PreviewProjects = async () => {
   const projects = await projectsServiceApi.getProjects();

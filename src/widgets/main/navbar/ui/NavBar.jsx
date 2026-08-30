@@ -4,9 +4,9 @@ import './style.scss'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BtnDarkMode } from '@/shared/ui/main'
 
 import { NAVIGATION_LINKS } from '@/shared/constants'
+import { BtnDarkMode } from '@/shared/ui/main'
 
 export const NavBar = () => {
   const pathname = usePathname();

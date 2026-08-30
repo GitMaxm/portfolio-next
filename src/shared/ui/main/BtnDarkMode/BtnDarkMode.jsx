@@ -1,6 +1,7 @@
 'use client';
 
 import './style.css';
+
 import { useDarkMode } from './hooks/useDarkMode';
 
 export const BtnDarkMode = () => {

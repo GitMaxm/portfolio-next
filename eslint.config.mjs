@@ -10,8 +10,11 @@ const eslintConfig = defineConfig([
   globalIgnores([
     '.next/**',
     'out/**',
+    'dist/**',
     'build/**',
     'next-env.d.ts',
+    '*.config.js',
+    '*.config.ts',
   ]),
 
   // Добавляем ваши правила

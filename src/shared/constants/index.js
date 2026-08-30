@@ -12,6 +12,6 @@ export { SKILLS } from './skills'
 export { FILTERS } from './filters'
 
 // Админка / проекты
-export { TOOLS_LIST, STACK_OPTIONS } from './projectFormAdmin'
-export { THEAD_PROJECTS } from './theadProjects'
+export { STACK_OPTIONS, TOOLS_LIST } from './projectFormAdmin'
 export { PROJECT_PROPERTIES_NAME, THEAD_TABLE } from './projectPropertiesName'
+export { THEAD_PROJECTS } from './theadProjects'
