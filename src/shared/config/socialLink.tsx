@@ -1,7 +1,7 @@
 import { HiOutlineMail } from "react-icons/hi";
 import { SiTelegram } from "react-icons/si";
 
-import type { ISocialLink } from "@/shared/types";
+import type { ISocialLink } from "@/shared/model";
 
 import { COMPANY_CONTACTS } from "./contacts";
 

@@ -12,7 +12,7 @@ import {
   SiTypescript
 } from 'react-icons/si';
 
-import type { ISkill } from '@/shared/types';
+import type { ISkill } from '@/shared/model';
 
 export const SKILLS: ISkill[] = [
   {

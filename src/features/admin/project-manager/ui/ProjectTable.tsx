@@ -1,4 +1,4 @@
-import { THEAD_TABLE } from "@/shared/constants";
+import { THEAD_TABLE } from "@/shared/config";
 
 import type { IProjectTableProps } from '../model/types';
 import styles from './ProjectTable.module.scss';

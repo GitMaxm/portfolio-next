@@ -1,4 +1,4 @@
-import type { ITableColumn } from '@/shared/types';
+import type { ITableColumn } from '@/shared/model';
 
 export const PROJECT_PROPERTIES_NAME: ITableColumn[] = [
   { id: 'id', title: "ID", type: "text" },

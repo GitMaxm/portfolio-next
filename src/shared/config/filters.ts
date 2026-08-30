@@ -1,4 +1,4 @@
-import type { IProjectFilter } from '@/shared/types';
+import type { IProjectFilter } from '@/shared/model';
 
 export const FILTERS: IProjectFilter[] = [
   { title: 'Все', category: 'all' },

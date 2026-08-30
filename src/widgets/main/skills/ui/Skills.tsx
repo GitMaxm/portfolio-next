@@ -1,6 +1,6 @@
 import './style.css';
 
-import { SKILLS } from '@/shared/constants';
+import { SKILLS } from '@/shared/config';
 import { getLevelClass } from "@/shared/lib";
 
 export const Skills = () => {

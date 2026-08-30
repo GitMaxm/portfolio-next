@@ -5,7 +5,7 @@ import './style.scss'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { NAVIGATION_LINKS } from '@/shared/constants'
+import { NAVIGATION_LINKS } from '@/shared/config'
 import { BtnDarkMode } from '@/shared/ui/main'
 
 export const NavBar = () => {

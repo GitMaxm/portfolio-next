@@ -1,4 +1,4 @@
-import type { ICompanyContacts } from '@/shared/types';
+import type { ICompanyContacts } from '@/shared/model';
 
 export const COMPANY_CONTACTS: ICompanyContacts = {
   email: "ivanmax29@yandex.ru",

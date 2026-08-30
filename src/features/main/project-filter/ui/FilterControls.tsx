@@ -1,6 +1,6 @@
 import './style.css';
 
-import { FILTERS } from "@/shared/constants";
+import { FILTERS } from "@/shared/config";
 
 import type { IFilterControlsProps } from "../model/types";
 

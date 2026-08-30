@@ -1,4 +1,4 @@
-import type { ITableColumn } from '@/shared/types';
+import type { ITableColumn } from '@/shared/model';
 
 export const THEAD_PROJECTS: ITableColumn[] = [
   { id: 'id', title: "ID" },

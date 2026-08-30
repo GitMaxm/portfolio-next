@@ -1,4 +1,4 @@
-import type { INavigationLink } from '@/shared/types';
+import type { INavigationLink } from '@/shared/model';
 
 export const NAVIGATION_LINKS: INavigationLink[] = [
   { href: '/', label: 'Главная', title: 'Обо мне и моих навыках' },

@@ -2,8 +2,8 @@
 
 import { ProjectCard } from '@/entities/main/project';
 
-import { useProjectFilter } from "../hooks/useProjectFilter";
 import type { IFilteredProjectListProps } from "../model/types";
+import { useProjectFilter } from "../model/useProjectFilter";
 import { FilterControls } from "./FilterControls";
 
 export const FilteredProjectList = ({ activeFilter, projects }: IFilteredProjectListProps) => {
