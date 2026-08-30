@@ -37,8 +37,8 @@ export const Table = ({ projects, handleDelete, handleEdit }) => {
           </td>
           <td>
             <ul>
-              <li><a href={links.gitHub} target="_blank">GitHub</a></li>
-              <li><a href={links.preview} target="_blank">Превью</a></li>
+              <li><a href={links.gitHub} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href={links.preview} target="_blank" rel="noopener noreferrer">Превью</a></li>
             </ul>
           </td>
           <td>

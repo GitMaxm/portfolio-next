@@ -11,7 +11,6 @@
     "json-server": "json-server --watch src/data/projectsTestTable.json --port 3001"
   },
   "dependencies": {
-    "mysql2": "^3.14.0",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -22,7 +21,7 @@
     "@types/node": "22.14.0",
     "@types/react": "19.1.0",
     "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.4",
+    "eslint-config-next": "^16.3.3",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "json-server": "^0.17.4",

@@ -11,10 +11,9 @@ export const PreviewProjects = async () => {
 
   return (
     <div className="portfolio-preview">
-      <h2 className="title-1">Последние проекты проекты</h2>
-      <p className="portfolio-description">В этом разделе собраны наши ключевые проекты и комплексные решения.
-        Каждый кейс — это пример системного подхода к созданию идеального микроклимата для жилых, коммерческих и
-        общественных пространств.</p>
+      <h2 className="title-1">Последние проекты</h2>
+      <p className="portfolio-description">Здесь несколько последних работ — от вёрстки лендингов
+        до приложений на React. Полный список и ссылки на демо и исходный код — на странице со всеми проектами.</p>
 
       <ul className="projects" aria-label="Превью проектов">
         {featuredProjects.map(project => <ProjectCard key={project.id} project={project}/>)}

@@ -1,15 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { BtnGitHub } from '@/shared/ui/main';
 
 import { projectsServiceApi } from "@/app/services/projectsService";
 
 export default async function ProjectPage({ params }) {
   const { id } = await params;
-  const project = await projectsServiceApi.getProjectById(id);
+
+  let project;
+  try {
+    project = await projectsServiceApi.getProjectById(id);
+  } catch {
+    notFound();
+  }
 
   if (!project) {
-    return <div>Проект не найден</div>;
+    notFound();
   }
 
   return (
@@ -50,6 +57,7 @@ export default async function ProjectPage({ params }) {
                 className="btn-outline"
                 href={project.links.preview}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Ссылка на сайт
               </Link>
