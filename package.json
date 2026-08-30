@@ -10,8 +10,10 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "lint:fsd": "steiger ./src",
+    "fix": "eslint . --fix",
     "check": "npm run typecheck && npm run lint && npm run lint:fsd",
-    "json-server": "json-server mock/projectsTestTable.json --port 3001"
+    "json-server": "json-server mock/projectsTestTable.json --port 3001",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "16.3.3",
@@ -28,9 +30,16 @@
     "eslint-config-next": "16.3.3",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-simple-import-sort": "14.0.0",
+    "husky": "9.1.7",
     "json-server": "1.0.0-beta.15",
+    "lint-staged": "16.2.7",
     "sass": "1.103.1",
     "steiger": "0.6.0",
     "typescript": "5.9.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
