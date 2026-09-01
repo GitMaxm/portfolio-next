@@ -1,0 +1,40 @@
+@use "@/shared/styles/variablesAdmin" as *;
+
+.button,
+.row {
+  background-color: $color-bg-secondary;
+  border-radius: $radius-sm;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.button {
+  width: 150px;
+  height: 32px;
+  margin-bottom: 15px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  height: 44px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .row {
+    animation: none;
+  }
+}

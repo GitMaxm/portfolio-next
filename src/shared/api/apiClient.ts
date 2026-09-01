@@ -1,10 +1,11 @@
+import { ApiError } from './ApiError';
 import type { TRequestOptions } from './types';
 
 async function request<T>(url: string, options: TRequestOptions = {}): Promise<T> {
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    throw new Error(`HTTP error ${response.status}: ${url}`);
+    throw new ApiError(response.status, url);
   }
 
   return response.json() as Promise<T>;

@@ -1,4 +1,8 @@
 export { FormField } from './FormField'
 export type { IFormFieldProps } from './FormField/types'
+export { StatusPanel } from './StatusPanel'
+export type { IStatusPanelProps } from './StatusPanel/types'
+export { TableSkeleton } from './TableSkeleton'
+export type { ITableSkeletonProps } from './TableSkeleton/types'
 export { TitleAdminPage } from './TitleAdminPage'
 export type { ITitleAdminPageProps } from './TitleAdminPage/types'
