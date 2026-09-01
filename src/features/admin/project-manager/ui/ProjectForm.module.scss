@@ -256,6 +256,12 @@
   &:active {
     transform: scale(0.98);
   }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: progress;
+    transform: none;
+  }
 }
 
 .btnCancel {
@@ -271,5 +277,11 @@
 
   &:hover {
     background: $color-bg-secondary;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background: transparent;
   }
 }

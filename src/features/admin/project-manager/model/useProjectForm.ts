@@ -8,6 +8,7 @@ import type { TProjectFormMode } from './types'
 
 export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edit') => {
   const [selectedTools, setSelectedTools] = useState<Set<string>>(new Set(project?.tools ?? []))
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const router = useRouter()
 
@@ -26,44 +27,51 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isSubmitting) {
+      return;
+    }
+
     // Ссылку на форму забираем синхронно: React обнуляет currentTarget,
     // как только обработчик уходит в await.
     const form = e.currentTarget;
 
     const result = await swalSaveConfirm("Сохранить?");
 
-    if (result.isDismissed) {
+    if (!result.isConfirmed) {
       return;
     }
 
-    if (result.isConfirmed) {
-      try {
-        const data = new FormData(form);
+    // Флаг снимаем только в catch: после успеха уходим со страницы, и до
+    // перехода форма должна оставаться заблокированной.
+    setIsSubmitting(true);
 
-        const projectData: TProjectDraft = {
-          title: getFormString(data, 'title'),
-          stack: getFormString(data, 'stack'),
-          description: getFormString(data, 'description'),
-          tools: [...selectedTools],
-          image: project?.image ?? {},
-          links: {
-            gitHub: getFormString(data, 'github'),
-            preview: getFormString(data, 'previewLink'),
-          },
-        };
+    try {
+      const data = new FormData(form);
 
-        if (isCreate) {
-          await projectsApi.addProject(projectData);
-          await swalSuccess('Создано!', 'Проект успешно создан');
-        } else if (project) {
-          await projectsApi.updateProject({ ...projectData, id: project.id });
-          await swalSuccess('Сохранено!', 'Изменения сохранены');
-        }
+      const projectData: TProjectDraft = {
+        title: getFormString(data, 'title'),
+        stack: getFormString(data, 'stack'),
+        description: getFormString(data, 'description'),
+        tools: [...selectedTools],
+        image: project?.image ?? {},
+        links: {
+          gitHub: getFormString(data, 'github'),
+          preview: getFormString(data, 'previewLink'),
+        },
+      };
 
-        router.push('/admin/projects/');
-      } catch {
-        await swalError('Ошибка', 'Не удалось сохранить проект');
+      if (isCreate) {
+        await projectsApi.addProject(projectData);
+        await swalSuccess('Создано!', 'Проект успешно создан');
+      } else if (project) {
+        await projectsApi.updateProject({ ...projectData, id: project.id });
+        await swalSuccess('Сохранено!', 'Изменения сохранены');
       }
+
+      router.push('/admin/projects/');
+    } catch {
+      setIsSubmitting(false);
+      await swalError('Ошибка', 'Не удалось сохранить проект');
     }
   }
 
@@ -77,6 +85,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
 
   return {
     isCreate,
+    isSubmitting,
     selectedTools,
     handleToolClick,
     handleFormSubmit,

@@ -10,14 +10,18 @@ import styles from './ProjectForm.module.scss'
 export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
   const {
     isCreate,
+    isSubmitting,
     selectedTools,
     handleToolClick,
     handleFormSubmit,
     handleCancelClick,
   } = useProjectForm(project, mode)
 
+  const submitLabel = isCreate ? 'Создать' : 'Сохранить'
+  const pendingLabel = isCreate ? 'Создание…' : 'Сохранение…'
+
   return (
-    <form className={styles.form} onSubmit={handleFormSubmit}>
+    <form className={styles.form} onSubmit={handleFormSubmit} aria-busy={isSubmitting}>
       {!isCreate && (
         <FormField label="ID">
           <span className={styles.idDisplay}>{project?.id}</span>
@@ -97,13 +101,14 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
       </FormField>
 
       <div className={styles.actions}>
-        <button type="submit" className={styles.btnSave}>
-          {isCreate ? 'Создать' : 'Сохранить'}
+        <button type="submit" className={styles.btnSave} disabled={isSubmitting}>
+          {isSubmitting ? pendingLabel : submitLabel}
         </button>
         <button
           type="button"
           className={styles.btnCancel}
           onClick={handleCancelClick}
+          disabled={isSubmitting}
         >
           Отмена
         </button>

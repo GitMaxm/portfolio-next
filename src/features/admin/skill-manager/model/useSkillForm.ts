@@ -19,6 +19,7 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
   const [iconPath, setIconPath] = useState(skill?.iconPath ?? '')
   const [iconViewBox, setIconViewBox] = useState(skill?.iconViewBox ?? SKILL_ICON_VIEW_BOX)
   const [iconColor, setIconColor] = useState(skill?.iconColor ?? DEFAULT_ICON_COLOR)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const router = useRouter()
 
@@ -38,41 +39,48 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isSubmitting) {
+      return;
+    }
+
     // Ссылку на форму забираем синхронно: React обнуляет currentTarget,
     // как только обработчик уходит в await.
     const form = e.currentTarget;
 
     const result = await swalSaveConfirm("Сохранить?");
 
-    if (result.isDismissed) {
+    if (!result.isConfirmed) {
       return;
     }
 
-    if (result.isConfirmed) {
-      try {
-        const data = new FormData(form);
+    // Флаг снимаем только в catch: после успеха уходим со страницы, и до
+    // перехода форма должна оставаться заблокированной.
+    setIsSubmitting(true);
 
-        const skillData: TSkillDraft = {
-          name: getFormString(data, 'name'),
-          description: getFormString(data, 'description'),
-          level: getFormString(data, 'level') as TSkillLevel,
-          iconPath,
-          iconColor,
-          iconViewBox,
-        };
+    try {
+      const data = new FormData(form);
 
-        if (isCreate) {
-          await skillsApi.addSkill(skillData);
-          await swalSuccess('Создано!', 'Навык успешно создан');
-        } else if (skill) {
-          await skillsApi.updateSkill({ ...skillData, id: skill.id });
-          await swalSuccess('Сохранено!', 'Изменения сохранены');
-        }
+      const skillData: TSkillDraft = {
+        name: getFormString(data, 'name'),
+        description: getFormString(data, 'description'),
+        level: getFormString(data, 'level') as TSkillLevel,
+        iconPath,
+        iconColor,
+        iconViewBox,
+      };
 
-        router.push('/admin/skills/');
-      } catch {
-        await swalError('Ошибка', 'Не удалось сохранить навык');
+      if (isCreate) {
+        await skillsApi.addSkill(skillData);
+        await swalSuccess('Создано!', 'Навык успешно создан');
+      } else if (skill) {
+        await skillsApi.updateSkill({ ...skillData, id: skill.id });
+        await swalSuccess('Сохранено!', 'Изменения сохранены');
       }
+
+      router.push('/admin/skills/');
+    } catch {
+      setIsSubmitting(false);
+      await swalError('Ошибка', 'Не удалось сохранить навык');
     }
   }
 
@@ -86,6 +94,7 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
 
   return {
     isCreate,
+    isSubmitting,
     iconPath,
     iconViewBox,
     iconColor,
