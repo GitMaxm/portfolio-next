@@ -1,12 +1,17 @@
 import { SkillForm } from "@/features/admin/skill-manager";
-import { TitleAdminPage } from "@/shared/ui/admin";
+import { ButtonLink, PageHeader } from "@/shared/ui/admin";
 
 export default function AdminSkillAdd() {
 
   return (
-    <div>
-      <TitleAdminPage>Добавить навык</TitleAdminPage>
+    <>
+      <PageHeader
+        eyebrow="Навыки"
+        title="Новый навык"
+        actions={<ButtonLink href="/admin/skills/">К списку</ButtonLink>}
+      />
+
       <SkillForm mode="create"/>
-    </div>
+    </>
   );
 }

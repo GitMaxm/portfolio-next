@@ -1,7 +1,7 @@
 'use client'
 
 import { STACK_OPTIONS, TOOLS_LIST } from "@/entities/main/project"
-import { FormField } from "@/shared/ui/admin"
+import { Button, FormField } from "@/shared/ui/admin"
 
 import type { IProjectFormProps } from "../model/types"
 import { useProjectForm } from "../model/useProjectForm"
@@ -101,17 +101,17 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
       </FormField>
 
       <div className={styles.actions}>
-        <button type="submit" className={styles.btnSave} disabled={isSubmitting}>
+        <Button type="submit" variant="primary" disabled={isSubmitting}>
           {isSubmitting ? pendingLabel : submitLabel}
-        </button>
-        <button
-          type="button"
-          className={styles.btnCancel}
+        </Button>
+
+        <Button
+          variant="secondary"
           onClick={handleCancelClick}
           disabled={isSubmitting}
         >
           Отмена
-        </button>
+        </Button>
       </div>
     </form>
   )

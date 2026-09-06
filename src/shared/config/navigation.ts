@@ -6,3 +6,9 @@ export const NAVIGATION_LINKS: INavigationLink[] = [
   { href: '/contacts/', label: 'Контакты', title: 'Как со мной связаться' },
   { href: '/admin/', label: 'Админка', title: 'Админка' },
 ];
+
+export const ADMIN_NAV_LINKS: INavigationLink[] = [
+  { href: '/admin/', label: 'Обзор', title: 'Сводка по контенту' },
+  { href: '/admin/projects/', label: 'Проекты', title: 'Управление проектами' },
+  { href: '/admin/skills/', label: 'Навыки', title: 'Управление навыками' },
+];

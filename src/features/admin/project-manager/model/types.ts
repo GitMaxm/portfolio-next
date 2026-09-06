@@ -8,8 +8,9 @@ export interface IProjectListProps {
 
 export interface IProjectTableProps {
   projects: IProject[];
-  onEditClick: (id: TProjectId) => void;
   onDeleteClick: (id: TProjectId) => void;
+  /** Строка, по которой сейчас идёт удаление: её кнопки блокируются. */
+  deletingId: TProjectId | null;
 }
 
 export interface IProjectFormProps {

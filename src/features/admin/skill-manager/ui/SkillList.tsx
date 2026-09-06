@@ -2,26 +2,16 @@
 
 import type { ISkillListProps } from "../model/types"
 import { useSkills } from "../model/useSkills"
-import styles from "./SkillList.module.scss"
 import { SkillTable } from "./SkillTable"
 
 export const SkillList = ({ initialSkills }: ISkillListProps) => {
-  const { skills, handleDeleteClick, handleEditClick, handleAddClick } = useSkills(initialSkills);
+  const { skills, deletingId, handleDeleteClick } = useSkills(initialSkills);
 
   return (
-    <>
-      <button
-        className={styles.button}
-        onClick={handleAddClick}
-      >
-        Добавить навык
-      </button>
-
-      <SkillTable
-        skills={skills}
-        onEditClick={handleEditClick}
-        onDeleteClick={handleDeleteClick}
-      />
-    </>
+    <SkillTable
+      skills={skills}
+      deletingId={deletingId}
+      onDeleteClick={handleDeleteClick}
+    />
   )
 }

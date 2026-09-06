@@ -1,26 +1,35 @@
 @use "@/shared/styles/variablesAdmin" as *;
 
-.button,
+.skeleton {
+  border: $border;
+  border-radius: $radius-lg;
+  background-color: $color-bg;
+  overflow: hidden;
+}
+
+.head,
 .row {
-  background-color: $color-bg-secondary;
-  border-radius: $radius-sm;
   animation: pulse 1.4s ease-in-out infinite;
 }
 
-.button {
-  width: 150px;
-  height: 32px;
-  margin-bottom: 15px;
-}
-
-.rows {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.head {
+  height: 40px;
+  background-color: $color-bg-secondary;
 }
 
 .row {
-  height: 44px;
+  height: 52px;
+  border-top: $border;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 10px;
+    margin: 21px 16px;
+    border-radius: $radius-sm;
+    background-color: $color-bg-secondary;
+  }
 }
 
 @keyframes pulse {
@@ -28,12 +37,12 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.45;
+    opacity: 0.5;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button,
+  .head,
   .row {
     animation: none;
   }

@@ -8,8 +8,9 @@ export interface ISkillListProps {
 
 export interface ISkillTableProps {
   skills: ISkill[];
-  onEditClick: (id: TSkillId) => void;
   onDeleteClick: (id: TSkillId) => void;
+  /** Строка, по которой сейчас идёт удаление: её кнопки блокируются. */
+  deletingId: TSkillId | null;
 }
 
 export interface ISkillFormProps {

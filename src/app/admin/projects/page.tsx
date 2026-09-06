@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { projectsApi } from "@/entities/main/project";
 import { ProjectList } from "@/features/admin/project-manager";
-import { TableSkeleton, TitleAdminPage } from "@/shared/ui/admin";
+import { ButtonLink, PageHeader, TableSkeleton } from "@/shared/ui/admin";
 
 /**
  * Загрузку держим в отдельном компоненте: заголовок отдаётся сразу, таблица
@@ -18,14 +18,19 @@ async function ProjectsData() {
 export default function AdminProjectsPage() {
 
   return (
-
     <>
-      <TitleAdminPage>Проекты</TitleAdminPage>
+      <PageHeader
+        eyebrow="Контент"
+        title="Проекты"
+        description="Работы, которые видны на главной и в разделе «Проекты»."
+        actions={
+          <ButtonLink href="/admin/projects/new/" variant="primary">Добавить проект</ButtonLink>
+        }
+      />
 
       <Suspense fallback={<TableSkeleton/>}>
         <ProjectsData/>
       </Suspense>
     </>
-
   );
 }

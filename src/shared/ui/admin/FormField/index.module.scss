@@ -3,12 +3,13 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 .label {
-  font-size: 13px;
+  font-family: $font-mono;
+  font-size: 12px;
   font-weight: 500;
+  letter-spacing: 0.02em;
   color: $color-muted;
-  letter-spacing: 0.01em;
 }

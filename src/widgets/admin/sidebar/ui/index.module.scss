@@ -1,22 +1,135 @@
+@use "@/shared/styles/variablesAdmin" as *;
+
 .sidebar {
-  width: 240px;
-  background: var(--black);
-  color: var(--text-white);
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: $rail-width;
+  padding: 28px 20px;
+  background-color: $color-rail;
+  color: $color-rail-text;
+  font-family: $font-mono;
 }
 
+// ─── Шапка колонки ────────────────────────────────────────────
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid $color-rail-line;
+  color: inherit;
+}
+
+.brandName {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brandRole {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-rail-muted;
+}
+
+// ─── Навигация ────────────────────────────────────────────────
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
+}
+
+.navLabel {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-rail-muted;
 }
 
 .navLink {
-  color: var(--text-white);
-  text-decoration: none;
-  transition: opacity 0.2s;
+  position: relative;
+  display: block;
+  padding: 9px 12px;
+  border-radius: $radius-sm;
+  font-size: 14px;
+  color: $color-rail-muted;
+  transition: $transition-hover;
 
   &:hover {
-    opacity: 0.7;
+    color: $color-rail-text;
+    background-color: rgba(#fff, 0.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+
+  &.active {
+    color: $color-rail-text;
+    background-color: rgba(#fff, 0.08);
+  }
+
+  // Активный пункт помечаем акцентной риской слева.
+  &.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 16px;
+    border-radius: 0 2px 2px 0;
+    background-color: $color-accent;
+    transform: translate(-12px, -50%);
+  }
+}
+
+// ─── Выход на сайт ────────────────────────────────────────────
+.exit {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid $color-rail-line;
+  font-size: 13px;
+  color: $color-rail-muted;
+  transition: $transition-hover;
+
+  &::after {
+    content: ' ↗';
+  }
+
+  &:hover {
+    color: $color-rail-text;
+  }
+}
+
+@media (max-width: 720px) {
+  .sidebar {
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .brand {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  // В горизонтальном ряду риска висит в стороне от пункта — хватает подложки.
+  .navLink.active::before {
+    content: none;
+  }
+
+  .exit {
+    margin-top: 16px;
+    padding-top: 14px;
   }
 }

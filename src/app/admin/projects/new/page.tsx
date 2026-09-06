@@ -1,12 +1,17 @@
 import { ProjectForm } from "@/features/admin/project-manager";
-import { TitleAdminPage } from "@/shared/ui/admin";
+import { ButtonLink, PageHeader } from "@/shared/ui/admin";
 
-export default async function AdminProjectAdd() {
+export default function AdminProjectAdd() {
 
   return (
-    <div>
-      <TitleAdminPage>Создать новый проект</TitleAdminPage>
+    <>
+      <PageHeader
+        eyebrow="Проекты"
+        title="Новый проект"
+        actions={<ButtonLink href="/admin/projects/">К списку</ButtonLink>}
+      />
+
       <ProjectForm mode="create"/>
-    </div>
+    </>
   );
 }

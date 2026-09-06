@@ -1,5 +1,5 @@
 // Навигация
-export { NAVIGATION_LINKS } from './navigation'
+export { ADMIN_NAV_LINKS, NAVIGATION_LINKS } from './navigation'
 
 // Контакты
 export { COMPANY_CONTACTS } from './contacts'

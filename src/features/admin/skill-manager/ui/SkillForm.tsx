@@ -1,7 +1,7 @@
 'use client'
 
 import { SKILL_LEVELS, SkillIcon } from "@/entities/main/skill"
-import { FormField } from "@/shared/ui/admin"
+import { Button, FormField } from "@/shared/ui/admin"
 
 import type { ISkillFormProps } from "../model/types"
 import { useSkillForm } from "../model/useSkillForm"
@@ -108,17 +108,17 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
       </FormField>
 
       <div className={styles.actions}>
-        <button type="submit" className={styles.btnSave} disabled={isSubmitting}>
+        <Button type="submit" variant="primary" disabled={isSubmitting}>
           {isSubmitting ? pendingLabel : submitLabel}
-        </button>
-        <button
-          type="button"
-          className={styles.btnCancel}
+        </Button>
+
+        <Button
+          variant="secondary"
           onClick={handleCancelClick}
           disabled={isSubmitting}
         >
           Отмена
-        </button>
+        </Button>
       </div>
     </form>
   )
