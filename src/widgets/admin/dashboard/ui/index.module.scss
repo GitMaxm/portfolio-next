@@ -1,0 +1,165 @@
+@use "@/shared/styles/variablesAdmin" as *;
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.section {
+  padding: 22px 24px 24px;
+  border: $border;
+  border-radius: $radius-lg;
+  background-color: $color-bg;
+  box-shadow: $shadow-sm;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: $border;
+}
+
+.sectionTitle {
+  font-family: $font-mono;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-muted;
+}
+
+// Счётчик стоит в заголовке раздела, а не в отдельной карточке:
+// это подпись к содержимому, а не показатель.
+.count {
+  font-family: $font-mono;
+  font-size: 13px;
+  color: $color-hint;
+  margin-right: auto;
+
+  &::before {
+    content: '· ';
+  }
+}
+
+.blank {
+  font-size: 14px;
+  color: $color-hint;
+}
+
+// ─── Навыки ───────────────────────────────────────────────────
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 96px;
+  padding: 14px 8px 12px;
+  border: $border;
+  border-radius: $radius-md;
+  text-align: center;
+}
+
+.chipName {
+  font-size: 12px;
+  font-weight: 500;
+  color: $color-text;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chipLevel {
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: $color-hint;
+}
+
+// ─── Проекты ──────────────────────────────────────────────────
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 10px;
+  margin: 0 -10px;
+  border-radius: $radius-sm;
+  color: $color-text;
+  transition: $transition-hover;
+
+  &:hover {
+    background-color: $color-bg-secondary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 1px;
+  }
+}
+
+.rowId {
+  font-family: $font-mono;
+  font-size: 12px;
+  color: $color-hint;
+  min-width: 20px;
+}
+
+.rowTitle {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rowStack {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $color-hint;
+  white-space: nowrap;
+}
+
+.rowGo {
+  font-size: 13px;
+  color: $color-accent;
+  opacity: 0;
+  transition: $transition-hover;
+  white-space: nowrap;
+}
+
+.row:hover .rowGo,
+.row:focus-visible .rowGo {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 18px 16px 20px;
+  }
+
+  .rowStack,
+  .rowGo {
+    display: none;
+  }
+
+  .rowGo {
+    opacity: 1;
+  }
+}
