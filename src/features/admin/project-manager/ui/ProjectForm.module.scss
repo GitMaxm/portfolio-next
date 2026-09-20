@@ -1,6 +1,5 @@
 @use "@/shared/styles/variablesAdmin" as *;
 
-// ─── Форма ────────────────────────────────────────────────────
 .form {
   display: flex;
   flex-direction: column;
@@ -57,7 +56,6 @@
   }
 }
 
-// ─── Подпись подполя ──────────────────────────────────────────
 .sectionLabel {
   font-family: $font-mono;
   font-size: 11px;
@@ -68,7 +66,6 @@
   margin-bottom: 6px;
 }
 
-// ─── ID ───────────────────────────────────────────────────────
 .idDisplay {
   display: inline-block;
   padding: 7px 12px;
@@ -80,7 +77,6 @@
   color: $color-muted;
 }
 
-// ─── Инструменты ──────────────────────────────────────────────
 .toolsGrid {
   display: flex;
   flex-wrap: wrap;
@@ -137,7 +133,6 @@
   }
 }
 
-// ─── Картинки ─────────────────────────────────────────────────
 .imageRow {
   display: grid;
   grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
@@ -168,7 +163,6 @@
   color: $color-hint;
 }
 
-// ─── Ссылки ───────────────────────────────────────────────────
 .linksRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -179,7 +173,6 @@
   }
 }
 
-// ─── Кнопки ───────────────────────────────────────────────────
 .actions {
   display: flex;
   gap: 10px;

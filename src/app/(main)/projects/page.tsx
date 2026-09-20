@@ -1,7 +1,17 @@
+import type { Metadata } from 'next';
+
 import { projectsApi } from '@/entities/main/project';
 import { FilteredProjectList } from '@/features/main/project-filter';
 
 import type { IProjectsPageProps } from './types';
+
+export const metadata: Metadata = {
+  title: 'Проекты',
+  description:
+    'Работы фронтенд-разработчика Максима Иваненко: вёрстка лендингов и приложения ' +
+    'на React и Next.js. У каждого проекта есть демо и исходный код на GitHub.',
+  alternates: { canonical: '/projects/' },
+};
 
 const ProjectsPage = async ({ searchParams }: IProjectsPageProps) => {
   const { stack } = await searchParams;

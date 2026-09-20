@@ -27,7 +27,6 @@ export const ImageUpload = ({
       onSelect(file)
     }
 
-    // Сбрасываем значение, иначе повторный выбор того же файла не вызовет change.
     e.target.value = ''
   }
 

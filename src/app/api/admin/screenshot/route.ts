@@ -10,10 +10,6 @@ interface IScreenshotBody {
 const badRequest = (message: string) =>
   Response.json({ error: message }, { status: 400 });
 
-/**
- * Разрешаем только http(s): по file:// браузер прочитал бы локальные файлы и
- * вернул их картинкой, а это уже не скриншот сайта.
- */
 const parseTarget = (value: unknown): URL | null => {
   if (typeof value !== 'string' || !value.trim()) {
     return null;
@@ -28,10 +24,6 @@ const parseTarget = (value: unknown): URL | null => {
   }
 };
 
-/**
- * Имя файла берём из адреса: у gitmaxm.github.io/game-gulp/ это game-gulp,
- * у голого домена — сам домен.
- */
 const nameFromUrl = (url: URL): string => {
   const lastSegment = url.pathname.split('/').filter(Boolean).at(-1);
 
@@ -55,7 +47,6 @@ export async function POST(request: NextRequest) {
 
   let screenshot: Uint8Array;
 
-  // Сообщение отсюда видит пользователь: оно объясняет, что именно не вышло.
   try {
     screenshot = await captureScreenshot(target);
   } catch (error) {

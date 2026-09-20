@@ -13,7 +13,6 @@
   gap: 24px 40px;
 }
 
-/* ─── Подпись ────────────────────────────────────────────────── */
 .footer__brand {
   display: flex;
   flex-direction: column;
@@ -30,7 +29,6 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* ─── Навигация ──────────────────────────────────────────────── */
 .footer__nav {
   display: flex;
   flex-wrap: wrap;
@@ -52,7 +50,6 @@
   outline-offset: 3px;
 }
 
-/* ─── Нижняя строка ──────────────────────────────────────────── */
 .footer__bottom {
   display: flex;
   flex-wrap: wrap;

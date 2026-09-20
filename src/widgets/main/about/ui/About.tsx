@@ -8,7 +8,7 @@ export const About = () => {
       <h2 className="title-1">Обо мне</h2>
 
       <div className="about-box">
-        {/* figure/figcaption — фото перестаёт быть картинкой сбоку и становится подписанным портретом. */}
+        {}
         <figure className="about-card">
           <img
             src="/img/about/me.webp"

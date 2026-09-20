@@ -1,4 +1,3 @@
-
 import type { IFilterControlsProps } from "../model/types";
 
 export const FilterControls = ({ filters, activeFilter, onFilterClick }: IFilterControlsProps) => {

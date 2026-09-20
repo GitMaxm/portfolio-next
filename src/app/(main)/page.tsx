@@ -1,7 +1,17 @@
+import type { Metadata } from 'next';
+
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/shared/config';
 import { About } from '@/widgets/main/about';
 import { Header } from '@/widgets/main/header';
 import { PreviewProjects } from '@/widgets/main/preview-projects';
 import { Skills } from '@/widgets/main/skills';
+
+export const metadata: Metadata = {
+
+  title: { absolute: SITE_TITLE },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
+};
 
 const Home = () => {
   return (

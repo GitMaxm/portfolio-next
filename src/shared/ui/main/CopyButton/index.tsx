@@ -7,14 +7,11 @@ import { FiCheck, FiCopy } from 'react-icons/fi'
 
 import type { ICopyButtonProps } from './types'
 
-/** Сколько кнопка держит галочку после копирования. */
 const FEEDBACK_MS = 1600
 
 export const CopyButton = ({ value, label }: ICopyButtonProps) => {
   const [isCopied, setIsCopied] = useState(false)
 
-  // Галочку снимаем по таймеру, а таймер чистим при размонтировании:
-  // иначе setState прилетит в уже убранный со страницы компонент.
   useEffect(() => {
     if (!isCopied) {
       return
@@ -30,7 +27,7 @@ export const CopyButton = ({ value, label }: ICopyButtonProps) => {
       await navigator.clipboard.writeText(value)
       setIsCopied(true)
     } catch {
-      // Буфер закрыт настройками браузера — молчим: адрес и так виден рядом.
+
     }
   }
 

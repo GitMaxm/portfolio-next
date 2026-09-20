@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -7,6 +8,47 @@ import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
 import { BtnGitHub } from '@/shared/ui/main';
 
 import type { IProjectPageProps } from './types';
+
+const buildDescription = (project: IProject): string => {
+  const tools = project.tools.length ? ` Инструменты: ${project.tools.join(', ')}.` : '';
+
+  return `${project.description} Стек: ${project.stack}.${tools}`.trim();
+};
+
+export async function generateMetadata({ params }: IProjectPageProps): Promise<Metadata> {
+  const { id } = await params;
+
+  const project = await projectsApi.getProjectById(id).catch(() => null);
+
+  if (!project) {
+    return { title: 'Проект не найден' };
+  }
+
+  const path = `/project/${id}/`;
+  const description = buildDescription(project);
+
+  const cover = project.image?.main ?? project.image?.preview;
+
+  return {
+    title: project.title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'article',
+      title: project.title,
+      description,
+      url: path,
+      images: cover
+        ? [{
+          url: PROJECT_IMAGES_URL + cover,
+          width: PROJECT_IMAGE_SIZES.main.width * 2,
+          height: PROJECT_IMAGE_SIZES.main.height * 2,
+          alt: project.title,
+        }]
+        : undefined,
+    },
+  };
+}
 
 export default async function ProjectPage({ params }: IProjectPageProps) {
   const { id } = await params;

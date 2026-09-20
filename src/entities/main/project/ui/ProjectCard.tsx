@@ -5,7 +5,6 @@ import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
 
 import type { IProjectCardProps } from './types';
 
-/** Больше не влезает в карточку, не ломая строку. */
 const VISIBLE_TOOLS = 4;
 
 export const ProjectCard = ({ project }: IProjectCardProps) => {

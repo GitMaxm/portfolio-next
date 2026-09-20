@@ -7,7 +7,6 @@
   min-width: 0;
 }
 
-// ─── Зона перетаскивания ──────────────────────────────────────
 .zone {
   display: flex;
   align-items: center;
@@ -54,7 +53,6 @@
   text-align: center;
 }
 
-// Настоящий input прячем: роль кнопки играет вся зона.
 .input {
   position: absolute;
   width: 1px;
@@ -63,7 +61,6 @@
   pointer-events: none;
 }
 
-// ─── Подпись под зоной ────────────────────────────────────────
 .footer {
   display: flex;
   align-items: center;

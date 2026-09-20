@@ -1,15 +1,3 @@
-/**
- * Убирает из public/img/projects картинки, на которые больше никто не ссылается.
- *
- * Трогает только то, что собрала админка: имя вида <название>-<хэш>.webp и его
- * пара -card.webp. Старые картинки портфолио под этот шаблон не подпадают и не
- * удаляются никогда — в моках лежат три тестовые записи, а не всё портфолио,
- * поэтому «удалить всё, на что нет ссылки» снесло бы 9 МБ нужных файлов.
- *
- *   npm run images:prune           показать список
- *   npm run images:prune -- --yes  удалить
- */
-
 import { readdir, readFile, stat, unlink } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
@@ -17,7 +5,6 @@ import process from 'node:process'
 const IMAGES_DIR = path.join(process.cwd(), 'public', 'img', 'projects')
 const MOCK_FILE = path.join(process.cwd(), 'mock', 'projectsTestTable.json')
 
-/** Так выглядит имя, которое собирает saveProjectImage. */
 const GENERATED_NAME = /-[0-9a-f]{6,16}(-card)?\.webp$/
 
 const formatSize = (bytes) => `${Math.round(bytes / 1024)} КБ`

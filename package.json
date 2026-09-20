@@ -14,6 +14,7 @@
     "check": "npm run typecheck && npm run lint && npm run lint:fsd",
     "json-server": "json-server mock/projectsTestTable.json --port 3001",
     "images:prune": "node scripts/prune-images.mjs",
+    "og": "node scripts/make-og-cover.mjs",
     "prepare": "husky"
   },
   "dependencies": {

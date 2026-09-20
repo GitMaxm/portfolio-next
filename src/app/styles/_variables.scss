@@ -3,38 +3,26 @@
   --container-padding: 15px;
   --font-main: var(--font-roboto);
 
-  /*
-   * Шкала размеров. Раньше между заголовком секции и абзацем под ним не было
-   * ничего: 60px падали сразу в 13px. Шаг ~1.25 даёт середину, на которую можно
-   * опереть подзаголовки и подписи.
-   */
-  --text-xs: 0.875rem;                                    /* 14 */
-  --text-sm: 1rem;                                        /* 16 */
-  --text-md: 1.125rem;                                    /* 18 */
-  --text-lg: clamp(1.25rem, 1.16rem + 0.45vw, 1.5rem);    /* 20 → 24 */
-  --text-xl: clamp(1.625rem, 1.34rem + 1.42vw, 2.25rem);  /* 26 → 36 */
-  --text-2xl: clamp(2.188rem, 1.71rem + 2.39vw, 3.5rem);  /* 35 → 56 */
+  --text-xs: 0.875rem;
+  --text-sm: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: clamp(1.25rem, 1.16rem + 0.45vw, 1.5rem);
+  --text-xl: clamp(1.625rem, 1.34rem + 1.42vw, 2.25rem);
+  --text-2xl: clamp(2.188rem, 1.71rem + 2.39vw, 3.5rem);
 
-  /* Вертикальный ритм: секции опираются на эти два значения, а не на разные. */
   --section-gap: clamp(3.5rem, 2.5rem + 5vw, 6.25rem);
   --block-gap: clamp(2rem, 1.5rem + 2.5vw, 3rem);
 
-  /* Поверхности */
   --page-bg: #fff;
   --surface: #f4f4f8;
   --card-bg: #fff;
   --dark-bg: #171718;
 
-  /* Текст. Значения подобраны по контрасту: вторичный 7.4:1, приглушённый 5.1:1 */
   --text-color: #171718;
   --text-secondary: #55555c;
   --text-muted: #6e6e76;
   --text-white: #fff;
 
-  /*
-   * --accent — для заливок, --accent-ink — когда акцент работает текстом:
-   * #5c62ec на белом даёт 4.76:1 и на мелком тексте уже читается тяжело.
-   */
   --accent: #5c62ec;
   --accent-ink: #4a50d8;
   --accent-soft: rgba(92, 98, 236, 0.1);

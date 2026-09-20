@@ -1,5 +1,15 @@
+import type { Metadata } from 'next';
+
 import { CONTACTS } from "@/shared/config";
 import { CopyButton } from "@/shared/ui/main";
+
+export const metadata: Metadata = {
+  title: 'Контакты',
+  description:
+    'Связаться с фронтенд-разработчиком Максимом Иваненко: Telegram и почта. ' +
+    'Москва, открыт к работе над новыми и существующими проектами.',
+  alternates: { canonical: '/contacts/' },
+};
 
 const Contacts = () => {
   return (

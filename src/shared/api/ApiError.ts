@@ -1,4 +1,3 @@
-/** Ошибка неуспешного ответа. Статус нужен, чтобы отличить 404 от остальных сбоев. */
 export class ApiError extends Error {
   readonly status: number;
   readonly url: string;

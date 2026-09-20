@@ -13,10 +13,6 @@ export const ADMIN_NAV_LINKS: INavigationLink[] = [
   { href: '/admin/skills/', label: 'Навыки', title: 'Управление навыками' },
 ];
 
-/**
- * Что показываем посетителю. Админка остаётся только в dev: авторизации в ней
- * нет, и в проде её ссылке в меню не место.
- */
 export const PUBLIC_NAV_LINKS = NAVIGATION_LINKS.filter(
   (link) => !link.devOnly || process.env.NODE_ENV === 'development',
 );

@@ -10,7 +10,6 @@ const badRequest = (message: string) =>
 export async function POST(request: NextRequest) {
   let formData: FormData;
 
-  // Без multipart-тела formData() бросает — отвечаем 400, а не падаем в 500.
   try {
     formData = await request.formData();
   } catch {
@@ -37,7 +36,6 @@ export async function POST(request: NextRequest) {
     return badRequest('Это не картинка. Подойдут JPEG, PNG, WebP, AVIF или GIF');
   }
 
-  // Размер и формат исходника не важны: он всё равно будет обрезан и пережат.
   try {
     return Response.json(await saveProjectImage(bytes, baseNameFromFile(file.name)));
   } catch {

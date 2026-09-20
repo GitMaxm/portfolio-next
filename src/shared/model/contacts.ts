@@ -4,4 +4,5 @@ export interface IContacts {
   telegramLink: string;
   email: string;
   emailLink: string;
+  gitHubLink: string;
 }

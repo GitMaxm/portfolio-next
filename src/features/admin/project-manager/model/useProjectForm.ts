@@ -24,8 +24,6 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   const [imageTask, setImageTask] = useState<TImageTask | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  // Ссылка на проект — единственное управляемое поле формы: с неё снимается
-  // скриншот, и кнопка должна знать, введено там что-нибудь или ещё нет.
   const [previewLink, setPreviewLink] = useState(project?.links?.preview ?? '')
 
   const router = useRouter()
@@ -43,7 +41,6 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
     })
   }
 
-  /** Оба способа получить картинку кончаются одинаково: именами файлов или swal. */
   const runImageTask = async (
     task: TImageTask,
     load: () => Promise<IProjectImageNames>,
@@ -67,8 +64,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   }
 
   const handleImageSelect = async (file: File) => {
-    // Те же правила проверит сервер по байтам — здесь это только быстрый отказ,
-    // чтобы не гонять заведомо негодный файл по сети.
+
     if (!ACCEPTED_IMAGE_TYPES.includes(file.type)) {
       await swalError('Не тот формат', 'Подойдут JPEG, PNG, WebP, AVIF или GIF')
 
@@ -96,7 +92,6 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
     await runImageTask('capture', () => captureProjectImage(url), 'Не удалось снять скриншот')
   }
 
-  // Старые файлы в public не трогаем: на них может ссылаться другая запись.
   const handleImageRemove = () => {
     setImage({})
   }
@@ -108,8 +103,6 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
       return;
     }
 
-    // Ссылку на форму забираем синхронно: React обнуляет currentTarget,
-    // как только обработчик уходит в await.
     const form = e.currentTarget;
 
     const result = await swalSaveConfirm("Сохранить?");
@@ -118,8 +111,6 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
       return;
     }
 
-    // Флаг снимаем только в catch: после успеха уходим со страницы, и до
-    // перехода форма должна оставаться заблокированной.
     setIsSubmitting(true);
 
     try {

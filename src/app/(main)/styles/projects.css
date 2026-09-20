@@ -1,4 +1,3 @@
-/* ─── Страница проекта ───────────────────────────────────────── */
 .project-details {
   margin: 0 auto;
   max-width: 865px;
@@ -29,10 +28,6 @@
   font-weight: 700;
 }
 
-.project-details__desc span {
-  font-weight: 700;
-}
-
 .project-details__links {
   display: flex;
   flex-wrap: wrap;
@@ -42,17 +37,12 @@
   margin-top: 12px;
 }
 
-/* ─── Сетка проектов ─────────────────────────────────────────── */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
-/*
- * Карточка держится на тени, без рамки и без overflow: hidden — иначе картинка
- * на ховере не вырастает за край, а подрезается, и весь эффект пропадает.
- */
 .project {
   border-radius: 10px;
   background-color: var(--card-bg);
@@ -105,7 +95,6 @@
   transform: scale(1.03);
 }
 
-/* ─── Содержимое карточки ────────────────────────────────────── */
 .project__body {
   display: flex;
   flex-direction: column;
@@ -120,10 +109,6 @@
   letter-spacing: -0.01em;
 }
 
-/*
- * Стек и инструменты на карточке: раньше, чтобы узнать, React там или вёрстка,
- * надо было открыть проект и вернуться назад.
- */
 .project__stack {
   align-self: flex-start;
   padding: 3px 10px;
@@ -140,7 +125,6 @@
   gap: 6px;
 }
 
-/* На странице проекта тот же список идёт по центру под подписью. */
 .project__tools--center {
   justify-content: center;
   margin-top: 8px;
@@ -154,7 +138,6 @@
   color: var(--text-secondary);
 }
 
-/* ─── Фильтр ─────────────────────────────────────────────────── */
 .project-filter {
   display: flex;
   flex-wrap: wrap;
