@@ -8,14 +8,14 @@
 
 /* Каждый элемент */
 .social__item {
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
 }
 
 /* Кнопка-иконка */
 .social-link {
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
 
   display: flex;
   align-items: center;
@@ -23,39 +23,21 @@
 
   border-radius: 50%;
 
-  font-size: 40px; /* размер react-icon */
+  font-size: 30px; /* размер react-icon */
   color: var(--text-white); /* белая иконка */
 
-  transition: opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 /* Ховер-анимация */
-.social__item:hover {
-  animation: heartbeat 1.5s ease-in-out infinite both;
-}
-
 .social-link:hover {
-  opacity: 0.8;
+  transform: translateY(-2px);
+  opacity: 0.85;
 }
 
-/* Анимация heartbeat (оставил твою) */
-@keyframes heartbeat {
-  from {
-    transform: scale(1);
-    transform-origin: center;
-  }
-  10% {
-    transform: scale(0.91);
-  }
-  17% {
-    transform: scale(0.98);
-  }
-  33% {
-    transform: scale(0.87);
-  }
-  45% {
-    transform: scale(1);
-  }
+.social-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Адаптив */

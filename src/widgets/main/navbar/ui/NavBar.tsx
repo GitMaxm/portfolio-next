@@ -5,7 +5,7 @@ import './style.scss'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { NAVIGATION_LINKS } from '@/shared/config'
+import { PUBLIC_NAV_LINKS } from '@/shared/config'
 import { BtnDarkMode } from '@/shared/ui/main'
 
 export const NavBar = () => {
@@ -28,7 +28,7 @@ export const NavBar = () => {
           <BtnDarkMode/>
 
           <ul className="nav-list">
-            {NAVIGATION_LINKS.map((item) => (
+            {PUBLIC_NAV_LINKS.map((item) => (
               <li key={item.href} className="nav-list__item">
                 <Link
                   href={item.href}

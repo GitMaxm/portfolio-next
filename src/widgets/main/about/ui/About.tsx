@@ -1,32 +1,58 @@
 import './index.css';
 
+import { CONTACTS } from '@/shared/config';
+
 export const About = () => {
   return (
     <div className="about">
       <h2 className="title-1">Обо мне</h2>
 
       <div className="about-box">
-        <img
-          src="/img/logo/about-logo.jpg"
-          alt="мое фото"
-          className="about-img"
-        />
+        {/* figure/figcaption — фото перестаёт быть картинкой сбоку и становится подписанным портретом. */}
+        <figure className="about-card">
+          <img
+            src="/img/about/me.webp"
+            alt="Максим Иваненко, фронтенд-разработчик"
+            className="about-img"
+            width={260}
+            height={325}
+          />
+
+          <figcaption className="about-card__caption">
+            <span className="about-card__name">Максим Иваненко</span>
+            <span className="about-card__role">Фронтенд-разработчик</span>
+            <span className="about-card__place">{CONTACTS.location}</span>
+          </figcaption>
+
+          <div className="about-card__links">
+            <a href={CONTACTS.telegramLink} target="_blank" rel="noopener noreferrer">
+              Telegram
+            </a>
+            <a href={CONTACTS.emailLink}>Почта</a>
+          </div>
+        </figure>
 
         <div className="about-text">
           <p>
-            Уже больше <span className="accent">двух лет</span> верстаю лендинги —
-            работаю с макетами в <span className="accent">Figma</span>,
-            пишу чистый и понятный код. Сейчас работаю в{' '}
-            <span className="accent">DatsTeam</span>, где делаю рекламные и промо-сайты.
+            <span className="accent">Фронтенд-разработчик.</span> Больше{' '}
+            <span className="accent">трёх лет</span> в вебе: начинал с вёрстки
+            лендингов по макетам из <span className="accent">Figma</span>,
+            сейчас собираю интерфейсы целиком — разметка, логика, данные.
           </p>
 
           <p>
-            В последнее время активно развиваюсь как{' '}
-            <span className="accent">frontend-разработчик</span>.
-            Уверенно работаю с <span className="accent">React</span> и{' '}
-            <span className="accent">Next.js</span>, понимаю структуру SPA,
-            подключаю и обрабатываю данные с API, настраиваю маршрутизацию
-            и логику на клиенте.
+            Основной стек — <span className="accent">React</span> и{' '}
+            <span className="accent">Next.js</span> с{' '}
+            <span className="accent">TypeScript</span>. Понимаю устройство SPA:
+            раскладываю приложение на компоненты, подключаю и обрабатываю данные
+            с API, настраиваю маршрутизацию и состояние.
+          </p>
+
+          <p>
+            Работал и с нативными{' '}
+            <span className="accent">веб-компонентами</span> — Custom Elements
+            и Shadow DOM без фреймворка. На них хорошо видно, что именно
+            фреймворк берёт на себя.
           </p>
 
           <p>
@@ -38,21 +64,24 @@ export const About = () => {
             <span className="tech">Next.js</span>,{' '}
             <span className="tech">Vite</span>,{' '}
             <span className="tech">Tailwind</span>,{' '}
-            <span className="tech">Swiper</span>. Следую компонентному подходу
-            и стараюсь писать переиспользуемый код.
+            <span className="tech">Swiper</span>. Код раскладываю по слоям
+            и стараюсь писать так, чтобы его можно было переиспользовать.
           </p>
 
           <p>
-            Постоянно учусь — прохожу курсы, читаю документацию и пробую
-            новые вещи на практике. Мне важно понимать, как и зачем всё работает.
+            <span className="accent">Открыт к работе</span> — доработать
+            существующий проект или собрать новый с нуля. Напишите, что нужно
+            сделать: разберусь в задаче и предложу, как её решить.
           </p>
 
-          <p>
-            <span className="accent">Открыт для сотрудничества</span> —
-            могу доработать сайт или сделать новый с нуля. Стараюсь понять
-            задачу и предложить оптимальное решение.
-          </p>
         </div>
+
+        <p className="about-note">
+          <span className="accent">Этот сайт — тоже мой проект.</span>{' '}
+          Next.js, TypeScript и SCSS по методологии Feature-Sliced Design,
+          со своей админкой: проекты и навыки редактируются через неё,
+          а обложки снимаются скриншотом прямо по ссылке на сайт.
+        </p>
       </div>
     </div>
   );

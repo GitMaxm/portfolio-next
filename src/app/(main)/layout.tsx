@@ -10,7 +10,7 @@ import { NavBar } from "@/widgets/main/navbar";
 export const metadata: Metadata = {
   title: "Максим Иваненко | Веб-разработчик | Портфолио и Проекты",
   description: "Портфолио веб-разработчика Максима Иваненко. Проекты, опыт и навыки: от адаптивной вёрстки до работы с React и Next.js. Современные сайты и интерфейсы.",
-  keywords: "Максим Иваненко, веб-разработчик, портфолио, проекты, фронтенд, HTML, CSS, JavaScript, React, Next.js, верстальщик, интерфейсы, адаптивная вёрстка",
+  keywords: "Максим Иваненко, фронтенд-разработчик, портфолио, проекты, фронтенд, HTML, CSS, JavaScript, TypeScript, React, Next.js, веб-компоненты, интерфейсы, адаптивная вёрстка",
   authors: [{ name: "Максим Иваненко" }],
   robots: "index, follow",
   openGraph: {
@@ -33,8 +33,6 @@ export const viewport: Viewport = {
   themeColor: "#5c62ec",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function MainLayout({ children }: { children: ReactNode }) {

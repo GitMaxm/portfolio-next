@@ -1,12 +1,9 @@
 // Навигация
-export { ADMIN_NAV_LINKS, NAVIGATION_LINKS } from './navigation'
+export { ADMIN_NAV_LINKS, NAVIGATION_LINKS, PUBLIC_NAV_LINKS } from './navigation'
 
 // Контакты
-export { COMPANY_CONTACTS } from './contacts'
+export { CONTACTS } from './contacts'
 export { SOCIAL_LINKS } from './socialLink'
-
-// Фильтры
-export { FILTERS } from './filters'
 
 // Таблицы в админке
 export { PROJECT_PROPERTIES_NAME, THEAD_TABLE } from './projectPropertiesName'

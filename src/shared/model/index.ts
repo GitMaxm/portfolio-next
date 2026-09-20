@@ -1,4 +1,4 @@
-export type { ICompanyContacts } from './contacts'
+export type { IContacts } from './contacts'
 export type { IProjectFilter } from './filter'
 export type { INavigationLink } from './navigation'
 export type { ISocialLink } from './social'

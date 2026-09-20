@@ -4,7 +4,7 @@ export const NAVIGATION_LINKS: INavigationLink[] = [
   { href: '/', label: 'Главная', title: 'Обо мне и моих навыках' },
   { href: '/projects/', label: 'Проекты', title: 'Мои работы и проекты' },
   { href: '/contacts/', label: 'Контакты', title: 'Как со мной связаться' },
-  { href: '/admin/', label: 'Админка', title: 'Админка' },
+  { href: '/admin/', label: 'Админка', title: 'Админка', devOnly: true },
 ];
 
 export const ADMIN_NAV_LINKS: INavigationLink[] = [
@@ -12,3 +12,11 @@ export const ADMIN_NAV_LINKS: INavigationLink[] = [
   { href: '/admin/projects/', label: 'Проекты', title: 'Управление проектами' },
   { href: '/admin/skills/', label: 'Навыки', title: 'Управление навыками' },
 ];
+
+/**
+ * Что показываем посетителю. Админка остаётся только в dev: авторизации в ней
+ * нет, и в проде её ссылке в меню не место.
+ */
+export const PUBLIC_NAV_LINKS = NAVIGATION_LINKS.filter(
+  (link) => !link.devOnly || process.env.NODE_ENV === 'development',
+);

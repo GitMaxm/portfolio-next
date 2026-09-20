@@ -1,14 +1,11 @@
-import './style.css';
-
-import { FILTERS } from "@/shared/config";
 
 import type { IFilterControlsProps } from "../model/types";
 
-export const FilterControls = ({ activeFilter, onFilterClick }: IFilterControlsProps) => {
+export const FilterControls = ({ filters, activeFilter, onFilterClick }: IFilterControlsProps) => {
 
   return (
     <div className='project-filter'>
-      {FILTERS.map(item => (
+      {filters.map(item => (
         <button
           className={activeFilter === item.category ? 'active' : ''}
           key={item.category}

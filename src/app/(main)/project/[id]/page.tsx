@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { type IProject, projectsApi } from '@/entities/main/project';
+import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
 import { BtnGitHub } from '@/shared/ui/main';
 
 import type { IProjectPageProps } from './types';
@@ -29,29 +30,31 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
           <h1 className="title-1">{project.title}</h1>
 
           <Image
-            src={`/img/projects/${project.image.main}`}
+            src={PROJECT_IMAGES_URL + project.image.main}
             alt={project.title}
-            width={800}
-            height={600}
+            width={PROJECT_IMAGE_SIZES.main.width}
+            height={PROJECT_IMAGE_SIZES.main.height}
             className="project-details__img"
           />
 
-          <div className="project-details__desc">
-            <p><span>Стек</span>: {project.stack}</p>
-          </div>
+          <p className="project-details__desc">
+            <span>Стек</span>: {project.stack}
+          </p>
 
-          <div className="project-details__desc">
-            <span>Инструменты</span>:
-            <ul>
-              {project.tools.map(tool => (
-                <li key={tool}>{tool}</li>
-              ))}
-            </ul>
-          </div>
+          {project.tools.length > 0 && (
+            <div className="project-details__desc">
+              <span>Инструменты</span>:
+              <ul className="project__tools project__tools--center">
+                {project.tools.map(tool => (
+                  <li key={tool}>{tool}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-          <div className="project-details__desc">
-            <p><span>Описание</span>: {project.description}</p>
-          </div>
+          <p className="project-details__desc">
+            <span>Описание</span>: {project.description}
+          </p>
 
           <div className="project-details__links">
             {project.links.gitHub && <BtnGitHub gitHubLink={project.links.gitHub}/>}

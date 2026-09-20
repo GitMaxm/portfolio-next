@@ -1,8 +1,9 @@
-import type { ICompanyContacts } from '@/shared/model';
+import type { IContacts } from '@/shared/model';
 
-export const COMPANY_CONTACTS: ICompanyContacts = {
-  email: "ivanmax29@yandex.ru",
-  emailLink: "mailto:ivanmax29@yandex.ru",
-
-  telegramLink: "https://t.me/sonyfox"
+export const CONTACTS: IContacts = {
+  location: 'Москва, Россия',
+  telegram: '@sonyfox',
+  telegramLink: 'https://t.me/sonyfox',
+  email: 'ivanmax29@yandex.ru',
+  emailLink: 'mailto:ivanmax29@yandex.ru',
 };
