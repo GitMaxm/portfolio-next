@@ -1,0 +1,82 @@
+@use "@/shared/styles/variablesAdmin" as *;
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+// ─── Зона перетаскивания ──────────────────────────────────────
+.zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 168px;
+  padding: 8px;
+  border: $border-dashed;
+  border-radius: $radius-md;
+  background-color: $color-bg-secondary;
+  cursor: pointer;
+  overflow: hidden;
+  transition: $transition-hover;
+
+  &:hover {
+    border-color: $color-accent;
+  }
+
+  &:has(:focus-visible) {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.over {
+  border-color: $color-accent;
+  background-color: $color-accent-bg;
+}
+
+.busy {
+  cursor: progress;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: $radius-sm;
+  object-fit: contain;
+}
+
+.placeholder {
+  padding: 0 10px;
+  font-size: 13px;
+  color: $color-hint;
+  text-align: center;
+}
+
+// Настоящий input прячем: роль кнопки играет вся зона.
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+// ─── Подпись под зоной ────────────────────────────────────────
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 26px;
+}
+
+.fileName {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $color-hint;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

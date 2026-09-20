@@ -5,12 +5,21 @@ import { Button, FormField } from "@/shared/ui/admin"
 
 import type { IProjectFormProps } from "../model/types"
 import { useProjectForm } from "../model/useProjectForm"
+import { ImageUpload } from "./ImageUpload"
 import styles from './ProjectForm.module.scss'
 
 export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
   const {
     isCreate,
     isSubmitting,
+    image,
+    isImageBusy,
+    imageBusyLabel,
+    previewLink,
+    setPreviewLink,
+    handleImageSelect,
+    handleImageCapture,
+    handleImageRemove,
     selectedTools,
     handleToolClick,
     handleFormSubmit,
@@ -77,6 +86,37 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         />
       </FormField>
 
+      <FormField label="Обложка">
+        <div className={styles.imageRow}>
+          <ImageUpload
+            fileName={image.preview ?? image.main}
+            busyLabel={imageBusyLabel}
+            onSelect={handleImageSelect}
+            onRemove={handleImageRemove}
+          />
+
+          <div className={styles.imageAside}>
+            <p className={styles.imageNote}>
+              Хватит одной картинки любого размера: сервер сам обрежет её под
+              обложку в списке (370 × 297) и под страницу проекта (800 × 600).
+            </p>
+
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={handleImageCapture}
+              disabled={isImageBusy || !previewLink.trim()}
+            >
+              Снять скриншот сайта
+            </Button>
+
+            <span className={styles.imageHint}>
+              Скриншот снимается со «Ссылки на проект»
+            </span>
+          </div>
+        </div>
+      </FormField>
+
       <FormField label="Ссылки">
         <div className={styles.linksRow}>
           <div>
@@ -94,14 +134,15 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
               name="previewLink"
               type="text"
               placeholder="Ссылка на проект"
-              defaultValue={project?.links?.preview ?? ''}
+              value={previewLink}
+              onChange={(e) => setPreviewLink(e.target.value)}
             />
           </div>
         </div>
       </FormField>
 
       <div className={styles.actions}>
-        <Button type="submit" variant="primary" disabled={isSubmitting}>
+        <Button type="submit" variant="primary" disabled={isSubmitting || isImageBusy}>
           {isSubmitting ? pendingLabel : submitLabel}
         </Button>
 

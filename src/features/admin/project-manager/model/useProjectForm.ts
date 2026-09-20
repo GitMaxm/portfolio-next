@@ -1,18 +1,37 @@
 import { useRouter } from 'next/navigation'
 import { type FormEvent, useState } from 'react'
 
-import { type IProject, projectsApi, type TProjectDraft } from '@/entities/main/project'
+import {
+  type IProject,
+  type IProjectImage,
+  projectsApi,
+  type TProjectDraft,
+} from '@/entities/main/project'
+import { captureProjectImage, type IProjectImageNames, uploadProjectImage } from '@/shared/api'
+import { ACCEPTED_IMAGE_TYPES, MAX_IMAGE_SIZE } from '@/shared/config'
 import { getFormString, swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
 
-import type { TProjectFormMode } from './types'
+import type { TImageTask, TProjectFormMode } from './types'
+
+const IMAGE_BUSY_LABELS: Record<TImageTask, string> = {
+  upload: 'Загрузка…',
+  capture: 'Снимаю скриншот…',
+}
 
 export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edit') => {
   const [selectedTools, setSelectedTools] = useState<Set<string>>(new Set(project?.tools ?? []))
+  const [image, setImage] = useState<IProjectImage>(project?.image ?? {})
+  const [imageTask, setImageTask] = useState<TImageTask | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Ссылка на проект — единственное управляемое поле формы: с неё снимается
+  // скриншот, и кнопка должна знать, введено там что-нибудь или ещё нет.
+  const [previewLink, setPreviewLink] = useState(project?.links?.preview ?? '')
 
   const router = useRouter()
 
   const isCreate = mode === 'create'
+  const isImageBusy = imageTask !== null
 
   const handleToolClick = (tool: string) => {
     setSelectedTools((prev) => {
@@ -24,10 +43,68 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
     })
   }
 
+  /** Оба способа получить картинку кончаются одинаково: именами файлов или swal. */
+  const runImageTask = async (
+    task: TImageTask,
+    load: () => Promise<IProjectImageNames>,
+    failureTitle: string,
+  ) => {
+    if (isImageBusy) {
+      return
+    }
+
+    setImageTask(task)
+
+    try {
+      setImage(await load())
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : 'Попробуйте ещё раз'
+
+      await swalError(failureTitle, reason)
+    } finally {
+      setImageTask(null)
+    }
+  }
+
+  const handleImageSelect = async (file: File) => {
+    // Те же правила проверит сервер по байтам — здесь это только быстрый отказ,
+    // чтобы не гонять заведомо негодный файл по сети.
+    if (!ACCEPTED_IMAGE_TYPES.includes(file.type)) {
+      await swalError('Не тот формат', 'Подойдут JPEG, PNG, WebP, AVIF или GIF')
+
+      return
+    }
+
+    if (file.size > MAX_IMAGE_SIZE) {
+      await swalError('Файл слишком большой', `Максимум ${MAX_IMAGE_SIZE / 1024 / 1024} МБ`)
+
+      return
+    }
+
+    await runImageTask('upload', () => uploadProjectImage(file), 'Не удалось загрузить')
+  }
+
+  const handleImageCapture = async () => {
+    const url = previewLink.trim()
+
+    if (!url) {
+      await swalError('Нет ссылки', 'Скриншот снимается со «Ссылки на проект» — заполните её')
+
+      return
+    }
+
+    await runImageTask('capture', () => captureProjectImage(url), 'Не удалось снять скриншот')
+  }
+
+  // Старые файлы в public не трогаем: на них может ссылаться другая запись.
+  const handleImageRemove = () => {
+    setImage({})
+  }
+
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (isSubmitting) {
+    if (isSubmitting || isImageBusy) {
       return;
     }
 
@@ -53,10 +130,10 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
         stack: getFormString(data, 'stack'),
         description: getFormString(data, 'description'),
         tools: [...selectedTools],
-        image: project?.image ?? {},
+        image,
         links: {
           gitHub: getFormString(data, 'github'),
-          preview: getFormString(data, 'previewLink'),
+          preview: previewLink,
         },
       };
 
@@ -86,6 +163,14 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   return {
     isCreate,
     isSubmitting,
+    image,
+    isImageBusy,
+    imageBusyLabel: imageTask ? IMAGE_BUSY_LABELS[imageTask] : undefined,
+    previewLink,
+    setPreviewLink,
+    handleImageSelect,
+    handleImageCapture,
+    handleImageRemove,
     selectedTools,
     handleToolClick,
     handleFormSubmit,

@@ -23,34 +23,37 @@
       "id": "0"
     },
     {
-      "id": "1",
       "title": "Freedom studios academy",
       "stack": "HTML",
+      "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
       "tools": [
         "SCSS"
       ],
-      "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
+      "image": {
+        "main": "studio-gulp-2e4b11.webp",
+        "preview": "studio-gulp-2e4b11-card.webp"
+      },
       "links": {
         "gitHub": "https://github.com/GitMaxm/studio-gulp",
         "preview": "https://gitmaxm.github.io/studio-gulp/"
       },
-      "image": {
-        "main": "studios-academy.webp",
-        "preview": "studios-academy-big.webp"
-      }
+      "id": "1"
     },
     {
       "title": "Gaming Consoles",
       "stack": "HTML",
+      "description": "выыв",
       "tools": [
         "HTML"
       ],
-      "description": "выыв",
+      "image": {
+        "main": "game-gulp-91b065.webp",
+        "preview": "game-gulp-91b065-card.webp"
+      },
       "links": {
         "gitHub": "",
-        "preview": ""
+        "preview": "https://gitmaxm.github.io/game-gulp/"
       },
-      "image": {},
       "id": "2"
     }
   ],

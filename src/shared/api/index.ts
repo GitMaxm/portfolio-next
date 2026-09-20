@@ -1,4 +1,6 @@
 export { apiClient } from './apiClient'
 export { ApiError } from './ApiError'
 export { orNotFound } from './orNotFound'
+export type { IProjectImageNames } from './projectImageApi'
+export { captureProjectImage, uploadProjectImage } from './projectImageApi'
 export type { TRequestOptions } from './types'

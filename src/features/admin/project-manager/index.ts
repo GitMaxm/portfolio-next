@@ -1,4 +1,5 @@
 export type {
+  IImageUploadProps,
   IProjectFormProps,
   IProjectListProps,
   IProjectTableProps,
