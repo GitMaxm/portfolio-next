@@ -3,14 +3,14 @@ import path from 'node:path'
 import process from 'node:process'
 
 const IMAGES_DIR = path.join(process.cwd(), 'public', 'img', 'projects')
-const MOCK_FILE = path.join(process.cwd(), 'mock', 'projectsTestTable.json')
+const CONTENT_FILE = path.join(process.cwd(), 'content', 'portfolio.json')
 
 const GENERATED_NAME = /-[0-9a-f]{6,16}(-card)?\.webp$/
 
 const formatSize = (bytes) => `${Math.round(bytes / 1024)} КБ`
 
 const collectUsedNames = async () => {
-  const { projects = [] } = JSON.parse(await readFile(MOCK_FILE, 'utf8'))
+  const { projects = [] } = JSON.parse(await readFile(CONTENT_FILE, 'utf8'))
 
   const used = new Set()
 
