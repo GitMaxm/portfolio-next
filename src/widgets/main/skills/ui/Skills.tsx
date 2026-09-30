@@ -1,9 +1,9 @@
 import './style.css';
 
-import { SkillCard, skillsApi } from '@/entities/main/skill';
+import { SkillCard, skillsContent } from '@/entities/main/skill';
 
-export const Skills = async () => {
-  const skills = await skillsApi.getSkills();
+export const Skills = () => {
+  const skills = skillsContent.getSkills();
 
   return (
     <div className="skills">

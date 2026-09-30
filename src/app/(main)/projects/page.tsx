@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 
-import { projectsApi } from '@/entities/main/project';
+import { projectsContent } from '@/entities/main/project';
 import { FilteredProjectList } from '@/features/main/project-filter';
-
-import type { IProjectsPageProps } from './types';
 
 export const metadata: Metadata = {
   title: 'Проекты',
@@ -13,11 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/projects/' },
 };
 
-const ProjectsPage = async ({ searchParams }: IProjectsPageProps) => {
-  const { stack } = await searchParams;
-  const projects = await projectsApi.getProjects();
-
-  const activeFilter = stack || 'all';
+const ProjectsPage = () => {
+  const projects = projectsContent.getProjects();
 
   return (
     <main className="section">
@@ -27,10 +22,7 @@ const ProjectsPage = async ({ searchParams }: IProjectsPageProps) => {
           Здесь собраны мои работы. Есть и вёрстка, и приложения на React.
           Каждая работа включает ссылки на демо-версию и исходный код на GitHub.
         </p>
-        <FilteredProjectList
-          projects={projects}
-          activeFilter={activeFilter}
-        />
+        <FilteredProjectList projects={projects}/>
       </div>
     </main>
   );

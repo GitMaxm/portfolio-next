@@ -1,8 +1,9 @@
 import { apiClient } from '@/shared/api';
+import { CONTENT_API_URL } from '@/shared/config';
 
 import type { ISkill, TSkillDraft, TSkillId } from '../model/types';
 
-const JSON_SERVER_URL = 'http://localhost:3001/skills/'
+const JSON_SERVER_URL = `${CONTENT_API_URL}/skills/`
 
 export const skillsApi = {
   getSkills() {

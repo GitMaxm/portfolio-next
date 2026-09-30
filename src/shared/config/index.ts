@@ -1,3 +1,4 @@
+export { CONTENT_API_URL } from './api'
 export { CONTACTS } from './contacts'
 export { ADMIN_NAV_LINKS, NAVIGATION_LINKS, PUBLIC_NAV_LINKS } from './navigation'
 export { PROJECT_PROPERTIES_NAME, THEAD_TABLE } from './projectPropertiesName'
@@ -9,7 +10,6 @@ export {
   SITE_URL,
 } from './site'
 export { SOCIAL_LINKS } from './socialLink'
-export { THEAD_PROJECTS } from './theadProjects'
 export { THEAD_SKILLS } from './theadSkills'
 export {
   ACCEPTED_IMAGE_TYPES,

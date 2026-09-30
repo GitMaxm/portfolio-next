@@ -26,6 +26,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@content/*": [
+        "./content/*"
       ]
     },
     "forceConsistentCasingInFileNames": true,
@@ -39,6 +42,7 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next/dev/types/**/*.ts"
   ]
 }

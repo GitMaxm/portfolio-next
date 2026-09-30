@@ -1,11 +1,17 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // output: 'export', режим статической генерации
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
-  // Алиасы путей (@/*) берутся из jsconfig.json — Turbopack читает их сам
-};
+import { PHASE_DEVELOPMENT_SERVER } from 'next/constants.js';
 
-export default nextConfig;
+const BASE_EXTENSIONS = ['tsx', 'ts', 'jsx', 'js'];
+const ADMIN_EXTENSIONS = ['admin.tsx', 'admin.ts'];
+
+export default function nextConfig(phase) {
+  const isDev = phase === PHASE_DEVELOPMENT_SERVER;
+
+  return {
+    output: isDev ? undefined : 'export',
+    pageExtensions: isDev ? [...ADMIN_EXTENSIONS, ...BASE_EXTENSIONS] : BASE_EXTENSIONS,
+    trailingSlash: true,
+    images: {
+      unoptimized: true,
+    },
+  };
+}

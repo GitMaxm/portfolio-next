@@ -8,6 +8,12 @@ export interface IFilterControlsProps {
 }
 
 export interface IFilteredProjectListProps {
-  activeFilter: string;
   projects: IProject[];
+}
+
+export interface IProjectsViewProps {
+  activeFilter: string;
+  filters: IProjectFilter[];
+  projects: IProject[];
+  onFilterClick: (filter: string) => void;
 }

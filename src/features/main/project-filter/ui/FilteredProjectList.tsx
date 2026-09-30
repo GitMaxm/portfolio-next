@@ -1,33 +1,43 @@
 'use client';
 
-import { ProjectCard } from '@/entities/main/project';
+import { Suspense } from 'react';
 
-import { buildFilters } from "../lib/buildFilters";
-import type { IFilteredProjectListProps } from "../model/types";
-import { useProjectFilter } from "../model/useProjectFilter";
-import { FilterControls } from "./FilterControls";
+import { buildFilters } from '../lib/buildFilters';
+import type { IFilteredProjectListProps } from '../model/types';
+import { useFilterNavigation, useProjectFilter } from '../model/useProjectFilter';
+import { ProjectsView } from './ProjectsView';
 
-export const FilteredProjectList = ({ activeFilter, projects }: IFilteredProjectListProps) => {
-  const { filteredProjects, handleFilterClick } = useProjectFilter(projects, activeFilter);
-
-  const filters = buildFilters(projects);
+const AllProjects = ({ projects }: IFilteredProjectListProps) => {
+  const handleFilterClick = useFilterNavigation();
 
   return (
-    <>
-      <FilterControls
-        filters={filters}
-        activeFilter={activeFilter}
-        onFilterClick={handleFilterClick}
-      />
+    <ProjectsView
+      activeFilter="all"
+      filters={buildFilters(projects)}
+      projects={projects}
+      onFilterClick={handleFilterClick}
+    />
+  );
+};
 
-      <ul className="projects" aria-label="Список проектов">
-        {filteredProjects.length
-          ? filteredProjects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))
-          : <li className="projects-empty">В этой категории пока нет проектов</li>
-        }
-      </ul>
-    </>
+const ProjectsFilteredByUrl = ({ projects }: IFilteredProjectListProps) => {
+  const { activeFilter, filteredProjects, handleFilterClick } = useProjectFilter(projects);
+
+  return (
+    <ProjectsView
+      activeFilter={activeFilter}
+      filters={buildFilters(projects)}
+      projects={filteredProjects}
+      onFilterClick={handleFilterClick}
+    />
+  );
+};
+
+export const FilteredProjectList = ({ projects }: IFilteredProjectListProps) => {
+
+  return (
+    <Suspense fallback={<AllProjects projects={projects}/>}>
+      <ProjectsFilteredByUrl projects={projects}/>
+    </Suspense>
   );
 };

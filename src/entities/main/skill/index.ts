@@ -1,4 +1,5 @@
 export { skillsApi } from './api/skillsApi'
+export { skillsContent } from './api/skillsContent'
 export { SKILL_ICON_SIZE, SKILL_ICON_VIEW_BOX, SKILL_LEVELS } from './config/skillOptions'
 export { getLevelClass } from './lib/getLevelClass'
 export type { IParsedIcon } from './lib/parseIconInput'

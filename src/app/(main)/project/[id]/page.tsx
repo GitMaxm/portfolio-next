@@ -3,11 +3,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { type IProject, projectsApi } from '@/entities/main/project';
+import { type IProject, projectsContent } from '@/entities/main/project';
 import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
 import { BtnGitHub } from '@/shared/ui/main';
 
 import type { IProjectPageProps } from './types';
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return projectsContent.getProjects().map((project) => ({ id: String(project.id) }));
+}
 
 const buildDescription = (project: IProject): string => {
   const tools = project.tools.length ? ` Инструменты: ${project.tools.join(', ')}.` : '';
@@ -18,7 +24,7 @@ const buildDescription = (project: IProject): string => {
 export async function generateMetadata({ params }: IProjectPageProps): Promise<Metadata> {
   const { id } = await params;
 
-  const project = await projectsApi.getProjectById(id).catch(() => null);
+  const project = projectsContent.getProjectById(id);
 
   if (!project) {
     return { title: 'Проект не найден' };
@@ -53,13 +59,7 @@ export async function generateMetadata({ params }: IProjectPageProps): Promise<M
 export default async function ProjectPage({ params }: IProjectPageProps) {
   const { id } = await params;
 
-  let project: IProject;
-
-  try {
-    project = await projectsApi.getProjectById(id);
-  } catch {
-    notFound();
-  }
+  const project = projectsContent.getProjectById(id);
 
   if (!project) {
     notFound();
