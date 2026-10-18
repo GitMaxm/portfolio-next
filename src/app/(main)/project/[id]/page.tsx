@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 
 import { type IProject, projectsContent } from '@/entities/main/project';
 import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
@@ -56,6 +57,30 @@ export async function generateMetadata({ params }: IProjectPageProps): Promise<M
   };
 }
 
+const getDisplayUrl = (url: string): string => {
+  try {
+    const { host, pathname } = new URL(url);
+
+    return host + pathname.replace(/\/$/, '');
+  } catch {
+    return url;
+  }
+};
+
+const getSiblings = (project: IProject) => {
+  const projects = projectsContent.getProjects();
+  const index = projects.findIndex((item) => String(item.id) === String(project.id));
+
+  if (projects.length < 2 || index === -1) {
+    return null;
+  }
+
+  return {
+    prev: projects[(index - 1 + projects.length) % projects.length],
+    next: projects[(index + 1) % projects.length],
+  };
+};
+
 export default async function ProjectPage({ params }: IProjectPageProps) {
   const { id } = await params;
 
@@ -65,54 +90,95 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
     notFound();
   }
 
+  const cover = project.image?.main ?? project.image?.preview;
+  const siblings = getSiblings(project);
+
   return (
     <main className="section">
       <div className="container">
-        <div className="project-details">
-          <h1 className="title-1">{project.title}</h1>
+        <article className="project-page">
+          <Link href="/projects/" className="project-page__back">
+            <FiArrowLeft aria-hidden/>
+            Все проекты
+          </Link>
 
-          <Image
-            src={PROJECT_IMAGES_URL + project.image.main}
-            alt={project.title}
-            width={PROJECT_IMAGE_SIZES.main.width}
-            height={PROJECT_IMAGE_SIZES.main.height}
-            className="project-details__img"
-          />
+          <header className="project-page__head">
+            <h1 className="title-1 project-page__title">{project.title}</h1>
 
-          <p className="project-details__desc">
-            <span>Стек</span>: {project.stack}
-          </p>
+            {project.description && (
+              <p className="project-page__lead">{project.description}</p>
+            )}
 
-          {project.tools.length > 0 && (
-            <div className="project-details__desc">
-              <span>Инструменты</span>:
-              <ul className="project__tools project__tools--center">
-                {project.tools.map(tool => (
+            <ul className="project__tools project-page__tags" aria-label="Стек и инструменты">
+              {project.stack && <li className="project__stack">{project.stack}</li>}
+              {project.tools
+                .filter((tool) => tool !== project.stack)
+                .map((tool) => (
                   <li key={tool}>{tool}</li>
                 ))}
-              </ul>
-            </div>
+            </ul>
+
+            {(project.links.preview || project.links.gitHub) && (
+              <div className="project-page__actions">
+                {project.links.preview && (
+                  <a
+                    className="btn"
+                    href={project.links.preview}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Открыть сайт
+                    <FiArrowUpRight aria-hidden/>
+                  </a>
+                )}
+                {project.links.gitHub && <BtnGitHub gitHubLink={project.links.gitHub}/>}
+              </div>
+            )}
+          </header>
+
+          {cover && (
+            <figure className="browser">
+              <div className="browser__bar" aria-hidden>
+                <span className="browser__dots">
+                  <i/><i/><i/>
+                </span>
+                {project.links.preview && (
+                  <span className="browser__url">{getDisplayUrl(project.links.preview)}</span>
+                )}
+              </div>
+              <Image
+                src={PROJECT_IMAGES_URL + cover}
+                alt={`Скриншот сайта «${project.title}»`}
+                width={PROJECT_IMAGE_SIZES.main.width}
+                height={PROJECT_IMAGE_SIZES.main.height}
+                className="browser__img"
+                priority
+              />
+            </figure>
           )}
 
-          <p className="project-details__desc">
-            <span>Описание</span>: {project.description}
-          </p>
-
-          <div className="project-details__links">
-            {project.links.gitHub && <BtnGitHub gitHubLink={project.links.gitHub}/>}
-            {project.links.preview && (
-              <Link
-                className="btn-outline"
-                href={project.links.preview}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ссылка на сайт
+          {siblings && (
+            <nav className="project-pager" aria-label="Другие проекты">
+              <Link href={`/project/${siblings.prev.id}`} className="project-pager__link">
+                <span className="project-pager__label">
+                  <FiArrowLeft aria-hidden/>
+                  Предыдущий
+                </span>
+                <span className="project-pager__title">{siblings.prev.title}</span>
               </Link>
-            )}
-          </div>
-
-        </div>
+              <Link
+                href={`/project/${siblings.next.id}`}
+                className="project-pager__link project-pager__link--next"
+              >
+                <span className="project-pager__label">
+                  Следующий
+                  <FiArrowRight aria-hidden/>
+                </span>
+                <span className="project-pager__title">{siblings.next.title}</span>
+              </Link>
+            </nav>
+          )}
+        </article>
       </div>
     </main>
   );
