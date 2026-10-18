@@ -1,12 +1,14 @@
 'use client'
 
-import { STACK_OPTIONS, TOOLS_LIST } from "@/entities/main/project"
+import { STACK_OPTIONS } from "@/entities/main/project"
 import { Button, FormField } from "@/shared/ui/admin"
 
 import type { IProjectFormProps } from "../model/types"
 import { useProjectForm } from "../model/useProjectForm"
-import { ImageUpload } from "./ImageUpload"
 import styles from './ProjectForm.module.scss'
+import { ProjectImageField } from "./ProjectImageField"
+import { ProjectLinksField } from "./ProjectLinksField"
+import { ProjectToolsField } from "./ProjectToolsField"
 
 export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
   const {
@@ -17,6 +19,7 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
     imageBusyLabel,
     previewLink,
     setPreviewLink,
+    markDirty,
     handleImageSelect,
     handleImageCapture,
     handleImageRemove,
@@ -30,7 +33,12 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
   const pendingLabel = isCreate ? 'Создание…' : 'Сохранение…'
 
   return (
-    <form className={styles.form} onSubmit={handleFormSubmit} aria-busy={isSubmitting}>
+    <form
+      className={styles.form}
+      onSubmit={handleFormSubmit}
+      onInput={markDirty}
+      aria-busy={isSubmitting}
+    >
       {!isCreate && (
         <FormField label="ID">
           <span className={styles.idDisplay}>{project?.id}</span>
@@ -42,6 +50,7 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
           id="f-title"
           name="title"
           type="text"
+          required
           placeholder="Название проекта"
           defaultValue={project?.title ?? ''}
         />
@@ -59,87 +68,32 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         </select>
       </FormField>
 
-      <FormField label="Инструменты">
-        <div className={styles.toolsGrid}>
-          {TOOLS_LIST.map((tool) => (
-            <button
-              key={tool}
-              type="button"
-              className={`${styles.chip} ${selectedTools.has(tool) ? styles.active : ''}`}
-              onClick={() => handleToolClick(tool)}
-            >
-              <span className={styles.chipCheck}>
-                {selectedTools.has(tool) ? '✓' : ''}
-              </span>
-              {tool}
-            </button>
-          ))}
-        </div>
-      </FormField>
+      <ProjectToolsField selectedTools={selectedTools} onToolClick={handleToolClick}/>
 
       <FormField htmlFor="f-desc" label="Описание">
         <textarea
           id="f-desc"
           name="description"
-          placeholder="Описание проекта"
+          required
+          placeholder="Что это за проект и что в нём интересного"
           defaultValue={project?.description ?? ''}
         />
       </FormField>
 
-      <FormField label="Обложка">
-        <div className={styles.imageRow}>
-          <ImageUpload
-            fileName={image.preview ?? image.main}
-            busyLabel={imageBusyLabel}
-            onSelect={handleImageSelect}
-            onRemove={handleImageRemove}
-          />
+      <ProjectImageField
+        image={image}
+        busyLabel={imageBusyLabel}
+        canCapture={Boolean(previewLink.trim())}
+        onSelect={handleImageSelect}
+        onCapture={handleImageCapture}
+        onRemove={handleImageRemove}
+      />
 
-          <div className={styles.imageAside}>
-            <p className={styles.imageNote}>
-              Хватит одной картинки любого размера: сервер обрежет её до 4 : 3
-              и сохранит для списка (400 × 300) и для страницы проекта (800 × 600).
-            </p>
-
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={handleImageCapture}
-              disabled={isImageBusy || !previewLink.trim()}
-            >
-              Снять скриншот сайта
-            </Button>
-
-            <span className={styles.imageHint}>
-              Скриншот снимается со «Ссылки на проект»
-            </span>
-          </div>
-        </div>
-      </FormField>
-
-      <FormField label="Ссылки">
-        <div className={styles.linksRow}>
-          <div>
-            <div className={styles.sectionLabel}>Код проекта</div>
-            <input
-              name="github"
-              type="text"
-              placeholder="Код проекта"
-              defaultValue={project?.links?.gitHub ?? ''}
-            />
-          </div>
-          <div>
-            <div className={styles.sectionLabel}>Ссылка на проект</div>
-            <input
-              name="previewLink"
-              type="text"
-              placeholder="Ссылка на проект"
-              value={previewLink}
-              onChange={(e) => setPreviewLink(e.target.value)}
-            />
-          </div>
-        </div>
-      </FormField>
+      <ProjectLinksField
+        gitHubLink={project?.links?.gitHub ?? ''}
+        previewLink={previewLink}
+        onPreviewLinkChange={setPreviewLink}
+      />
 
       <div className={styles.actions}>
         <Button type="submit" variant="primary" disabled={isSubmitting || isImageBusy}>

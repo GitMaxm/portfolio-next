@@ -16,6 +16,7 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
     iconColor,
     handleIconPathChange,
     handleIconColorChange,
+    markDirty,
     handleFormSubmit,
     handleCancelClick,
   } = useSkillForm(skill, mode)
@@ -24,7 +25,12 @@ export const SkillForm = ({ skill, mode = 'edit' }: ISkillFormProps) => {
   const pendingLabel = isCreate ? 'Создание…' : 'Сохранение…'
 
   return (
-    <form className={styles.form} onSubmit={handleFormSubmit} aria-busy={isSubmitting}>
+    <form
+      className={styles.form}
+      onSubmit={handleFormSubmit}
+      onInput={markDirty}
+      aria-busy={isSubmitting}
+    >
       {!isCreate && (
         <FormField label="ID">
           <span className={styles.idDisplay}>{skill?.id}</span>

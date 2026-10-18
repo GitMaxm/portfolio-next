@@ -9,7 +9,8 @@ import {
   type TSkillDraft,
   type TSkillLevel,
 } from '@/entities/main/skill'
-import { getFormString, swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
+import { getFormString, swalConfirm, swalError, swalSuccess } from '@/shared/lib'
+import { UNSAVED_CHANGES_MESSAGE, useUnsavedChangesGuard } from '@/shared/lib/hooks'
 
 import type { TSkillFormMode } from './types'
 
@@ -20,10 +21,15 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
   const [iconViewBox, setIconViewBox] = useState(skill?.iconViewBox ?? SKILL_ICON_VIEW_BOX)
   const [iconColor, setIconColor] = useState(skill?.iconColor ?? DEFAULT_ICON_COLOR)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isDirty, setIsDirty] = useState(false)
 
   const router = useRouter()
 
   const isCreate = mode === 'create'
+
+  useUnsavedChangesGuard(isDirty && !isSubmitting)
+
+  const markDirty = () => setIsDirty(true)
 
   const handleIconPathChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { path, viewBox } = parseIconInput(e.target.value)
@@ -43,15 +49,7 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
       return;
     }
 
-    // Ссылку на форму забираем синхронно: React обнуляет currentTarget,
-    // как только обработчик уходит в await.
     const form = e.currentTarget;
-
-    const result = await swalSaveConfirm("Сохранить?");
-
-    if (!result.isConfirmed) {
-      return;
-    }
 
     // Флаг снимаем только в catch: после успеха уходим со страницы, и до
     // перехода форма должна оставаться заблокированной.
@@ -61,8 +59,8 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
       const data = new FormData(form);
 
       const skillData: TSkillDraft = {
-        name: getFormString(data, 'name'),
-        description: getFormString(data, 'description'),
+        name: getFormString(data, 'name').trim(),
+        description: getFormString(data, 'description').trim(),
         level: getFormString(data, 'level') as TSkillLevel,
         iconPath,
         iconColor,
@@ -85,11 +83,15 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
   }
 
   const handleCancelClick = async () => {
-    const result = await swalConfirm("Отменить редактирование?", "Отменить редактирование?", "Да");
+    if (isDirty) {
+      const result = await swalConfirm(UNSAVED_CHANGES_MESSAGE, '', 'Уйти');
 
-    if (result.isConfirmed) {
-      router.push('/admin/skills/');
+      if (!result.isConfirmed) {
+        return
+      }
     }
+
+    router.push('/admin/skills/');
   }
 
   return {
@@ -100,6 +102,7 @@ export const useSkillForm = (skill?: ISkill, mode: TSkillFormMode = 'edit') => {
     iconColor,
     handleIconPathChange,
     handleIconColorChange,
+    markDirty,
     handleFormSubmit,
     handleCancelClick,
   }

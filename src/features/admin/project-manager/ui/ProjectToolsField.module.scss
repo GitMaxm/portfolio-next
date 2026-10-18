@@ -1,0 +1,57 @@
+@use "@/shared/styles/variablesAdmin" as *;
+
+.toolsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: $border;
+  border-radius: $radius-pill;
+  background-color: $color-bg;
+  font-family: inherit;
+  font-size: 13px;
+  color: $color-muted;
+  cursor: pointer;
+  transition: $transition-hover;
+  user-select: none;
+
+  &:hover {
+    border: $border-hover;
+    color: $color-text;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+
+  &.active {
+    background-color: $color-accent-bg;
+    border-color: $color-accent;
+    color: $color-accent-text;
+  }
+}
+
+.chipCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 10px;
+
+  .active & {
+    background-color: $color-accent;
+    border-color: $color-accent;
+    color: #fff;
+  }
+}

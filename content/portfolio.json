@@ -61,27 +61,6 @@
       }
     },
     {
-      "id": "daitona",
-      "title": "Daitona",
-      "stack": "HTML",
-      "tools": [
-        "HTML",
-        "SCSS",
-        "JavaScript",
-        "jQuery",
-        "Swiper"
-      ],
-      "description": "Лендинг агентства контент-маркетинга: услуги, кейсы, клиенты, форма заявки и Яндекс Карта с офисом.",
-      "links": {
-        "gitHub": "https://github.com/GitMaxm/daitona-scss",
-        "preview": "https://gitmaxm.github.io/daitona-scss/"
-      },
-      "image": {
-        "main": "daitona-scss-eb58d2d3.webp",
-        "preview": "daitona-scss-eb58d2d3-card.webp"
-      }
-    },
-    {
       "id": "react-crm",
       "title": "CRM для заявок",
       "stack": "React",

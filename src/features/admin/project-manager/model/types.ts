@@ -1,4 +1,4 @@
-import type { IProject, TProjectId } from '@/entities/main/project';
+import type { IProject, IProjectImage, TProjectId } from '@/entities/main/project';
 
 export type TProjectFormMode = 'create' | 'edit';
 
@@ -26,4 +26,24 @@ export interface IImageUploadProps {
   busyLabel?: string;
   onSelect: (file: File) => void;
   onRemove: () => void;
+}
+
+export interface IProjectToolsFieldProps {
+  selectedTools: Set<string>;
+  onToolClick: (tool: string) => void;
+}
+
+export interface IProjectImageFieldProps {
+  image: IProjectImage;
+  canCapture: boolean;
+  busyLabel?: string;
+  onSelect: (file: File) => void;
+  onCapture: () => void;
+  onRemove: () => void;
+}
+
+export interface IProjectLinksFieldProps {
+  gitHubLink: string;
+  previewLink: string;
+  onPreviewLinkChange: (value: string) => void;
 }

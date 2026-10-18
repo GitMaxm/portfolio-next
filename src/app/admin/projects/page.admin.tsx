@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { projectsApi } from "@/entities/main/project";
 import { ProjectList } from "@/features/admin/project-manager";
 import { ButtonLink, PageHeader, TableSkeleton } from "@/shared/ui/admin";
+
+export const metadata: Metadata = { title: 'Проекты' };
 
 /**
  * Загрузку держим в отдельном компоненте: заголовок отдаётся сразу, таблица

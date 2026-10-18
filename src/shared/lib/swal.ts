@@ -18,16 +18,6 @@ export const swalConfirm = (
   });
 };
 
-export const swalSaveConfirm = (title = 'Сохранить?'): Promise<SweetAlertResult> => {
-  return Swal.fire({
-    title,
-    showCancelButton: true,
-    confirmButtonText: 'Сохранить',
-    cancelButtonText: 'Отмена',
-    confirmButtonColor: '#28a745',
-  });
-};
-
 export const swalSuccess = (title = 'Успешно!', text = ''): Promise<SweetAlertResult> => {
   return Swal.fire({
     title,

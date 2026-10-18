@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { projectsApi } from "@/entities/main/project";
 import { skillsApi } from "@/entities/main/skill";
 import { ButtonLink, PageHeader, TableSkeleton } from "@/shared/ui/admin";
 import { Dashboard } from "@/widgets/admin/dashboard";
+
+export const metadata: Metadata = { title: { absolute: 'Обзор — Админка' } };
 
 async function DashboardData() {
   const [projects, skills] = await Promise.all([

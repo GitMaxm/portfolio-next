@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { skillsApi } from "@/entities/main/skill";
 import { SkillList } from "@/features/admin/skill-manager";
 import { ButtonLink, PageHeader, TableSkeleton } from "@/shared/ui/admin";
+
+export const metadata: Metadata = { title: 'Навыки' };
 
 /** См. комментарий в admin/projects/page.tsx — тот же приём со стримингом. */
 async function SkillsData() {

@@ -9,7 +9,8 @@ import {
 } from '@/entities/main/project'
 import { captureProjectImage, type IProjectImageNames, uploadProjectImage } from '@/shared/api'
 import { ACCEPTED_IMAGE_TYPES, MAX_IMAGE_SIZE } from '@/shared/config'
-import { getFormString, swalConfirm, swalError, swalSaveConfirm, swalSuccess } from '@/shared/lib'
+import { getFormString, swalConfirm, swalError, swalSuccess } from '@/shared/lib'
+import { UNSAVED_CHANGES_MESSAGE, useUnsavedChangesGuard } from '@/shared/lib/hooks'
 
 import type { TImageTask, TProjectFormMode } from './types'
 
@@ -23,6 +24,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   const [image, setImage] = useState<IProjectImage>(project?.image ?? {})
   const [imageTask, setImageTask] = useState<TImageTask | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isDirty, setIsDirty] = useState(false)
 
   const [previewLink, setPreviewLink] = useState(project?.links?.preview ?? '')
 
@@ -31,7 +33,12 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   const isCreate = mode === 'create'
   const isImageBusy = imageTask !== null
 
+  useUnsavedChangesGuard(isDirty && !isSubmitting)
+
+  const markDirty = () => setIsDirty(true)
+
   const handleToolClick = (tool: string) => {
+    markDirty()
     setSelectedTools((prev) => {
       const updatedTools = new Set(prev)
 
@@ -54,6 +61,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
 
     try {
       setImage(await load())
+      markDirty()
     } catch (error) {
       const reason = error instanceof Error ? error.message : 'Попробуйте ещё раз'
 
@@ -94,6 +102,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
 
   const handleImageRemove = () => {
     setImage({})
+    markDirty()
   }
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -105,9 +114,9 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
 
     const form = e.currentTarget;
 
-    const result = await swalSaveConfirm("Сохранить?");
+    if (!image.main && !image.preview) {
+      await swalError('Нет обложки', 'Перетащите картинку или снимите скриншот сайта');
 
-    if (!result.isConfirmed) {
       return;
     }
 
@@ -117,14 +126,14 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
       const data = new FormData(form);
 
       const projectData: TProjectDraft = {
-        title: getFormString(data, 'title'),
+        title: getFormString(data, 'title').trim(),
         stack: getFormString(data, 'stack'),
-        description: getFormString(data, 'description'),
+        description: getFormString(data, 'description').trim(),
         tools: [...selectedTools],
         image,
         links: {
-          gitHub: getFormString(data, 'github'),
-          preview: previewLink,
+          gitHub: getFormString(data, 'github').trim(),
+          preview: previewLink.trim(),
         },
       };
 
@@ -144,11 +153,15 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
   }
 
   const handleCancelClick = async () => {
-    const result = await swalConfirm("Отменить редактирование?", "Отменить редактирование?", "Да");
+    if (isDirty) {
+      const result = await swalConfirm(UNSAVED_CHANGES_MESSAGE, '', 'Уйти');
 
-    if (result.isConfirmed) {
-      router.push('/admin/projects/');
+      if (!result.isConfirmed) {
+        return
+      }
     }
+
+    router.push('/admin/projects/');
   }
 
   return {
@@ -159,6 +172,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
     imageBusyLabel: imageTask ? IMAGE_BUSY_LABELS[imageTask] : undefined,
     previewLink,
     setPreviewLink,
+    markDirty,
     handleImageSelect,
     handleImageCapture,
     handleImageRemove,

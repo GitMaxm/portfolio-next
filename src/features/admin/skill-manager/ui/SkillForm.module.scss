@@ -38,6 +38,10 @@
       border-color: $color-accent;
       box-shadow: 0 0 0 3px rgba($color-accent, 0.14);
     }
+
+    &:user-invalid {
+      border-color: $color-danger;
+    }
   }
 
   textarea {
