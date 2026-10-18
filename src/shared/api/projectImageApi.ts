@@ -3,6 +3,7 @@ import type { TRequestOptions } from './types';
 
 const UPLOAD_URL = '/api/admin/upload/';
 const SCREENSHOT_URL = '/api/admin/screenshot/';
+const CLEANUP_URL = '/api/admin/images/cleanup/';
 
 export interface IProjectImageNames {
   main: string;
@@ -42,3 +43,17 @@ export const captureProjectImage = (url: string): Promise<IProjectImageNames> =>
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ url }),
   });
+
+export const cleanupProjectImages = async (names: (string | undefined)[]): Promise<void> => {
+  const existing = names.filter(Boolean);
+
+  if (existing.length === 0) {
+    return;
+  }
+
+  await fetch(CLEANUP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ names: existing }),
+  }).catch(() => {});
+};

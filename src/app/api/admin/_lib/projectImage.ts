@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import sharp from 'sharp';
@@ -19,6 +19,8 @@ interface ISize {
 const WEBP_QUALITY = 82;
 
 const HASH_LENGTH = 8;
+
+const GENERATED_NAME = /^[a-z0-9-]+-[0-9a-f]{6,16}(-card)?\.webp$/;
 
 export const isSupportedImage = (bytes: Uint8Array): boolean => {
   const startsWith = (signature: number[], offset = 0) =>
@@ -57,6 +59,8 @@ const toWebp = (bytes: Uint8Array, { width, height }: ISize): Promise<Buffer> =>
 const fingerprint = (bytes: Uint8Array): string =>
   createHash('sha256').update(bytes).digest('hex').slice(0, HASH_LENGTH);
 
+const imagesDirectory = () => path.join(process.cwd(), 'public', PROJECT_IMAGES_DIR);
+
 export const saveProjectImage = async (
   bytes: Uint8Array,
   sourceName: string,
@@ -74,7 +78,7 @@ export const saveProjectImage = async (
     preview: `${base}-${suffix}-card.webp`,
   };
 
-  const directory = path.join(process.cwd(), 'public', PROJECT_IMAGES_DIR);
+  const directory = imagesDirectory();
 
   await mkdir(directory, { recursive: true });
 
@@ -87,3 +91,20 @@ export const saveProjectImage = async (
 };
 
 export const baseNameFromFile = (fileName: string): string => path.parse(fileName).name;
+
+export const isGeneratedImageName = (name: unknown): name is string =>
+  typeof name === 'string' && GENERATED_NAME.test(name);
+
+export const removeProjectImages = async (names: string[]): Promise<string[]> => {
+  const removed = await Promise.all(names.map(async (name) => {
+    try {
+      await unlink(path.join(imagesDirectory(), name));
+
+      return name;
+    } catch {
+      return null;
+    }
+  }));
+
+  return removed.filter((name): name is string => name !== null);
+};

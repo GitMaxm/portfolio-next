@@ -7,7 +7,12 @@ import {
   projectsApi,
   type TProjectDraft,
 } from '@/entities/main/project'
-import { captureProjectImage, type IProjectImageNames, uploadProjectImage } from '@/shared/api'
+import {
+  captureProjectImage,
+  cleanupProjectImages,
+  type IProjectImageNames,
+  uploadProjectImage,
+} from '@/shared/api'
 import { ACCEPTED_IMAGE_TYPES, MAX_IMAGE_SIZE } from '@/shared/config'
 import { getFormString, swalConfirm, swalError, swalSuccess } from '@/shared/lib'
 import { UNSAVED_CHANGES_MESSAGE, useUnsavedChangesGuard } from '@/shared/lib/hooks'
@@ -135,6 +140,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
           gitHub: getFormString(data, 'github').trim(),
           preview: previewLink.trim(),
         },
+        ...(data.get('draft') ? { draft: true } : {}),
       };
 
       if (isCreate) {
@@ -142,6 +148,10 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
         await swalSuccess('Создано!', 'Проект успешно создан');
       } else if (project) {
         await projectsApi.updateProject({ ...projectData, id: project.id });
+        await cleanupProjectImages(
+          [project.image?.main, project.image?.preview]
+            .filter((name) => name !== image.main && name !== image.preview),
+        );
         await swalSuccess('Сохранено!', 'Изменения сохранены');
       }
 

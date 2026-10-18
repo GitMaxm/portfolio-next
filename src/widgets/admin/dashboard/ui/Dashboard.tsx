@@ -51,11 +51,12 @@ export const Dashboard = ({ projects, skills }: IDashboardProps) => {
           ? <p className={styles.blank}>Пока ни одного проекта.</p>
           : (
             <ul className={styles.rows}>
-              {projects.map(({ id, title, stack }) => (
+              {projects.map(({ id, title, stack, draft }) => (
                 <li key={id}>
                   <Link href={`/admin/projects/edit/${id}/`} className={styles.row}>
                     <span className={styles.rowId}>{id}</span>
                     <span className={styles.rowTitle}>{title}</span>
+                    {draft && <span className={styles.rowDraft}>черновик</span>}
                     <span className={styles.rowStack}>{stack}</span>
                     <span className={styles.rowGo}>Изменить</span>
                   </Link>

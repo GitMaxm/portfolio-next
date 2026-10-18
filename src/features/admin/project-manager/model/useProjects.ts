@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { type IProject, projectsApi, type TProjectId } from '@/entities/main/project'
+import { cleanupProjectImages } from '@/shared/api'
 import { swalConfirm, swalError, swalSuccess } from '@/shared/lib'
 
 export const useProjects = (initialProjects: IProject[]) => {
@@ -21,8 +22,11 @@ export const useProjects = (initialProjects: IProject[]) => {
     setDeletingId(id);
 
     try {
+      const deleted = projects.find((project) => project.id === id);
+
       await projectsApi.deleteProject(id);
       setProjects(prev => prev.filter(p => p.id !== id));
+      await cleanupProjectImages([deleted?.image?.main, deleted?.image?.preview]);
       await swalSuccess('Удалено', 'Проект удалён');
     } catch {
       await swalError('Ошибка', 'Не удалось удалить проект');

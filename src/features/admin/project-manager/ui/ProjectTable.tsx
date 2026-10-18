@@ -14,7 +14,7 @@ export const ProjectTable = ({ projects, deletingId, onDeleteClick }: IProjectTa
     return (
       <div className={styles.empty}>
         <p className={styles.emptyTitle}>Проектов пока нет</p>
-        <p className={styles.emptyText}>Добавьте первый — он сразу появится на сайте.</p>
+        <p className={styles.emptyText}>Добавьте первый — на сайте он появится после сборки.</p>
         <ButtonLink href="/admin/projects/new/" variant="primary">Добавить проект</ButtonLink>
       </div>
     );
@@ -33,11 +33,14 @@ export const ProjectTable = ({ projects, deletingId, onDeleteClick }: IProjectTa
           </thead>
 
           <tbody>
-            {projects.map(({ id, title, stack, tools, description, image, links }) => (
+            {projects.map(({ id, title, stack, tools, description, image, links, draft }) => (
               <tr key={id} className={deletingId === id ? styles.rowBusy : ''}>
                 <td className={styles.mono}>{id}</td>
 
-                <td className={styles.strong}>{title}</td>
+                <td className={styles.strong}>
+                  {title}
+                  {draft && <span className={styles.draftBadge}>черновик</span>}
+                </td>
 
                 <td><span className={styles.tag}>{stack}</span></td>
 

@@ -95,6 +95,14 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
         onPreviewLinkChange={setPreviewLink}
       />
 
+      <label className={styles.draft}>
+        <input type="checkbox" name="draft" defaultChecked={project?.draft ?? false}/>
+        <span>
+          Черновик
+          <span className={styles.draftHint}>Проект виден только в админке и не попадает на сайт</span>
+        </span>
+      </label>
+
       <div className={styles.actions}>
         <Button type="submit" variant="primary" disabled={isSubmitting || isImageBusy}>
           {isSubmitting ? pendingLabel : submitLabel}

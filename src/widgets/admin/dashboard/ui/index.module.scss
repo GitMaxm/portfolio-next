@@ -163,3 +163,13 @@
     opacity: 1;
   }
 }
+
+.rowDraft {
+  padding: 1px 6px;
+  border: $border-dashed;
+  border-radius: $radius-sm;
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $color-muted;
+  white-space: nowrap;
+}
