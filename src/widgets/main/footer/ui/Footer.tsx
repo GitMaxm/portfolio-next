@@ -2,7 +2,7 @@ import './style.css'
 
 import Link from 'next/link';
 
-import { CONTACTS, PUBLIC_NAV_LINKS } from '@/shared/config';
+import { CONTACTS, PUBLIC_NAV_LINKS, SITE_REPO_URL } from '@/shared/config';
 import { SocialLinks } from '@/shared/ui/main';
 
 export const Footer = () => {
@@ -32,6 +32,7 @@ export const Footer = () => {
 
         <div className="footer__bottom">
           <span>© {year} Максим Иваненко</span>
+          <a href={SITE_REPO_URL} target="_blank" rel="noopener noreferrer">Код сайта на GitHub</a>
           <a href={CONTACTS.emailLink}>{CONTACTS.email}</a>
         </div>
       </div>

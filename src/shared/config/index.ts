@@ -6,6 +6,7 @@ export {
   SITE_DESCRIPTION,
   SITE_JOB_TITLE,
   SITE_NAME,
+  SITE_REPO_URL,
   SITE_TITLE,
   SITE_URL,
 } from './site'

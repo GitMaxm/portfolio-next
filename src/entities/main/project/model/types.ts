@@ -1,7 +1,7 @@
 /** В мок-данных id встречается и строкой, и числом — отражаем это честно. */
 export type TProjectId = string | number;
 
-export type TProjectStack = 'HTML' | 'React/Vite' | 'Next.js';
+export type TProjectStack = 'HTML' | 'React' | 'Next.js' | 'macOS' | 'Android';
 
 export interface IProjectImage {
   main?: string;

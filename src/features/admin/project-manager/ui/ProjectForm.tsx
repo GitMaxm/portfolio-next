@@ -97,8 +97,8 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
 
           <div className={styles.imageAside}>
             <p className={styles.imageNote}>
-              Хватит одной картинки любого размера: сервер сам обрежет её под
-              обложку в списке (370 × 297) и под страницу проекта (800 × 600).
+              Хватит одной картинки любого размера: сервер обрежет её до 4 : 3
+              и сохранит для списка (400 × 300) и для страницы проекта (800 × 600).
             </p>
 
             <Button

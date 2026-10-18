@@ -1,5 +1,4 @@
 import "./styles/main.scss";
-import "./styles/projects.css";
 
 import type { Viewport } from "next";
 import type { ReactNode } from "react";

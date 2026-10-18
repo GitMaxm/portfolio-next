@@ -1,3 +1,5 @@
+import './style.css';
+
 import Link from 'next/link';
 
 export const Header = () => {
@@ -16,7 +18,7 @@ export const Header = () => {
 
         <div className="actions">
           <Link href="/projects/" className="btn">Смотреть проекты</Link>
-          <Link href="/contacts/" className="btn-ghost">Связаться</Link>
+          <Link href="/contacts/" className="btn btn--ghost">Связаться</Link>
         </div>
       </div>
     </header>

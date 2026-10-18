@@ -12,8 +12,8 @@ export const PreviewProjects = () => {
   return (
     <div className="portfolio-preview">
       <h2 className="title-1">Последние проекты</h2>
-      <p className="portfolio-description">Здесь несколько последних работ — от вёрстки лендингов
-        до приложений на React. Полный список и ссылки на демо и исходный код — на странице со всеми проектами.</p>
+      <p className="portfolio-description">Три последние работы. Остальные, от вёрстки лендингов
+        до приложений на React, — на странице со всеми проектами.</p>
 
       <ul className="projects" aria-label="Превью проектов">
         {featuredProjects.map(project => <ProjectCard key={project.id} project={project}/>)}

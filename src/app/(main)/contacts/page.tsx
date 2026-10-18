@@ -1,3 +1,5 @@
+import './style.css';
+
 import type { Metadata } from 'next';
 
 import { CONTACTS } from "@/shared/config";

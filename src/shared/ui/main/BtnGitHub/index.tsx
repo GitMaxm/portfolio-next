@@ -1,3 +1,5 @@
+import './style.css';
+
 import { FiGithub } from 'react-icons/fi';
 
 import type { IBtnGitHubProps } from './types';

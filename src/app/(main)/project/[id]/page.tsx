@@ -1,10 +1,12 @@
+import './style.css';
+
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
+import { FiArrowLeft, FiArrowUpRight } from 'react-icons/fi';
 
-import { type IProject, projectsContent } from '@/entities/main/project';
+import { type IProject, ProjectCard, projectsContent } from '@/entities/main/project';
 import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
 import { BtnGitHub } from '@/shared/ui/main';
 
@@ -67,18 +69,16 @@ const getDisplayUrl = (url: string): string => {
   }
 };
 
-const getSiblings = (project: IProject) => {
+const OTHER_PROJECTS_COUNT = 3;
+
+const getOtherProjects = (project: IProject): IProject[] => {
   const projects = projectsContent.getProjects();
   const index = projects.findIndex((item) => String(item.id) === String(project.id));
 
-  if (projects.length < 2 || index === -1) {
-    return null;
-  }
-
-  return {
-    prev: projects[(index - 1 + projects.length) % projects.length],
-    next: projects[(index + 1) % projects.length],
-  };
+  return projects
+    .slice(index + 1)
+    .concat(projects.slice(0, index))
+    .slice(0, OTHER_PROJECTS_COUNT);
 };
 
 export default async function ProjectPage({ params }: IProjectPageProps) {
@@ -91,32 +91,39 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
   }
 
   const cover = project.image?.main ?? project.image?.preview;
-  const siblings = getSiblings(project);
+  const tools = project.tools.filter((tool) => tool !== project.stack);
+  const otherProjects = getOtherProjects(project);
 
   return (
     <main className="section">
       <div className="container">
-        <article className="project-page">
-          <Link href="/projects/" className="project-page__back">
-            <FiArrowLeft aria-hidden/>
-            Все проекты
-          </Link>
+        <Link href="/projects/" className="project-page__back">
+          <FiArrowLeft aria-hidden/>
+          Все проекты
+        </Link>
 
-          <header className="project-page__head">
-            <h1 className="title-1 project-page__title">{project.title}</h1>
+        <article className="project-page">
+          <header className="project-page__info">
+            <h1 className="project-page__title">{project.title}</h1>
 
             {project.description && (
               <p className="project-page__lead">{project.description}</p>
             )}
 
-            <ul className="project__tools project-page__tags" aria-label="Стек и инструменты">
-              {project.stack && <li className="project__stack">{project.stack}</li>}
-              {project.tools
-                .filter((tool) => tool !== project.stack)
-                .map((tool) => (
-                  <li key={tool}>{tool}</li>
-                ))}
-            </ul>
+            <dl className="project-page__facts">
+              {project.stack && (
+                <div>
+                  <dt>Стек</dt>
+                  <dd>{project.stack}</dd>
+                </div>
+              )}
+              {tools.length > 0 && (
+                <div>
+                  <dt>Инструменты</dt>
+                  <dd>{tools.join(', ')}</dd>
+                </div>
+              )}
+            </dl>
 
             {(project.links.preview || project.links.gitHub) && (
               <div className="project-page__actions">
@@ -137,18 +144,18 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
           </header>
 
           {cover && (
-            <figure className="browser">
-              <div className="browser__bar" aria-hidden>
-                <span className="browser__dots">
-                  <i/><i/><i/>
-                </span>
-                {project.links.preview && (
+            <figure className={project.links.preview ? 'browser' : 'browser browser--plain'}>
+              {project.links.preview && (
+                <div className="browser__bar" aria-hidden>
+                  <span className="browser__dots">
+                    <i/><i/><i/>
+                  </span>
                   <span className="browser__url">{getDisplayUrl(project.links.preview)}</span>
-                )}
-              </div>
+                </div>
+              )}
               <Image
                 src={PROJECT_IMAGES_URL + cover}
-                alt={`Скриншот сайта «${project.title}»`}
+                alt={`Скриншот проекта «${project.title}»`}
                 width={PROJECT_IMAGE_SIZES.main.width}
                 height={PROJECT_IMAGE_SIZES.main.height}
                 className="browser__img"
@@ -156,29 +163,20 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
               />
             </figure>
           )}
-
-          {siblings && (
-            <nav className="project-pager" aria-label="Другие проекты">
-              <Link href={`/project/${siblings.prev.id}`} className="project-pager__link">
-                <span className="project-pager__label">
-                  <FiArrowLeft aria-hidden/>
-                  Предыдущий
-                </span>
-                <span className="project-pager__title">{siblings.prev.title}</span>
-              </Link>
-              <Link
-                href={`/project/${siblings.next.id}`}
-                className="project-pager__link project-pager__link--next"
-              >
-                <span className="project-pager__label">
-                  Следующий
-                  <FiArrowRight aria-hidden/>
-                </span>
-                <span className="project-pager__title">{siblings.next.title}</span>
-              </Link>
-            </nav>
-          )}
         </article>
+
+        {otherProjects.length > 0 && (
+          <section className="project-more" aria-labelledby="project-more-title">
+            <div className="project-more__head">
+              <h2 id="project-more-title" className="project-more__title">Другие проекты</h2>
+              <Link href="/projects/" className="project-more__all">Все проекты</Link>
+            </div>
+
+            <ul className="projects">
+              {otherProjects.map((item) => <ProjectCard key={item.id} project={item}/>)}
+            </ul>
+          </section>
+        )}
       </div>
     </main>
   );

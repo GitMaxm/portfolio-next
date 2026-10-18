@@ -2,7 +2,7 @@ import content from '@content/portfolio.json';
 
 import type { IProject, TProjectId } from '../model/types';
 
-const projects = content.projects as IProject[];
+const projects = (content.projects as IProject[]).toReversed();
 
 export const projectsContent = {
   getProjects() {

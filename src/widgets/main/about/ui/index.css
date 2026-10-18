@@ -142,3 +142,7 @@
     padding: 20px;
   }
 }
+
+.accent {
+  color: var(--accent);
+}

@@ -1,3 +1,5 @@
+import './style.css';
+
 import { ProjectCard } from '@/entities/main/project';
 
 import type { IProjectsViewProps } from '../model/types';

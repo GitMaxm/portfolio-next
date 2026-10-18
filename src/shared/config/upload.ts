@@ -8,7 +8,7 @@ export const PROJECT_IMAGE_SIZES = {
 
   main: { width: 800, height: 600 },
 
-  preview: { width: 370, height: 297 },
+  preview: { width: 400, height: 300 },
 } as const;
 
 export const IMAGE_PIXEL_RATIO = 2;

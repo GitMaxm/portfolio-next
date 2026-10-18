@@ -1,6 +1,24 @@
 {
   "projects": [
     {
+      "id": "studio-gulp",
+      "title": "Freedom studios academy",
+      "stack": "HTML",
+      "tools": [
+        "SCSS"
+      ],
+      "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/studio-gulp",
+        "preview": "https://gitmaxm.github.io/studio-gulp/"
+      },
+      "image": {
+        "main": "studio-gulp-ffdda8de.webp",
+        "preview": "studio-gulp-ffdda8de-card.webp"
+      }
+    },
+    {
+      "id": "game-gulp",
       "title": "Gaming Consoles",
       "stack": "HTML",
       "tools": [
@@ -17,44 +35,189 @@
         "preview": "https://gitmaxm.github.io/game-gulp/"
       },
       "image": {
-        "main": "gaming.webp",
-        "preview": "gaming-big.webp"
-      },
-      "id": "0"
-    },
-    {
-      "title": "Freedom studios academy",
-      "stack": "HTML",
-      "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
-      "tools": [
-        "SCSS"
-      ],
-      "image": {
-        "main": "studio-gulp-2e4b11.webp",
-        "preview": "studio-gulp-2e4b11-card.webp"
-      },
-      "links": {
-        "gitHub": "https://github.com/GitMaxm/studio-gulp",
-        "preview": "https://gitmaxm.github.io/studio-gulp/"
-      },
-      "id": "1"
-    },
-    {
-      "title": "Gaming Consoles",
-      "stack": "HTML",
-      "description": "выыв",
-      "tools": [
-        "HTML"
-      ],
-      "image": {
         "main": "game-gulp-21989f6e.webp",
         "preview": "game-gulp-21989f6e-card.webp"
-      },
+      }
+    },
+    {
+      "id": "four-horse-club",
+      "title": "Клуб четырёх коней",
+      "stack": "HTML",
+      "tools": [
+        "HTML",
+        "SCSS",
+        "JavaScript",
+        "Swiper",
+        "Figma"
+      ],
+      "description": "Лендинг шахматного турнира в Васюках по мотивам «Двенадцати стульев». Адаптивная вёрстка по макету из Figma, слайдеры на Swiper.",
       "links": {
-        "gitHub": "",
-        "preview": "https://gitmaxm.github.io/game-gulp/"
+        "gitHub": "https://github.com/GitMaxm/four-horse-club-scss",
+        "preview": "https://gitmaxm.github.io/four-horse-club-scss/"
       },
-      "id": "2"
+      "image": {
+        "main": "four-horse-club-scss-557c37c2.webp",
+        "preview": "four-horse-club-scss-557c37c2-card.webp"
+      }
+    },
+    {
+      "id": "daitona",
+      "title": "Daitona",
+      "stack": "HTML",
+      "tools": [
+        "HTML",
+        "SCSS",
+        "JavaScript",
+        "jQuery",
+        "Swiper"
+      ],
+      "description": "Лендинг агентства контент-маркетинга: услуги, кейсы, клиенты, форма заявки и Яндекс Карта с офисом.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/daitona-scss",
+        "preview": "https://gitmaxm.github.io/daitona-scss/"
+      },
+      "image": {
+        "main": "daitona-scss-eb58d2d3.webp",
+        "preview": "daitona-scss-eb58d2d3-card.webp"
+      }
+    },
+    {
+      "id": "react-crm",
+      "title": "CRM для заявок",
+      "stack": "React",
+      "tools": [
+        "React",
+        "JavaScript"
+      ],
+      "description": "Учебная CRM с курса WebCademy: форма приёма заявок и таблица заявок с фильтрами по статусу и курсу, счётчиками в боковом меню и редактированием. Данные лежали в json-server на Glitch, а Glitch закрыл хостинг, поэтому живого демо нет. Написано до ИИ: на вопрос «почему не работает» тогда отвечал только console.log.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/react-crm",
+        "preview": ""
+      },
+      "image": {
+        "main": "crm-table-e9772457.webp",
+        "preview": "crm-table-e9772457-card.webp"
+      }
+    },
+    {
+      "id": "todo-react",
+      "title": "Список дел",
+      "stack": "React",
+      "tools": [
+        "React",
+        "JavaScript",
+        "Bootstrap"
+      ],
+      "description": "Классический todo: добавление и удаление задач, отметки «важное» и «сделано», поиск, фильтры и счётчик оставшихся дел. Написано ещё до ИИ — каждую строчку набирал сам, как в старые добрые времена.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/todo-react",
+        "preview": "https://gitmaxm.github.io/todo-react/"
+      },
+      "image": {
+        "main": "todo-react-2907f92b.webp",
+        "preview": "todo-react-2907f92b-card.webp"
+      }
+    },
+    {
+      "id": "react-quiz",
+      "title": "Тест по React",
+      "stack": "React",
+      "tools": [
+        "React",
+        "Vite",
+        "Tailwind"
+      ],
+      "description": "Тест из вопросов по HTML, CSS, JavaScript и React: выбираешь ответы и в конце видишь результат и процент правильных. Тоже из эпохи до ИИ: только я, документация и кофе.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/tests-react-tailwind-vite",
+        "preview": "https://gitmaxm.github.io/tests-react-tailwind-vite/"
+      },
+      "image": {
+        "main": "tests-react-tailwind-vite-b77789ac.webp",
+        "preview": "tests-react-tailwind-vite-b77789ac-card.webp"
+      }
+    },
+    {
+      "id": "leadconveer",
+      "title": "Leadconveer",
+      "stack": "HTML",
+      "tools": [
+        "HTML",
+        "SCSS",
+        "JavaScript",
+        "Swiper",
+        "Figma"
+      ],
+      "description": "Редизайн лендинга сервиса лидогенерации по макету из Figma: слайдер с этапами работы, отзывы с рейтингом, тарифы.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/leadconveer-scss",
+        "preview": "https://gitmaxm.github.io/leadconveer-scss/"
+      },
+      "image": {
+        "main": "leadconveer-scss-c29ecb21.webp",
+        "preview": "leadconveer-scss-c29ecb21-card.webp"
+      }
+    },
+    {
+      "id": "sneakmax",
+      "title": "SneakMax",
+      "stack": "React",
+      "tools": [
+        "TypeScript",
+        "React",
+        "Vite",
+        "Tailwind",
+        "SCSS",
+        "MobX",
+        "Figma"
+      ],
+      "description": "Интернет-магазин кроссовок: каталог с фильтрами по цене, полу и размеру, выбор размера и корзина. React и TypeScript, состояние на MobX.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/sneakmax-react-tailwind",
+        "preview": "https://gitmaxm.github.io/sneakmax-react-tailwind/"
+      },
+      "image": {
+        "main": "sneakmax-react-tailwind-0ef089a3.webp",
+        "preview": "sneakmax-react-tailwind-0ef089a3-card.webp"
+      }
+    },
+    {
+      "id": "shtorka",
+      "title": "Шторка",
+      "stack": "macOS",
+      "tools": [
+        "Swift",
+        "SwiftUI",
+        "AppKit"
+      ],
+      "description": "Приложение для macOS: панель выезжает из выреза экрана MacBook и держит под рукой скриншоты, буфер обмена, файлы и запущенные dev-серверы. Что умеет последняя версия — в README на GitHub. Сделано вайбкодингом — с помощью ИИ.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/shtorka-app",
+        "preview": ""
+      },
+      "image": {
+        "main": "shtorka-cover-6e6af18a.webp",
+        "preview": "shtorka-cover-6e6af18a-card.webp"
+      }
+    },
+    {
+      "id": "portfolio",
+      "title": "Портфолио",
+      "stack": "Next.js",
+      "tools": [
+        "TypeScript",
+        "React",
+        "SCSS"
+      ],
+      "description": "Этот сайт. Next.js со статической сборкой, архитектура Feature-Sliced Design, строгий TypeScript. Контент правится в локальной админке, которая в сборку не попадает.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/portfolio-next",
+        "preview": ""
+      },
+      "image": {
+        "main": "portfolio-643e0c10.webp",
+        "preview": "portfolio-643e0c10-card.webp"
+      }
     }
   ],
   "skills": [
