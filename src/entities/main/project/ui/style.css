@@ -5,14 +5,17 @@
 }
 
 .project {
-  border-radius: 10px;
+  --project-hover: 0.25s cubic-bezier(0.2, 0, 0, 1);
+
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   background-color: var(--card-bg);
-  box-shadow: var(--box-shadow-grid);
-  transition: box-shadow 0.3s ease;
+  transition: border-color var(--project-hover);
 }
 
 .project:hover {
-  box-shadow: var(--box-shadow-grid-hover);
+  border-color: var(--accent);
 }
 
 .project:focus-within {
@@ -21,46 +24,52 @@
 }
 
 .project a {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   color: inherit;
 }
 
 .project-img-container {
-  width: 100%;
+  overflow: hidden;
   aspect-ratio: 4 / 3;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  background-color: var(--surface);
 }
 
 .project-img-container img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  border-radius: 10px;
-  box-shadow: var(--box-shadow-grid);
-  transition: transform 0.3s ease;
-}
-
-.project:hover .project-img-container {
-  transform: translateY(-3px);
-}
-
-@media (hover: none) {
-  .project:hover .project-img-container {
-    transform: none;
-  }
-}
-
-.project:hover .project-img-container img {
-  transform: scale(1.03);
+  object-position: top;
+  pointer-events: none;
 }
 
 .project__body {
+  position: relative;
+  flex: 1;
+  border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 16px 18px 18px;
+}
+
+.project__body::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--project-hover);
+}
+
+.project:hover .project__body::before {
+  transform: scaleX(1);
 }
 
 .project__title {
@@ -68,6 +77,11 @@
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
+  transition: color var(--project-hover);
+}
+
+.project:hover .project__title {
+  color: var(--accent-ink);
 }
 
 .project__stack {
