@@ -154,6 +154,42 @@ Node, json-server и админка на сервере не нужны.
 исключены в `tsconfig.json` — иначе после `npm run dev` падали бы и сборка,
 и `npm run check`.
 
+## Деплой
+
+Каждый пуш в `main` запускает `.github/workflows/deploy.yml`: GitHub Actions
+ставит зависимости, собирает статику и выкладывает `out/` в GitHub Pages.
+Через пару минут после пуша изменения на сайте.
+
+Адрес сайта workflow не хранит, а спрашивает у GitHub Pages
+(`actions/configure-pages`) и передаёт в сборку двумя переменными:
+
+| Переменная | С доменом | Если домен убрать из настроек Pages |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | `https://ivanenkomax.ru` | `https://gitmaxm.github.io/portfolio-next` |
+| `NEXT_PUBLIC_BASE_PATH` | пусто | `/portfolio-next` |
+
+Это запасной вариант: если домен перестанет работать, достаточно убрать его
+в Settings → Pages и перезапустить деплой — сайт соберётся под адрес github.io,
+код менять не нужно. Локально переменные не заданы, сайт собирается для
+`https://ivanenkomax.ru`.
+
+Подпуть `/portfolio-next` Next сам добавляет к ссылкам `next/link`, но не к
+картинкам из `public/`. Поэтому их пути пишутся через `assetPath()`
+из `shared/config`: с доменом он возвращает путь как есть, без домена дописывает
+подпуть в начало.
+
+```tsx
+<img src={assetPath('/img/about/me.webp')}/>
+```
+
+Фон шапки лежит рядом с компонентом и подключается в CSS относительным путём
+`url("./header-bg.png")` — такой путь Next собирает сам.
+
+**Домен** `ivanenkomax.ru` куплен на reg.ru и указывает на GitHub Pages
+DNS-записями: четыре `A` для `@` на `185.199.108–111.153` и `CNAME` для `www`
+на `gitmaxm.github.io`. В Settings → Pages → Custom domain вписан домен,
+включён Enforce HTTPS.
+
 ## Данные
 
 Файл `content/portfolio.json`, коллекции `projects` и `skills`. Публичная часть

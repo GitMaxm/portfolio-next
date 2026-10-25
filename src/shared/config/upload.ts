@@ -1,6 +1,8 @@
+import { BASE_PATH } from './site';
+
 export const PROJECT_IMAGES_DIR = 'img/projects';
 
-export const PROJECT_IMAGES_URL = `/${PROJECT_IMAGES_DIR}/`;
+export const PROJECT_IMAGES_URL = `${BASE_PATH}/${PROJECT_IMAGES_DIR}/`;
 
 export const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 

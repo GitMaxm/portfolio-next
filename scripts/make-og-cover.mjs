@@ -18,7 +18,6 @@ const OUT = path.join(process.cwd(), 'public', 'img', 'og', 'cover.png')
 const NAME = 'Максим Иваненко'
 const ROLE = 'Фронтенд-разработчик'
 const STACK = 'React · Next.js · TypeScript · Веб-компоненты'
-const SITE = 'ivanmax.ru'
 
 const PHOTO_SIZE = 380
 const PHOTO_X = 80
@@ -32,7 +31,6 @@ const overlay = `<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.o
     .name  { font: 700 62px Helvetica, Arial, sans-serif; fill: ${TEXT}; }
     .role  { font: 400 34px Helvetica, Arial, sans-serif; fill: ${ACCENT}; }
     .stack { font: 400 24px Helvetica, Arial, sans-serif; fill: ${MUTED}; }
-    .site  { font: 400 22px Helvetica, Arial, sans-serif; fill: ${MUTED}; }
   </style>
 
   <rect x="${TEXT_X}" y="212" width="56" height="4" rx="2" fill="${ACCENT}"/>
@@ -40,7 +38,6 @@ const overlay = `<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.o
   <text class="name"  x="${TEXT_X}" y="292">${escape(NAME)}</text>
   <text class="role"  x="${TEXT_X}" y="344">${escape(ROLE)}</text>
   <text class="stack" x="${TEXT_X}" y="400">${escape(STACK)}</text>
-  <text class="site"  x="${TEXT_X}" y="${HEIGHT - 64}">${escape(SITE)}</text>
 </svg>`
 
 const mask = Buffer.from(

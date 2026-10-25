@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import { FiArrowLeft, FiArrowUpRight } from 'react-icons/fi';
 
 import { type IProject, ProjectCard, projectsContent } from '@/entities/main/project';
-import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_URL } from '@/shared/config';
+import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_DIR, PROJECT_IMAGES_URL } from '@/shared/config';
 import { BtnGitHub } from '@/shared/ui/main';
 
 import type { IProjectPageProps } from './types';
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: IProjectPageProps): Promise<M
       url: path,
       images: cover
         ? [{
-          url: PROJECT_IMAGES_URL + cover,
+          url: `/${PROJECT_IMAGES_DIR}/${cover}`,
           width: PROJECT_IMAGE_SIZES.main.width * 2,
           height: PROJECT_IMAGE_SIZES.main.height * 2,
           alt: project.title,

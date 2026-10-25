@@ -2,6 +2,8 @@
 
 import './style.css';
 
+import { assetPath } from '@/shared/config';
+
 import { useDarkMode } from './hooks/useDarkMode';
 
 export const BtnDarkMode = () => {
@@ -9,8 +11,8 @@ export const BtnDarkMode = () => {
 
   return (
     <button ref={btnRef} className="dark-mode-btn" onClick={handleDarkModeClick}>
-      <img src="/img/icons/dark-mode/sun.svg" alt="Light mode" className="dark-mode-btn__icon"/>
-      <img src="/img/icons/dark-mode/moon.svg" alt="Dark mode" className="dark-mode-btn__icon"/>
+      <img src={assetPath('/img/icons/dark-mode/sun.svg')} alt="Light mode" className="dark-mode-btn__icon"/>
+      <img src={assetPath('/img/icons/dark-mode/moon.svg')} alt="Dark mode" className="dark-mode-btn__icon"/>
     </button>
   );
 };

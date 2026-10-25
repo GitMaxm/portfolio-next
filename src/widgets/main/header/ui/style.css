@@ -20,7 +20,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/img/header-bg.png");
+  background-image: url("./header-bg.png");
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center center;

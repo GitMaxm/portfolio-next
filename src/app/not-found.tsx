@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { assetPath } from '@/shared/config';
+
 import styles from './styles/not-found.module.css';
 
 export const metadata: Metadata = {
@@ -17,7 +19,7 @@ export default function NotFound() {
 
           <div className={styles.gifWrap}>
             <img
-              src="/img/404/404.gif"
+              src={assetPath('/img/404/404.gif')}
               alt="404"
               className={styles.gif}
             />

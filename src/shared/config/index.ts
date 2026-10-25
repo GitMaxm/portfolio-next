@@ -3,6 +3,8 @@ export { CONTACTS } from './contacts'
 export { ADMIN_NAV_LINKS, NAVIGATION_LINKS, PUBLIC_NAV_LINKS } from './navigation'
 export { PROJECT_PROPERTIES_NAME, THEAD_TABLE } from './projectPropertiesName'
 export {
+  assetPath,
+  BASE_PATH,
   SITE_DESCRIPTION,
   SITE_JOB_TITLE,
   SITE_NAME,

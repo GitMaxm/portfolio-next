@@ -1,6 +1,6 @@
 import './index.css';
 
-import { CONTACTS } from '@/shared/config';
+import { assetPath, CONTACTS } from '@/shared/config';
 
 export const About = () => {
   return (
@@ -11,7 +11,7 @@ export const About = () => {
         {}
         <figure className="about-card">
           <img
-            src="/img/about/me.webp"
+            src={assetPath('/img/about/me.webp')}
             alt="Максим Иваненко, фронтенд-разработчик"
             className="about-img"
             width={260}
