@@ -20,7 +20,7 @@ const Home = () => {
 
       <main>
         {/* Отдельные секции, а не один блок: соседние разводятся фоном. */}
-        <section className="section">
+        <section className="section" id="about">
           <div className="container">
             <About/>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { projectsContent } from '@/entities/main/project';
 import { FilteredProjectList } from '@/features/main/project-filter';
+import { SectionHead } from '@/shared/ui/main';
 
 export const metadata: Metadata = {
   title: 'Проекты',
@@ -17,11 +18,10 @@ const ProjectsPage = () => {
   return (
     <main className="section">
       <div className="container">
-        <h1 className="title-1">Проекты</h1>
-        <p className="portfolio-description">
+        <SectionHead as="h1" title="Проекты" path="~/projects">
           Здесь собраны мои работы: вёрстка лендингов, веб-приложения на React и Next.js
           и нативные приложения. Ссылки на демо и код — на странице проекта.
-        </p>
+        </SectionHead>
         <FilteredProjectList projects={projects}/>
       </div>
     </main>

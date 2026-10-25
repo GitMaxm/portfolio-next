@@ -1,9 +1,8 @@
 .project-filter {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 8px;
-  margin: 0 auto var(--block-gap);
+  margin-bottom: clamp(1.25rem, 1rem + 1vw, 1.75rem);
 }
 
 .project-filter button {

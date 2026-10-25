@@ -4,4 +4,6 @@ export interface INavigationLink {
   title: string;
 
   devOnly?: boolean;
+
+  activePrefixes?: string[];
 }

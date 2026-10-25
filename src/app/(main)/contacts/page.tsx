@@ -3,7 +3,7 @@ import './style.css';
 import type { Metadata } from 'next';
 
 import { CONTACTS } from "@/shared/config";
-import { CopyButton } from "@/shared/ui/main";
+import { CopyButton, SectionHead } from "@/shared/ui/main";
 
 export const metadata: Metadata = {
   title: 'Контакты',
@@ -17,36 +17,53 @@ const Contacts = () => {
   return (
     <main className="section">
       <div className="container">
-        <h1 className="title-1">Контакты</h1>
-        <p className="portfolio-description">
+        <SectionHead as="h1" title="Контакты" path="~/contacts">
           Пишите в Telegram или на почту — отвечаю в тот же день.
           Расскажите про задачу, и я предложу решение.
-        </p>
+        </SectionHead>
 
         <ul className="contacts">
-          <li className="contacts__row">
-            <span className="contacts__label">Локация</span>
-            <span className="contacts__value">{CONTACTS.location}</span>
-          </li>
-
-          <li className="contacts__row">
-            <span className="contacts__label">Telegram</span>
+          <li className="contact-card">
+            <span className="contact-card__path">telegram</span>
             <a
-              className="contacts__value"
+              className="contact-card__value"
               href={CONTACTS.telegramLink}
               target="_blank"
               rel="noopener noreferrer"
             >
               {CONTACTS.telegram}
             </a>
+            <span className="contact-card__hint">Быстрее всего, отвечаю в тот же день</span>
           </li>
 
-          <li className="contacts__row">
-            <span className="contacts__label">Почта</span>
-            <a className="contacts__value" href={CONTACTS.emailLink}>
-              {CONTACTS.email}
+          <li className="contact-card">
+            <span className="contact-card__path">email</span>
+            <div className="contact-card__row">
+              <a className="contact-card__value" href={CONTACTS.emailLink}>
+                {CONTACTS.email}
+              </a>
+              <CopyButton value={CONTACTS.email} label="Скопировать почту"/>
+            </div>
+            <span className="contact-card__hint">Для задач с подробным описанием и файлами</span>
+          </li>
+
+          <li className="contact-card">
+            <span className="contact-card__path">github</span>
+            <a
+              className="contact-card__value"
+              href={CONTACTS.gitHubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {CONTACTS.gitHubLink.replace('https://', '')}
             </a>
-            <CopyButton value={CONTACTS.email} label="Скопировать почту"/>
+            <span className="contact-card__hint">Код проектов и этого сайта</span>
+          </li>
+
+          <li className="contact-card">
+            <span className="contact-card__path">location</span>
+            <span className="contact-card__value">{CONTACTS.location}</span>
+            <span className="contact-card__hint">Часовой пояс МСК, UTC+3</span>
           </li>
         </ul>
       </div>

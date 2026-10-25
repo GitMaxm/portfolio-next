@@ -1,14 +1,10 @@
 .skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .skill-card {
-  width: 300px;
   background-color: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -86,16 +82,4 @@
   font-size: var(--text-xs);
   line-height: 1.6;
   text-align: left;
-}
-
-@media (max-width: 768px) {
-  .skills-list {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .skill-card {
-    width: 100%;
-    max-width: 350px;
-  }
 }

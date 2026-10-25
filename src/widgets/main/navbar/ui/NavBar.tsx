@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { PUBLIC_NAV_LINKS } from '@/shared/config'
+import type { INavigationLink } from '@/shared/model'
 import { BtnDarkMode } from '@/shared/ui/main'
 
 export const NavBar = () => {
@@ -14,7 +15,10 @@ export const NavBar = () => {
   const activeLink = "nav-list__link nav-list__link--active";
   const normalLink = "nav-list__link";
 
-  const isActive = (href: string) => pathname === href;
+  const isCurrent = (item: INavigationLink) => pathname === item.href;
+
+  const isActive = (item: INavigationLink) =>
+    isCurrent(item) || (item.activePrefixes ?? []).some(prefix => pathname.startsWith(prefix));
 
   return (
     <nav className="nav">
@@ -32,9 +36,9 @@ export const NavBar = () => {
               <li key={item.href} className="nav-list__item">
                 <Link
                   href={item.href}
-                  className={isActive(item.href) ? activeLink : normalLink}
+                  className={isActive(item) ? activeLink : normalLink}
                   title={item.title}
-                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  aria-current={isCurrent(item) ? 'page' : isActive(item) ? 'true' : undefined}
                 >
                   {item.label}
                 </Link>

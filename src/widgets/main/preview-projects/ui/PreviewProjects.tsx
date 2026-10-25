@@ -3,6 +3,7 @@ import './style.css';
 import Link from 'next/link';
 
 import { ProjectCard, projectsContent } from '@/entities/main/project';
+import { SectionHead } from '@/shared/ui/main';
 
 export const PreviewProjects = () => {
   const projects = projectsContent.getProjects();
@@ -11,9 +12,10 @@ export const PreviewProjects = () => {
 
   return (
     <div className="portfolio-preview">
-      <h2 className="title-1">Последние проекты</h2>
-      <p className="portfolio-description">Три последние работы. Остальные, от вёрстки лендингов
-        до приложений на React, — на странице со всеми проектами.</p>
+      <SectionHead title="Последние проекты" path="~/projects">
+        Три последние работы. Остальные, от вёрстки лендингов
+        до приложений на React, — на странице со всеми проектами.
+      </SectionHead>
 
       <ul className="projects" aria-label="Превью проектов">
         {featuredProjects.map(project => <ProjectCard key={project.id} project={project}/>)}

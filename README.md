@@ -41,6 +41,7 @@ json-server запускается своим скриптом `scripts/json-ser
 | `npm run fix` | автофикс ESLint |
 | `npm run images:prune` | неиспользуемые картинки проектов; `-- --yes` — удалить |
 | `npm run og` | пересобрать OG-обложку `public/img/og/cover.png` |
+| `npm run favicon` | собрать `favicon.ico` и `apple-icon.png` из `src/app/icon.svg` |
 
 Pre-commit хук прогоняет файлы коммита через `eslint --fix`, затем запускает
 `typecheck` и `lint:fsd`. Если хук упал, коммит не создаётся.
@@ -156,9 +157,18 @@ Node, json-server и админка на сервере не нужны.
 
 ## Деплой
 
-Каждый пуш в `main` запускает `.github/workflows/deploy.yml`: GitHub Actions
-ставит зависимости, собирает статику и выкладывает `out/` в GitHub Pages.
-Через пару минут после пуша изменения на сайте.
+Каждый пуш в `main` запускает `.github/workflows/deploy.yml` — три шага подряд:
+
+```
+check  → npm run check: типы, ESLint, слои FSD
+build  → npm run build: статика в out/
+deploy → выкладка out/ в GitHub Pages
+```
+
+Если `check` или `build` падают, деплоя нет, на сайте остаётся прошлая версия.
+Для pull request'ов запускаются только `check` и `build` — проверить, что
+изменения собираются, ничего не публикуя. Через пару минут после пуша
+изменения на сайте.
 
 Адрес сайта workflow не хранит, а спрашивает у GitHub Pages
 (`actions/configure-pages`) и передаёт в сборку двумя переменными:
