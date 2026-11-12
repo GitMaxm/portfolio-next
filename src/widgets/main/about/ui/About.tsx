@@ -1,12 +1,15 @@
 import './index.css';
 
+import Link from 'next/link';
+import { FiArrowRight } from 'react-icons/fi';
+
 import { assetPath, CONTACTS } from '@/shared/config';
 import { SectionHead } from '@/shared/ui/main';
 
 export const About = () => {
   return (
     <div className="about">
-      <SectionHead title="Обо мне" path="~/about"/>
+      <SectionHead title="Обо мне"/>
 
       <div className="about-box">
         <figure className="about-card">
@@ -25,64 +28,52 @@ export const About = () => {
           </figcaption>
 
           <div className="about-card__links">
-            <a href={CONTACTS.telegramLink} target="_blank" rel="noopener noreferrer">
+            <a className="link" href={CONTACTS.telegramLink} target="_blank" rel="noopener noreferrer">
               Telegram
             </a>
-            <a href={CONTACTS.emailLink}>Почта</a>
+            <a className="link" href={CONTACTS.emailLink}>{CONTACTS.email}</a>
           </div>
         </figure>
 
         <div className="about-body">
           <div className="about-text">
             <p>
-              <span className="accent">Фронтенд-разработчик.</span> Больше{' '}
-              <span className="accent">трёх лет</span> в вебе: начинал с вёрстки
-              лендингов по макетам из <span className="accent">Figma</span>,
-              сейчас собираю интерфейсы целиком — разметка, логика, данные.
+              Фронтенд-разработчик, больше <span className="accent">трёх лет</span> в вебе:
+              начинал с вёрстки лендингов по макетам из Figma, сейчас собираю интерфейсы
+              целиком: разметку, логику, данные.
             </p>
 
             <p>
-              Основной стек — <span className="accent">React</span> и{' '}
-              <span className="accent">Next.js</span> с{' '}
-              <span className="accent">TypeScript</span>. Понимаю устройство SPA:
-              раскладываю приложение на компоненты, подключаю и обрабатываю данные
-              с API, настраиваю маршрутизацию и состояние.
+              Пишу на <span className="accent">React и Next.js с TypeScript</span>.
+              Понимаю устройство SPA: раскладываю приложение на компоненты, подключаю
+              и обрабатываю данные с API, настраиваю маршрутизацию и состояние.
             </p>
 
             <p>
-              Работал и с нативными{' '}
-              <span className="accent">веб-компонентами</span> — Custom Elements
-              и Shadow DOM без фреймворка. На них хорошо видно, что именно
-              фреймворк берёт на себя.
+              Работал и с нативными веб-компонентами: Custom Elements и Shadow DOM без
+              фреймворка. На них хорошо видно, что именно фреймворк берёт на себя.
+              Код раскладываю по слоям и стараюсь писать так, чтобы его можно было
+              переиспользовать.
             </p>
 
             <p>
-              В проектах использую: <span className="tech">HTML</span>{' '}
-              <span className="tech">SCSS</span>{' '}
-              <span className="tech">JavaScript</span>{' '}
-              <span className="tech">TypeScript</span>{' '}
-              <span className="tech">React</span>{' '}
-              <span className="tech">Next.js</span>{' '}
-              <span className="tech">Vite</span>{' '}
-              <span className="tech">Tailwind</span>{' '}
-              <span className="tech">Swiper</span>. Код раскладываю по слоям
-              и стараюсь писать так, чтобы его можно было переиспользовать.
-            </p>
-
-            <p>
-              <span className="accent">Открыт к работе</span> — доработать
-              существующий проект или собрать новый с нуля. Напишите, что нужно
-              сделать: разберусь в задаче и предложу, как её решить.
+              Открыт к работе: доработать существующий проект или собрать новый с нуля.{' '}
+              <a className="link" href="#contact">Напишите, что нужно сделать</a>: разберусь в задаче
+              и предложу, как её решить.
             </p>
           </div>
 
           <aside className="about-note">
+            <h3 className="about-note__title">Этот сайт тоже мой проект</h3>
             <p>
-              <span className="accent">Этот сайт — тоже мой проект.</span>{' '}
-              Next.js, TypeScript и SCSS по методологии Feature-Sliced Design,
-              со своей админкой: проекты и навыки редактируются через неё,
-              а обложки снимаются скриншотом прямо по ссылке на сайт.
+              Next.js, TypeScript и SCSS по методологии Feature-Sliced Design, со своей
+              админкой: проекты и навыки редактируются через неё, а обложки снимаются
+              скриншотом прямо по ссылке на сайт.
             </p>
+            <Link href="/project/portfolio/" className="link link--arrow about-note__link">
+              Как он устроен
+              <FiArrowRight aria-hidden="true"/>
+            </Link>
           </aside>
         </div>
       </div>

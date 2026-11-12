@@ -6,24 +6,6 @@
   border-bottom: 1px solid var(--border);
 }
 
-.section-head__main {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.section-head__path {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: var(--text-xs);
-  color: var(--accent-ink);
-}
-
-.section-head__path::after {
-  content: "_";
-  margin-left: 1px;
-  animation: section-head-caret 1.1s steps(1) infinite;
-}
-
 .section-head__title {
   color: var(--text-color);
   font-size: var(--text-xl);
@@ -49,14 +31,3 @@
   }
 }
 
-@keyframes section-head-caret {
-  50% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .section-head__path::after {
-    animation: none;
-  }
-}

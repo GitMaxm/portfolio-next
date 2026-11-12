@@ -11,12 +11,12 @@
   color: var(--text-color);
   font-size: 15px;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color var(--hover), color var(--hover);
 }
 
 .copy-btn:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .copy-btn:focus-visible {

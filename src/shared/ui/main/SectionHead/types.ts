@@ -4,8 +4,6 @@ export interface ISectionHeadProps {
 
   title: string;
 
-  path: string;
-
   as?: 'h1' | 'h2';
 
   children?: ReactNode;

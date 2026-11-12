@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/shared/config';
 import { About } from '@/widgets/main/about';
+import { ContactCta } from '@/widgets/main/contact-cta';
 import { Header } from '@/widgets/main/header';
 import { PreviewProjects } from '@/widgets/main/preview-projects';
 import { Skills } from '@/widgets/main/skills';
@@ -19,22 +20,27 @@ const Home = () => {
       <Header/>
 
       <main>
-        {/* Отдельные секции, а не один блок: соседние разводятся фоном. */}
-        <section className="section" id="about">
+        <section className="section" id="projects">
+          <div className="container">
+            <PreviewProjects/>
+          </div>
+        </section>
+
+        <section className="section section--surface" id="about">
           <div className="container">
             <About/>
           </div>
         </section>
 
-        <section className="section section--surface">
+        <section className="section">
           <div className="container">
             <Skills/>
           </div>
         </section>
 
-        <section className="section">
+        <section className="section section--surface" id="contact">
           <div className="container">
-            <PreviewProjects/>
+            <ContactCta/>
           </div>
         </section>
       </main>

@@ -1,48 +1,44 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 
-import { useLocalStorage } from '@/shared/lib/hooks';
+import { applyTheme, detectDarkMode, readStoredTheme, storeTheme } from '../helpers';
 
-import { detectDarkMode } from '../helpers';
-import type { TTheme } from '../types';
+const subscribe = (onChange: () => void) => {
+  const observer = new MutationObserver(onChange);
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  return () => observer.disconnect();
+};
+
+const getSnapshot = () => document.body.classList.contains('dark');
+
+const getServerSnapshot = () => null;
 
 export const useDarkMode = () => {
-  const [darkMode, setDarkMode] = useLocalStorage<TTheme>('darkMode', detectDarkMode);
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  // Применение темы к body
   useEffect(() => {
-    if (darkMode === 'dark') {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  }, [darkMode]);
+    applyTheme(readStoredTheme() ?? detectDarkMode());
 
-  // Класс для кнопки
-  useEffect(() => {
-    if (darkMode === 'dark') {
-      btnRef.current?.classList.add('dark-mode-btn--active');
-    } else {
-      btnRef.current?.classList.remove('dark-mode-btn--active');
-    }
-  }, [darkMode]);
-
-  // Слежение за системной темой
-  useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const listener = (e: MediaQueryListEvent) => {
-      setDarkMode(e.matches ? 'dark' : 'light');
+      if (!readStoredTheme()) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
     };
 
     mediaQuery.addEventListener('change', listener);
 
     return () => mediaQuery.removeEventListener('change', listener);
-  }, [setDarkMode]);
+  }, []);
 
   const handleDarkModeClick = () => {
-    setDarkMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+    const next = getSnapshot() ? 'light' : 'dark';
+
+    applyTheme(next);
+    storeTheme(next);
   };
 
-  return { btnRef, handleDarkModeClick };
+  return { isDark, handleDarkModeClick };
 };

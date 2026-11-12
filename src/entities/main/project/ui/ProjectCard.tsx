@@ -15,10 +15,7 @@ export const ProjectCard = ({ project }: IProjectCardProps) => {
 
   return (
     <li className="project">
-      <Link
-        href={`/project/${project.id}`}
-        aria-label={`Открыть проект: ${project.title}`}
-      >
+      <Link href={`/project/${project.id}`}>
         {cover && (
           <div className="project-img-container">
             <Image
@@ -32,6 +29,8 @@ export const ProjectCard = ({ project }: IProjectCardProps) => {
 
         <div className="project__body">
           <h3 className="project__title">{project.title}</h3>
+
+          {project.description && <p className="project__description">{project.description}</p>}
 
           {project.stack && <span className="project__stack">{project.stack}</span>}
 

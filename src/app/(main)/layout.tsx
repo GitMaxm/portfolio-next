@@ -10,6 +10,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/shared/config";
+import { THEME_INIT_SCRIPT } from "@/shared/ui/main";
 import { Footer } from "@/widgets/main/footer";
 import { NavBar } from "@/widgets/main/navbar";
 
@@ -40,6 +41,8 @@ const personSchema = {
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <>
+      <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}/>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}

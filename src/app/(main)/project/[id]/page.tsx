@@ -169,10 +169,10 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
           <section className="project-more" aria-labelledby="project-more-title">
             <div className="project-more__head">
               <h2 id="project-more-title" className="project-more__title">Другие проекты</h2>
-              <Link href="/projects/" className="project-more__all">Все проекты</Link>
+              <Link href="/projects/" className="link project-more__all">Все проекты</Link>
             </div>
 
-            <ul className="projects">
+            <ul className="projects projects--trio">
               {otherProjects.map((item) => <ProjectCard key={item.id} project={item}/>)}
             </ul>
           </section>

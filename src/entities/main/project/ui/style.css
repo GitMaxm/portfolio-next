@@ -5,17 +5,22 @@
 }
 
 .project {
-  --project-hover: 0.25s cubic-bezier(0.2, 0, 0, 1);
-
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 12px;
   background-color: var(--card-bg);
-  transition: border-color var(--project-hover);
+  transition: border-color var(--hover), transform var(--hover);
 }
 
 .project:hover {
   border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (hover: none) {
+  .project:hover {
+    transform: none;
+  }
 }
 
 .project:focus-within {
@@ -65,7 +70,7 @@
   background-color: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--project-hover);
+  transition: transform var(--hover);
 }
 
 .project:hover .project__body::before {
@@ -77,11 +82,21 @@
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  transition: color var(--project-hover);
+  transition: color var(--hover);
 }
 
 .project:hover .project__title {
   color: var(--accent-ink);
+}
+
+.project__description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: var(--text-xs);
+  line-height: 1.55;
+  color: var(--text-secondary);
 }
 
 .project__stack {
@@ -106,4 +121,41 @@
   border-radius: 6px;
   font-size: var(--text-xs);
   color: var(--text-secondary);
+}
+
+.projects--trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .projects--trio {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .projects--trio .project a {
+    flex-direction: row;
+  }
+
+  .projects--trio .project-img-container {
+    flex: 0 0 42%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .projects--trio .project__body {
+    justify-content: center;
+    border-top: none;
+    border-left: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+
+  .projects--trio .project__body::before {
+    display: none;
+  }
+
+  .projects--trio .project__description {
+    -webkit-line-clamp: 3;
+  }
 }

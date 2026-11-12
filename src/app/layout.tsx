@@ -1,16 +1,14 @@
 import "@/app/styles/global.scss";
 
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { Onest } from 'next/font/google';
 import type { ReactNode } from 'react';
 
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/shared/config';
 
-const roboto = Roboto({
-
-  weight: ['400', '700'],
+const onest = Onest({
   subsets: ['latin', 'cyrillic'],
-  variable: '--font-roboto',
+  variable: '--font-onest',
   display: 'swap',
 });
 
@@ -48,8 +46,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ru" className={roboto.variable}>
-      <body>
+    <html lang="ru" className={onest.variable}>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>
