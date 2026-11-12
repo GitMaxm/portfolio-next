@@ -7,8 +7,6 @@ import type { ReactNode } from 'react';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/shared/config';
 
 const roboto = Roboto({
-
-  weight: ['400', '700'],
   subsets: ['latin', 'cyrillic'],
   variable: '--font-roboto',
   display: 'swap',
@@ -49,7 +47,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru" className={roboto.variable}>
-      <body>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -31,3 +31,13 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+::selection {
+  background-color: var(--accent);
+  color: var(--text-white);
+}
+
+:root {
+  accent-color: var(--accent);
+  caret-color: var(--accent);
+}

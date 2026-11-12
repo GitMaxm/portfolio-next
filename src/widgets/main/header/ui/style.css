@@ -20,7 +20,7 @@
   background-repeat: no-repeat;
   background-size: 760px, auto;
   background-position: right 4% center, center;
-  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: text-focus-in 0.9s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 .header__wrapper {
@@ -148,7 +148,11 @@
 }
 
 .header__scroll span {
-  animation: header-bounce 1.8s ease-in-out infinite;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.header__scroll:hover span {
+  transform: translateY(3px);
 }
 
 .header__scroll:hover {
@@ -214,15 +218,8 @@
   }
 }
 
-@keyframes header-bounce {
-  50% {
-    transform: translateY(3px);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .header__dot::after,
-  .header__scroll span {
+  .header__dot::after {
     animation: none;
   }
 }

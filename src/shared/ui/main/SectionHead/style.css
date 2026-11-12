@@ -21,7 +21,6 @@
 .section-head__path::after {
   content: "_";
   margin-left: 1px;
-  animation: section-head-caret 1.1s steps(1) infinite;
 }
 
 .section-head__title {
@@ -49,14 +48,3 @@
   }
 }
 
-@keyframes section-head-caret {
-  50% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .section-head__path::after {
-    animation: none;
-  }
-}

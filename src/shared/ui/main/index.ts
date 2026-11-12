@@ -1,4 +1,4 @@
-export { BtnDarkMode } from './BtnDarkMode'
+export { BtnDarkMode, THEME_INIT_SCRIPT } from './BtnDarkMode'
 export { BtnGitHub } from './BtnGitHub'
 export type { IBtnGitHubProps } from './BtnGitHub/types'
 export { CopyButton } from './CopyButton'
