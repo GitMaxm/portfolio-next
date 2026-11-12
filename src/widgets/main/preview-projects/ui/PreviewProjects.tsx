@@ -1,39 +1,35 @@
 import './style.css';
 
 import Link from 'next/link';
+import { FiArrowRight } from 'react-icons/fi';
 
 import { ProjectCard, projectsContent } from '@/entities/main/project';
 import { SectionHead } from '@/shared/ui/main';
 
-export const PreviewProjects = () => {
-  const projects = projectsContent.getProjects();
+const SELF_PROJECT_ID = 'portfolio';
+const FEATURED_COUNT = 3;
 
-  const featuredProjects = projects.slice(0, 3);
+export const PreviewProjects = () => {
+  const featuredProjects = projectsContent
+    .getProjects()
+    .filter((project) => project.id !== SELF_PROJECT_ID)
+    .slice(0, FEATURED_COUNT);
 
   return (
     <div className="portfolio-preview">
-      <SectionHead title="Последние проекты" path="~/projects">
+      <SectionHead title="Последние проекты">
         Три последние работы. Остальные, от вёрстки лендингов
-        до приложений на React, — на странице со всеми проектами.
+        до приложений на React, собраны на странице со всеми проектами.
       </SectionHead>
 
-      <ul className="projects" aria-label="Превью проектов">
+      <ul className="projects projects--trio">
         {featuredProjects.map(project => <ProjectCard key={project.id} project={project}/>)}
       </ul>
 
       <div className="portfolio-preview__more">
-        <Link href="/projects" className="btn btn--more">
+        <Link href="/projects/" className="btn btn--more">
           Все проекты
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M5 12h14"/>
-            <path d="M12 5l7 7-7 7"/>
-          </svg>
+          <FiArrowRight aria-hidden="true"/>
         </Link>
       </div>
     </div>

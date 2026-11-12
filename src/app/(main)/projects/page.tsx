@@ -18,9 +18,9 @@ const ProjectsPage = () => {
   return (
     <main className="section">
       <div className="container">
-        <SectionHead as="h1" title="Проекты" path="~/projects">
+        <SectionHead as="h1" title="Проекты">
           Здесь собраны мои работы: вёрстка лендингов, веб-приложения на React и Next.js
-          и нативные приложения. Ссылки на демо и код — на странице проекта.
+          и нативные приложения. Ссылки на демо и код есть на странице проекта.
         </SectionHead>
         <FilteredProjectList projects={projects}/>
       </div>

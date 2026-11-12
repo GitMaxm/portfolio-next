@@ -1,7 +1,7 @@
 :root {
   --container-width: 1200px;
-  --container-padding: 15px;
-  --font-main: var(--font-roboto);
+  --container-padding: clamp(16px, 3vw, 32px);
+  --font-main: var(--font-onest), system-ui, sans-serif;
 
   --text-xs: 0.875rem;
   --text-sm: 1rem;
@@ -9,6 +9,9 @@
   --text-lg: clamp(1.25rem, 1.16rem + 0.45vw, 1.5rem);
   --text-xl: clamp(1.625rem, 1.34rem + 1.42vw, 2.25rem);
   --text-2xl: clamp(2.188rem, 1.71rem + 2.39vw, 3.5rem);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --hover: 0.25s var(--ease-out);
 
   --section-gap: clamp(3rem, 2.25rem + 3vw, 5rem);
   --block-gap: clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem);

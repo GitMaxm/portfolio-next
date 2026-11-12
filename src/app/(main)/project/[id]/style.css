@@ -5,15 +5,15 @@
   margin-bottom: clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem);
   font-size: var(--text-sm);
   color: var(--text-secondary);
-  transition: color 0.2s ease;
+  transition: color var(--hover);
 }
 
 .project-page__back svg {
-  transition: transform 0.2s ease;
+  transition: transform var(--hover);
 }
 
 .project-page__back:hover {
-  color: var(--accent-ink);
+  color: var(--text-color);
 }
 
 .project-page__back:hover svg {
@@ -194,12 +194,6 @@
 
 .project-more__all {
   font-size: var(--text-sm);
-  color: var(--accent-ink);
-}
-
-.project-more__all:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 .project-more__all:focus-visible {

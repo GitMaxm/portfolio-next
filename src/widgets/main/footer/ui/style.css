@@ -38,7 +38,7 @@
 
 .footer__nav a {
   color: rgba(255, 255, 255, 0.78);
-  transition: color 0.2s ease;
+  transition: color var(--hover);
 }
 
 .footer__nav a:hover {
@@ -65,7 +65,7 @@
 
 .footer__bottom a {
   color: inherit;
-  transition: color 0.2s ease;
+  transition: color var(--hover);
 }
 
 .footer__bottom a:hover {

@@ -10,4 +10,6 @@ export interface ISkillIconProps {
 
 export interface ISkillCardProps {
   skill: ISkill;
+  compact?: boolean;
+  headingAs?: 'h3' | 'h4';
 }

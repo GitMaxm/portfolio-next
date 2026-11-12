@@ -13,18 +13,21 @@ export const metadata: Metadata = {
   alternates: { canonical: '/contacts/' },
 };
 
+const [emailLocal, emailDomain] = CONTACTS.email.split('@');
+const [gitHubHost, gitHubUser] = CONTACTS.gitHubLink.replace('https://', '').split('/');
+
 const Contacts = () => {
   return (
     <main className="section">
       <div className="container">
-        <SectionHead as="h1" title="Контакты" path="~/contacts">
-          Пишите в Telegram или на почту — отвечаю в тот же день.
+        <SectionHead as="h1" title="Контакты">
+          Пишите в Telegram или на почту, отвечаю в тот же день.
           Расскажите про задачу, и я предложу решение.
         </SectionHead>
 
         <ul className="contacts">
           <li className="contact-card">
-            <span className="contact-card__path">telegram</span>
+            <span className="contact-card__path">Telegram</span>
             <a
               className="contact-card__value"
               href={CONTACTS.telegramLink}
@@ -37,10 +40,10 @@ const Contacts = () => {
           </li>
 
           <li className="contact-card">
-            <span className="contact-card__path">email</span>
+            <span className="contact-card__path">Почта</span>
             <div className="contact-card__row">
               <a className="contact-card__value" href={CONTACTS.emailLink}>
-                {CONTACTS.email}
+                {emailLocal}<wbr/>@{emailDomain}
               </a>
               <CopyButton value={CONTACTS.email} label="Скопировать почту"/>
             </div>
@@ -48,20 +51,20 @@ const Contacts = () => {
           </li>
 
           <li className="contact-card">
-            <span className="contact-card__path">github</span>
+            <span className="contact-card__path">GitHub</span>
             <a
               className="contact-card__value"
               href={CONTACTS.gitHubLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {CONTACTS.gitHubLink.replace('https://', '')}
+              {gitHubHost}/<wbr/>{gitHubUser}
             </a>
             <span className="contact-card__hint">Код проектов и этого сайта</span>
           </li>
 
           <li className="contact-card">
-            <span className="contact-card__path">location</span>
+            <span className="contact-card__path">Город</span>
             <span className="contact-card__value">{CONTACTS.location}</span>
             <span className="contact-card__hint">Часовой пояс МСК, UTC+3</span>
           </li>

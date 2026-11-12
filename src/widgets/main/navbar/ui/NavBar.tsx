@@ -26,7 +26,13 @@ export const NavBar = () => {
         <div className="nav-row">
 
           <Link href="/" className="logo">
-            <strong>Portfolio</strong>
+            <svg className="logo__mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+              <rect width="32" height="32" rx="7" fill="#171718"/>
+              <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.25" fill="none" stroke="#3a3a42" strokeWidth="1.5"/>
+              <path d="M6.5 23V9.5l5.25 8 5.25-8V23" fill="none" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"/>
+              <rect x="19.5" y="20.4" width="7" height="4.2" rx="1" fill="#9da1ff"/>
+            </svg>
+            <strong>Максим Иваненко</strong>
           </Link>
 
           <BtnDarkMode/>
