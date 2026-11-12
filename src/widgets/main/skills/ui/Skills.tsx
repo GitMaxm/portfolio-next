@@ -34,7 +34,6 @@ export const Skills = () => {
     <div className="skills">
       <SectionHead title="Мои навыки">
         Основной стек: React и Next.js на TypeScript, вокруг него вёрстка и инструменты.
-        Уверенный уровень значит, что пользуюсь постоянно, практический — что применял в своих проектах.
       </SectionHead>
 
       <div className="skills-groups">
