@@ -48,6 +48,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
+      <a href="#main" className="skip-link">Перейти к содержимому</a>
+
       <NavBar/>
       {children}
       <Footer/>

@@ -18,7 +18,7 @@ const [gitHubHost, gitHubUser] = CONTACTS.gitHubLink.replace('https://', '').spl
 
 const Contacts = () => {
   return (
-    <main className="section">
+    <main id="main" className="section">
       <div className="container">
         <SectionHead as="h1" title="Контакты">
           Пишите в Telegram или на почту, отвечаю в тот же день.

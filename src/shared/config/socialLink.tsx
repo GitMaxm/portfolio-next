@@ -1,5 +1,4 @@
-import { HiOutlineMail } from "react-icons/hi";
-import { SiTelegram } from "react-icons/si";
+import { SiGithub, SiTelegram } from "react-icons/si";
 
 import type { ISocialLink } from "@/shared/model";
 
@@ -12,8 +11,8 @@ export const SOCIAL_LINKS: ISocialLink[] = [
     icon: <SiTelegram/>,
   },
   {
-    title: "E-mail",
-    url: CONTACTS.emailLink,
-    icon: <HiOutlineMail/>,
-  }
+    title: "GitHub",
+    url: CONTACTS.gitHubLink,
+    icon: <SiGithub/>,
+  },
 ];

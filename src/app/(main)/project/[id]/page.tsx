@@ -9,6 +9,7 @@ import { FiArrowLeft, FiArrowUpRight } from 'react-icons/fi';
 import { type IProject, ProjectCard, projectsContent } from '@/entities/main/project';
 import { PROJECT_IMAGE_SIZES, PROJECT_IMAGES_DIR, PROJECT_IMAGES_URL } from '@/shared/config';
 import { BtnGitHub } from '@/shared/ui/main';
+import { ContactCta } from '@/widgets/main/contact-cta';
 
 import type { IProjectPageProps } from './types';
 
@@ -71,6 +72,8 @@ const getDisplayUrl = (url: string): string => {
 
 const OTHER_PROJECTS_COUNT = 3;
 
+const PLATFORM_STACKS = new Set(['macOS', 'Android']);
+
 const getOtherProjects = (project: IProject): IProject[] => {
   const projects = projectsContent.getProjects();
   const index = projects.findIndex((item) => String(item.id) === String(project.id));
@@ -95,89 +98,96 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
   const otherProjects = getOtherProjects(project);
 
   return (
-    <main className="section">
-      <div className="container">
-        <Link href="/projects/" className="project-page__back">
-          <FiArrowLeft aria-hidden/>
-          Все проекты
-        </Link>
+    <main id="main">
+      <div className="section">
+        <div className="container">
+          <Link href="/projects/" className="project-page__back">
+            <FiArrowLeft aria-hidden/>
+            Все проекты
+          </Link>
 
-        <article className="project-page">
-          <header className="project-page__info">
-            <h1 className="project-page__title">{project.title}</h1>
+          <article className="project-page">
+            <header className="project-page__info">
+              <h1 className="project-page__title">{project.title}</h1>
 
-            {project.description && (
-              <p className="project-page__lead">{project.description}</p>
-            )}
-
-            <dl className="project-page__facts">
-              {project.stack && (
-                <div>
-                  <dt>Стек</dt>
-                  <dd>{project.stack}</dd>
-                </div>
+              {project.description && (
+                <p className="project-page__lead">{project.description}</p>
               )}
-              {tools.length > 0 && (
-                <div>
-                  <dt>Инструменты</dt>
-                  <dd>{tools.join(', ')}</dd>
-                </div>
-              )}
-            </dl>
 
-            {(project.links.preview || project.links.gitHub) && (
-              <div className="project-page__actions">
-                {project.links.preview && (
-                  <a
-                    className="btn"
-                    href={project.links.preview}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Открыть сайт
-                    <FiArrowUpRight aria-hidden/>
-                  </a>
+              <dl className="project-page__facts">
+                {project.stack && (
+                  <div>
+                    <dt>{PLATFORM_STACKS.has(project.stack) ? 'Платформа' : 'Стек'}</dt>
+                    <dd>{project.stack}</dd>
+                  </div>
                 )}
-                {project.links.gitHub && <BtnGitHub gitHubLink={project.links.gitHub}/>}
-              </div>
-            )}
-          </header>
+                {tools.length > 0 && (
+                  <div>
+                    <dt>Инструменты</dt>
+                    <dd>{tools.join(', ')}</dd>
+                  </div>
+                )}
+              </dl>
 
-          {cover && (
-            <figure className={project.links.preview ? 'browser' : 'browser browser--plain'}>
-              {project.links.preview && (
-                <div className="browser__bar" aria-hidden>
-                  <span className="browser__dots">
-                    <i/><i/><i/>
-                  </span>
-                  <span className="browser__url">{getDisplayUrl(project.links.preview)}</span>
+              {(project.links.preview || project.links.gitHub) && (
+                <div className="project-page__actions">
+                  {project.links.preview && (
+                    <a
+                      className="btn"
+                      href={project.links.preview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                    Открыть сайт
+                      <FiArrowUpRight aria-hidden/>
+                    </a>
+                  )}
+                  {project.links.gitHub && (
+                    <BtnGitHub gitHubLink={project.links.gitHub} primary={!project.links.preview}/>
+                  )}
                 </div>
               )}
-              <Image
-                src={PROJECT_IMAGES_URL + cover}
-                alt={`Скриншот проекта «${project.title}»`}
-                width={PROJECT_IMAGE_SIZES.main.width}
-                height={PROJECT_IMAGE_SIZES.main.height}
-                className="browser__img"
-                priority
-              />
-            </figure>
-          )}
-        </article>
+            </header>
 
-        {otherProjects.length > 0 && (
-          <section className="project-more" aria-labelledby="project-more-title">
-            <div className="project-more__head">
+            {cover && (
+              <figure className={project.links.preview ? 'browser' : 'browser browser--plain'}>
+                {project.links.preview && (
+                  <div className="browser__bar" aria-hidden>
+                    <span className="browser__dots">
+                      <i/><i/><i/>
+                    </span>
+                    <span className="browser__url">{getDisplayUrl(project.links.preview)}</span>
+                  </div>
+                )}
+                <Image
+                  src={PROJECT_IMAGES_URL + cover}
+                  alt={`Скриншот проекта «${project.title}»`}
+                  width={PROJECT_IMAGE_SIZES.main.width}
+                  height={PROJECT_IMAGE_SIZES.main.height}
+                  className="browser__img"
+                  priority
+                />
+              </figure>
+            )}
+          </article>
+
+          {otherProjects.length > 0 && (
+            <section className="project-more" aria-labelledby="project-more-title">
               <h2 id="project-more-title" className="project-more__title">Другие проекты</h2>
-              <Link href="/projects/" className="link project-more__all">Все проекты</Link>
-            </div>
 
-            <ul className="projects projects--trio">
-              {otherProjects.map((item) => <ProjectCard key={item.id} project={item}/>)}
-            </ul>
-          </section>
-        )}
+              <ul className="projects projects--trio">
+                {otherProjects.map((item) => <ProjectCard key={item.id} project={item}/>)}
+              </ul>
+            </section>
+          )}
+        </div>
       </div>
+
+      <section className="section section--cta" id="contact">
+        <div className="container">
+          <ContactCta/>
+        </div>
+      </section>
     </main>
   );
 }

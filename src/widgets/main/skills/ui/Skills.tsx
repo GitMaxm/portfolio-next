@@ -28,7 +28,9 @@ const groupSkills = (skills: ISkill[]) => {
 };
 
 export const Skills = () => {
-  const groups = groupSkills(skillsContent.getSkills());
+  const skills = skillsContent.getSkills();
+  const groups = groupSkills(skills);
+  const hasDifferentLevels = new Set(skills.map((skill) => skill.level)).size > 1;
 
   return (
     <div className="skills">
@@ -43,7 +45,13 @@ export const Skills = () => {
 
             <ul className={group.compact ? 'skills-list skills-list--compact' : 'skills-list'}>
               {group.skills.map((skill) => (
-                <SkillCard key={skill.id} skill={skill} compact={group.compact} headingAs="h4"/>
+                <SkillCard
+                  key={skill.id}
+                  skill={skill}
+                  compact={group.compact}
+                  showLevel={hasDifferentLevels}
+                  headingAs="h4"
+                />
               ))}
             </ul>
           </section>

@@ -1,6 +1,7 @@
 .project-page__back {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 6px;
   margin-bottom: clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem);
   font-size: var(--text-sm);
@@ -177,27 +178,10 @@
   margin-top: var(--section-gap);
 }
 
-.project-more__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px 24px;
-  margin-bottom: 24px;
-}
-
 .project-more__title {
+  margin-bottom: 24px;
   font-size: var(--text-xl);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.project-more__all {
-  font-size: var(--text-sm);
-}
-
-.project-more__all:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 4px;
-}

@@ -5,4 +5,5 @@ export interface IContacts {
   email: string;
   emailLink: string;
   gitHubLink: string;
+  resumeLink: string;
 }

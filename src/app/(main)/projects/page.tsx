@@ -16,7 +16,7 @@ const ProjectsPage = () => {
   const projects = projectsContent.getProjects();
 
   return (
-    <main className="section">
+    <main id="main" className="section">
       <div className="container">
         <SectionHead as="h1" title="Проекты">
           Здесь собраны мои работы: вёрстка лендингов, веб-приложения на React и Next.js

@@ -21,14 +21,22 @@ export default function NotFound() {
     <>
       <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}/>
 
+      <a href="#main" className="skip-link">Перейти к содержимому</a>
+
       <NavBar/>
 
-      <main className={styles.page}>
+      <main id="main" className={styles.page}>
         <div className={`container ${styles.wrapper}`}>
           <p className={styles.code} aria-hidden="true">
             <span>4</span>
             <span className={styles.gifWrap}>
-              <img src={assetPath('/img/404/404.gif')} alt="" className={styles.gif}/>
+              <img
+                src={assetPath('/img/404/404.gif')}
+                alt=""
+                className={styles.gif}
+                loading="lazy"
+                decoding="async"
+              />
             </span>
             <span>4</span>
           </p>

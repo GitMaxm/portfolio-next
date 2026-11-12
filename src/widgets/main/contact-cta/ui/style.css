@@ -1,3 +1,8 @@
+.section--cta {
+  background-color: var(--accent-ink-on-white);
+  color: var(--text-white);
+}
+
 .contact-cta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -7,7 +12,7 @@
 
 .contact-cta__title {
   margin-bottom: 14px;
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -18,7 +23,7 @@
   max-width: 52ch;
   font-size: var(--text-md);
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.92);
   text-wrap: pretty;
 }
 
@@ -29,9 +34,30 @@
   gap: 12px;
 }
 
-.contact-cta__primary {
+.contact-cta .contact-cta__primary {
   justify-content: center;
   padding: 16px 28px;
+  background-color: var(--text-white);
+  color: var(--accent-ink-on-white);
+}
+
+.contact-cta .contact-cta__primary:hover {
+  background-color: color-mix(in srgb, var(--text-white) 88%, var(--accent));
+}
+
+.contact-cta .contact-cta__primary:focus-visible,
+.contact-cta a.link:focus-visible,
+.contact-cta .copy-btn:focus-visible {
+  outline-color: var(--text-white);
+}
+
+.contact-cta a.link {
+  color: var(--text-white);
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-cta a.link:hover {
+  text-decoration-color: var(--text-white);
 }
 
 .contact-cta__email {
@@ -51,6 +77,13 @@
 .contact-cta .copy-btn {
   width: 44px;
   height: 44px;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-white);
+}
+
+.contact-cta .copy-btn:hover {
+  border-color: var(--text-white);
+  color: var(--text-white);
 }
 
 @media (max-width: 720px) {

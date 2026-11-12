@@ -1,7 +1,5 @@
 import './style.css';
 
-import Link from 'next/link';
-
 export const Header = () => {
 
   return (
@@ -13,18 +11,20 @@ export const Header = () => {
         </p>
 
         <h1 className="header__title">
-          <strong>Привет, меня зовут <em>Максим</em></strong>
+          <strong>Максим Иваненко<em aria-hidden="true">_</em></strong>
           <span className="visually-hidden">, </span>
           фронтенд-разработчик
         </h1>
 
         <p className="header__text">
-          Собираю интерфейсы на React и Next.js: от разметки до работы с данными
+          Больше трёх лет в вебе: от вёрстки лендингов по макетам до интерфейсов
+          на React и Next.js. Насмотренность помогает замечать мелочи, из которых
+          складывается аккуратный сайт
         </p>
 
         <div className="actions">
           <a href="#projects" className="btn">Смотреть проекты</a>
-          <Link href="/contacts/" className="btn btn--ghost">Связаться</Link>
+          <a href="#contact" className="btn btn--ghost">Связаться</a>
         </div>
       </div>
     </header>
