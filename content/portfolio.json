@@ -5,9 +5,12 @@
       "title": "Freedom studios academy",
       "stack": "HTML",
       "tools": [
-        "SCSS"
+        "HTML",
+        "SCSS",
+        "Gulp",
+        "JavaScript"
       ],
-      "description": "Одностраничный сайт академии студии Freedom с мобильной адаптацией.",
+      "description": "Тёмный одностраничный лендинг медиаакадемии: сборка на Gulp, мобильное меню на ванильном JS.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/studio-gulp",
         "preview": "https://gitmaxm.github.io/studio-gulp/"
@@ -66,16 +69,18 @@
       "stack": "React",
       "tools": [
         "React",
-        "JavaScript"
+        "React Router",
+        "Bootstrap",
+        "react-toastify"
       ],
-      "description": "Учебная CRM с курса WebCademy: форма приёма заявок и таблица заявок с фильтрами по статусу и курсу, счётчиками в боковом меню и редактированием. Данные лежали в json-server на Glitch, а Glitch закрыл хостинг, поэтому живого демо нет. Написано до ИИ: на вопрос «почему не работает» тогда отвечал только console.log.",
+      "description": "Учебная CRM для работы с заявками на курсы: таблица с фильтрами по статусу и продукту, форма добавления, редактирование и удаление. Данные работают локально, без сервера: демо-заявки хранятся в localStorage и при первом запуске подсыпаются из JSON.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/react-crm",
-        "preview": ""
+        "preview": "https://gitmaxm.github.io/react-crm/"
       },
       "image": {
-        "main": "crm-table-e9772457.webp",
-        "preview": "crm-table-e9772457-card.webp"
+        "main": "react-crm-e63a7fb1.webp",
+        "preview": "react-crm-e63a7fb1-card.webp"
       }
     },
     {
@@ -84,21 +89,22 @@
       "stack": "React",
       "tools": [
         "React",
-        "JavaScript",
-        "Bootstrap"
+        "Vite",
+        "CSS Modules",
+        "Vitest"
       ],
-      "description": "Классический todo: добавление и удаление задач, отметки «важное» и «сделано», поиск, фильтры и счётчик оставшихся дел. Написано ещё до ИИ — каждую строчку набирал сам, как в старые добрые времена.",
+      "description": "Классический todo: добавление и удаление задач, отметки «важное» и «сделано», поиск, фильтры и счётчик оставшихся дел. Стили на CSS Modules, утилиты поиска покрыты тестами.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/todo-react",
         "preview": "https://gitmaxm.github.io/todo-react/"
       },
       "image": {
-        "main": "todo-react-2907f92b.webp",
-        "preview": "todo-react-2907f92b-card.webp"
+        "main": "todo-react-9904ef25.webp",
+        "preview": "todo-react-9904ef25-card.webp"
       }
     },
     {
-      "id": "react-quiz",
+      "id": "tests-react-tailwind-vite",
       "title": "Тест по React",
       "stack": "React",
       "tools": [
@@ -106,14 +112,14 @@
         "Vite",
         "Tailwind"
       ],
-      "description": "Тест из вопросов по HTML, CSS, JavaScript и React: выбираешь ответы и в конце видишь результат и процент правильных. Тоже из эпохи до ИИ: только я, документация и кофе.",
+      "description": "Тест из 12 вопросов по HTML, CSS, JavaScript и React: выбираешь ответы и в конце видишь счёт, процент и подсветку правильных ответов. Вопросы лежат в JSON, новые тесты добавляются без правки кода.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/tests-react-tailwind-vite",
         "preview": "https://gitmaxm.github.io/tests-react-tailwind-vite/"
       },
       "image": {
-        "main": "tests-react-tailwind-vite-b77789ac.webp",
-        "preview": "tests-react-tailwind-vite-b77789ac-card.webp"
+        "main": "tests-react-tailwind-vite-91553591.webp",
+        "preview": "tests-react-tailwind-vite-91553591-card.webp"
       }
     },
     {
@@ -133,8 +139,8 @@
         "preview": "https://gitmaxm.github.io/leadconveer-scss/"
       },
       "image": {
-        "main": "leadconveer-scss-c29ecb21.webp",
-        "preview": "leadconveer-scss-c29ecb21-card.webp"
+        "main": "leadconveer-scss-648e2ee1.webp",
+        "preview": "leadconveer-scss-648e2ee1-card.webp"
       }
     },
     {
@@ -150,7 +156,7 @@
         "MobX",
         "Figma"
       ],
-      "description": "Интернет-магазин кроссовок: каталог с фильтрами по цене, полу и размеру, выбор размера и корзина. React и TypeScript, состояние на MobX.",
+      "description": "Интернет-магазин кроссовок: каталог с фильтрами по цене, полу и размеру, выбор размера и корзина. React и TypeScript, состояние на MobX, данные товаров из JSON без бэкенда.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/sneakmax-react-tailwind",
         "preview": "https://gitmaxm.github.io/sneakmax-react-tailwind/"
