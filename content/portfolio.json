@@ -26,13 +26,13 @@
       "stack": "HTML",
       "tools": [
         "HTML",
-        "CSS",
-        "Figma",
+        "SCSS",
+        "JavaScript",
         "Swiper",
         "Gulp",
-        "React"
+        "Figma"
       ],
-      "description": "Сайт, посвящённый игровым консолям.",
+      "description": "Игровой лендинг Healas по макету Gogames: шапка с анимированным фоном, блоки с описанием продукта, тарифы с переключением карточек и слайдером, секция бронирования с демо-формой.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/game-gulp",
         "preview": "https://gitmaxm.github.io/game-gulp/"
@@ -53,7 +53,7 @@
         "Swiper",
         "Figma"
       ],
-      "description": "Лендинг шахматного турнира в Васюках по мотивам «Двенадцати стульев». Адаптивная вёрстка по макету из Figma, слайдеры на Swiper.",
+      "description": "Лендинг шахматного клуба по мотивам «Двенадцати стульев»: анимированный заголовок в шапке, бегущие строки, блок турнира с таблицей, этапы преобразования Васюков и слайдер участников.",
       "links": {
         "gitHub": "https://github.com/GitMaxm/four-horse-club-scss",
         "preview": "https://gitmaxm.github.io/four-horse-club-scss/"
