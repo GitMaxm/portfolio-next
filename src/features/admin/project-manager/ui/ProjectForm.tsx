@@ -7,6 +7,7 @@ import type { IProjectFormProps } from "../model/types"
 import { useProjectForm } from "../model/useProjectForm"
 import styles from './ProjectForm.module.scss'
 import { ProjectImageField } from "./ProjectImageField"
+import { ProjectLibrariesField } from "./ProjectLibrariesField"
 import { ProjectLinksField } from "./ProjectLinksField"
 import { ProjectToolsField } from "./ProjectToolsField"
 
@@ -25,6 +26,8 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
     handleImageRemove,
     selectedTools,
     handleToolClick,
+    selectedLibraries,
+    handleLibraryClick,
     handleFormSubmit,
     handleCancelClick,
   } = useProjectForm(project, mode)
@@ -69,6 +72,8 @@ export const ProjectForm = ({ project, mode = 'edit' }: IProjectFormProps) => {
       </FormField>
 
       <ProjectToolsField selectedTools={selectedTools} onToolClick={handleToolClick}/>
+
+      <ProjectLibrariesField selectedLibraries={selectedLibraries} onLibraryClick={handleLibraryClick}/>
 
       <FormField htmlFor="f-desc" label="Описание">
         <textarea

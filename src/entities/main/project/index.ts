@@ -1,6 +1,6 @@
 export { projectsApi } from './api/projectsApi'
 export { projectsContent } from './api/projectsContent'
-export { STACK_OPTIONS, TOOLS_LIST } from './config/projectOptions'
+export { LIBRARIES_LIST, STACK_OPTIONS, TOOLS_LIST } from './config/projectOptions'
 export type {
   IProject,
   IProjectImage,

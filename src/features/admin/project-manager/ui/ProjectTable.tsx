@@ -4,8 +4,8 @@ import { Button, ButtonLink } from "@/shared/ui/admin";
 import type { IProjectTableProps } from '../model/types';
 import styles from './ProjectTable.module.scss';
 
-const renderTools = (tools: string[]) => (
-  Array.isArray(tools) && tools.length > 0 ? tools.join(' · ') : '—'
+const renderList = (items?: string[]) => (
+  Array.isArray(items) && items.length > 0 ? items.join(' · ') : '—'
 );
 
 export const ProjectTable = ({ projects, deletingId, onDeleteClick }: IProjectTableProps) => {
@@ -33,7 +33,7 @@ export const ProjectTable = ({ projects, deletingId, onDeleteClick }: IProjectTa
           </thead>
 
           <tbody>
-            {projects.map(({ id, title, stack, tools, description, image, links, draft }) => (
+            {projects.map(({ id, title, stack, tools, libraries, description, image, links, draft }) => (
               <tr key={id} className={deletingId === id ? styles.rowBusy : ''}>
                 <td className={styles.mono}>{id}</td>
 
@@ -45,7 +45,11 @@ export const ProjectTable = ({ projects, deletingId, onDeleteClick }: IProjectTa
                 <td><span className={styles.tag}>{stack}</span></td>
 
                 <td className={styles.cellWide}>
-                  <span className={styles.clamp}>{renderTools(tools)}</span>
+                  <span className={styles.clamp}>{renderList(tools)}</span>
+                </td>
+
+                <td className={styles.cellWide}>
+                  <span className={styles.clamp}>{renderList(libraries)}</span>
                 </td>
 
                 <td className={styles.cellWide}>

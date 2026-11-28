@@ -26,6 +26,9 @@ const IMAGE_BUSY_LABELS: Record<TImageTask, string> = {
 
 export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edit') => {
   const [selectedTools, setSelectedTools] = useState<Set<string>>(new Set(project?.tools ?? []))
+  const [selectedLibraries, setSelectedLibraries] = useState<Set<string>>(
+    new Set(project?.libraries ?? []),
+  )
   const [image, setImage] = useState<IProjectImage>(project?.image ?? {})
   const [imageTask, setImageTask] = useState<TImageTask | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -50,6 +53,19 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
       updatedTools.has(tool) ? updatedTools.delete(tool) : updatedTools.add(tool)
 
       return updatedTools
+    })
+  }
+
+  const handleLibraryClick = (library: string) => {
+    markDirty()
+    setSelectedLibraries((prev) => {
+      const updatedLibraries = new Set(prev)
+
+      updatedLibraries.has(library)
+        ? updatedLibraries.delete(library)
+        : updatedLibraries.add(library)
+
+      return updatedLibraries
     })
   }
 
@@ -135,6 +151,7 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
         stack: getFormString(data, 'stack'),
         description: getFormString(data, 'description').trim(),
         tools: [...selectedTools],
+        ...(selectedLibraries.size > 0 ? { libraries: [...selectedLibraries] } : {}),
         image,
         links: {
           gitHub: getFormString(data, 'github').trim(),
@@ -188,6 +205,8 @@ export const useProjectForm = (project?: IProject, mode: TProjectFormMode = 'edi
     handleImageRemove,
     selectedTools,
     handleToolClick,
+    selectedLibraries,
+    handleLibraryClick,
     handleFormSubmit,
     handleCancelClick,
   }

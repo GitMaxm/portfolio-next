@@ -21,8 +21,11 @@ export function generateStaticParams() {
 
 const buildDescription = (project: IProject): string => {
   const tools = project.tools.length ? ` Инструменты: ${project.tools.join(', ')}.` : '';
+  const libraries = project.libraries?.length
+    ? ` Библиотеки: ${project.libraries.join(', ')}.`
+    : '';
 
-  return `${project.description} Стек: ${project.stack}.${tools}`.trim();
+  return `${project.description} Стек: ${project.stack}.${tools}${libraries}`.trim();
 };
 
 export async function generateMetadata({ params }: IProjectPageProps): Promise<Metadata> {
@@ -125,6 +128,12 @@ export default async function ProjectPage({ params }: IProjectPageProps) {
                   <div>
                     <dt>Инструменты</dt>
                     <dd>{tools.join(', ')}</dd>
+                  </div>
+                )}
+                {project.libraries && project.libraries.length > 0 && (
+                  <div>
+                    <dt>Библиотеки</dt>
+                    <dd>{project.libraries.join(', ')}</dd>
                   </div>
                 )}
               </dl>

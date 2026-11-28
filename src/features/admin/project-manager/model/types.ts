@@ -33,6 +33,11 @@ export interface IProjectToolsFieldProps {
   onToolClick: (tool: string) => void;
 }
 
+export interface IProjectLibrariesFieldProps {
+  selectedLibraries: Set<string>;
+  onLibraryClick: (library: string) => void;
+}
+
 export interface IProjectImageFieldProps {
   image: IProjectImage;
   canCapture: boolean;

@@ -5,6 +5,7 @@ export const PROJECT_PROPERTIES_NAME: ITableColumn[] = [
   { id: 'title', title: "Название", type: "text" },
   { id: 'stack', title: "Стек", type: "text" },
   { id: 'tools', title: "Инструменты", type: "text" },
+  { id: 'libraries', title: "Библиотеки", type: "text" },
   { id: 'description', title: "Описание", type: "text" },
   { id: 'images', title: "Картинки", type: "text" },
   { id: 'links', title: "Ссылки", type: "text" },

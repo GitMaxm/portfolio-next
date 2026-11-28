@@ -22,6 +22,7 @@ export interface IProject {
   image: IProjectImage;
   links: IProjectLinks;
   draft?: boolean;
+  libraries?: string[];
 }
 
 export type TProjectDraft = Omit<IProject, 'id'>;
