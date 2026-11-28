@@ -64,6 +64,25 @@
       }
     },
     {
+      "id": "bino-scss",
+      "title": "BINO",
+      "stack": "HTML",
+      "tools": [
+        "HTML",
+        "SCSS",
+        "JavaScript"
+      ],
+      "description": "Одностраничный сайт цифрового агентства BINO: каталог услуг, проекты с раскрывающимися карточками, блок новостей и контакты. Статический HTML + SCSS, без сборщиков и менеджера пакетов.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/bino-scss",
+        "preview": "https://gitmaxm.github.io/bino-scss/"
+      },
+      "image": {
+        "main": "bino-scss-56a7a0a5.webp",
+        "preview": "bino-scss-56a7a0a5-card.webp"
+      }
+    },
+    {
       "id": "react-crm",
       "title": "CRM для заявок",
       "stack": "React",
@@ -141,6 +160,26 @@
       "image": {
         "main": "leadconveer-scss-648e2ee1.webp",
         "preview": "leadconveer-scss-648e2ee1-card.webp"
+      }
+    },
+    {
+      "id": "delivery-rolls-react-vite",
+      "title": "Доставка роллов",
+      "stack": "React",
+      "tools": [
+        "React",
+        "Vite",
+        "Tailwind",
+        "imask"
+      ],
+      "description": "Магазин доставки роллов: карточки продуктов с выбором количества, корзина с подсчётом стоимости, бесплатная доставка от 700 ₽ и форма оформления заказа. Данные о товарах лежат отдельно от компонентов, состояние корзины живёт в React Context.",
+      "links": {
+        "gitHub": "https://github.com/GitMaxm/delivery-rolls-react-vite",
+        "preview": "https://gitmaxm.github.io/delivery-rolls-react-vite/"
+      },
+      "image": {
+        "main": "delivery-rolls-react-vite-ae917b93.webp",
+        "preview": "delivery-rolls-react-vite-ae917b93-card.webp"
       }
     },
     {
